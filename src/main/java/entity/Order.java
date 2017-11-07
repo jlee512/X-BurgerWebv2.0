@@ -14,11 +14,11 @@ public class Order implements Serializable {
     int order_id;
     Staff staff;
     Customer customer;
-    DateTime order_datetime;
-    int status;
+    String order_datetime;
+    String status;
     ArrayList<Item> items;
 
-    public Order(int order_id, Staff staff, Customer customer, DateTime order_datetime, int status, ArrayList<Item> items) {
+    public Order(int order_id, Staff staff, Customer customer, String order_datetime, String status, ArrayList<Item> items) {
         this.order_id = order_id;
         this.staff = staff;
         this.customer = customer;
@@ -39,11 +39,11 @@ public class Order implements Serializable {
         return customer;
     }
 
-    public DateTime getOrder_datetime() {
+    public String getOrder_datetime() {
         return order_datetime;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
@@ -63,11 +63,11 @@ public class Order implements Serializable {
         this.customer = customer;
     }
 
-    public void setOrder_datetime(DateTime order_datetime) {
+    public void setOrder_datetime(String order_datetime) {
         this.order_datetime = order_datetime;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
