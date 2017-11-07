@@ -53,6 +53,8 @@ div#bs-example-navbar-collapse-1 {
 nav {
     background: url('../images/stars.jpg') no-repeat center center;
     font-size: 25px;
+    text-decoration-color: : white;
+    
 }
 
 li{
@@ -64,12 +66,13 @@ li{
 .main-nav a {
         font-size: 0.75000em;
         font-weight: 700;
+        /* letter-spacing: 0.250em; */
         text-decoration: none;
         color: #fff;
         display: block;
         text-align: center;
         padding: 2px 0;
-       
+        transition: color 0.3s ease-in-out;
     }
 .main-nav a:hover {
         color: #6c8f34;
@@ -100,8 +103,23 @@ li{
 
     background-size: cover;
     text-align: center;
-    background-position: center;  
+    background-position: center; 
+  
 }
+
+/* The only rule that matters */
+#video-background {
+/*  making the video fullscreen  */
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
 
 .follow_container {
     width: 100%;
@@ -208,4 +226,3 @@ p.sub-footer-text a{
     color: #BDBDBD;
     text-decoration: none;
 }
-
