@@ -1,6 +1,6 @@
 package main.java.entity;
 
-import com.google.appengine.repackaged.com.google.gson.*;
+import com.google.gson.*;
 import main.java.password.Passwords;
 
 import java.io.IOException;
