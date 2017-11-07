@@ -6,8 +6,8 @@
         <title>xBurger</title>
       
         <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="images/logo-transparent.png" width="100" height="50">
+          <img src="images/logo-transparent.png" width="100" height="60">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -55,17 +55,18 @@
     <!--======= Start Home ==========-->
          
         <div id="top" class="starter_container ">
-            <video autoplay loop id="video-background" muted autoplay loop>
-             <source src="images/LightBack.mp4" type="video/mp4">
+            <video autoplay loop id="video-background" muted plays-inline>
+             <source src="images/lightBack.mp4" type="video/mp4">
             </video>
 
             <div class="follow_container">
                 <div class="col-md-6 col-md-offset-3">
                    
-                    <img src="images/logo-transparent.png" width="450" height="320">
+                    <img src="/images/logo-transparent.png" width="450" height="320">
                     
                     <hr>
-                    <button type="button" class="btn btn-primary" onclick="window.location.href='/order'">ORDER NOW</button>
+                    <button type="button" class="btn btn-primary">ORDER NOW</button>
+
                     <hr>
                 </div>
             </div>
@@ -86,7 +87,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="img-section">
-                       <img src="images/bacon.png" width="400" height="400">
+                       <img src="/images/bacon.png" width="400" height="400">
                    </div>
                 </div>
             </div>
@@ -170,12 +171,12 @@
                 <div class="col-md-4"><p class="sub-footer-text text-center">Built By <a href="#" target="_blank">Team Extreme</a></p></div>
             </div>
         </footer>
- 
-        <script type="text/javascript" src="js/bootstrap.min.js" ></script>
-        <script type="text/javascript" src="js/main.js" ></script>
+
+        <script src="/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="/js/main.js" ></script>
         <!-- Bootstrap core JavaScript -->
-        <script src="jquery/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
