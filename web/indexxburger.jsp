@@ -56,7 +56,7 @@
          
         <div id="top" class="starter_container ">
             <video autoplay loop id="video-background" muted plays-inline>
-             <source src="images/LightBack.mp4" type="video/mp4">
+             <source src="images/lightBack.mp4" type="video/mp4">
             </video>
 
             <div class="follow_container">
