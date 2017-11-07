@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
 
     <head>
@@ -16,6 +18,13 @@
         <link rel="icon" href="" type="image/x-icon"> <!-- Add burger icon-->
     </head>
     <body>
+
+    <c:if test="${loginStatus == 'active'}">
+        <c:redirect url="/order"/>
+    </c:if>
+
+    <p>${loginStatus}</p>
+
 <!--======= Start Nav ==========-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -28,20 +37,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-            <a class="nav-link" href="/indexXburger.html">HOME |</a>
+            <a class="nav-link" href="/indexxburger.jsp">HOME |</a>
               
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="orderpage.html#">ORDER |</a>
+              <a class="nav-link" href="orderpage.jsp#">ORDER |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html#">LOGIN |</a>
+              <a class="nav-link" href="login.jsp#">LOGIN |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="indexXburger.html#about">ABOUT |</a>
+              <a class="nav-link" href="indexxburger.jsp#about">ABOUT |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="indexXburger.html#contact">CONTACT |</a>
+              <a class="nav-link" href="indexxburger.jsp#contact">CONTACT |</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">HISTORY</a>
@@ -57,23 +66,25 @@
 
   <div class="cont_centrar">
   <div class="cont_login">
-    <form action="">
+    <form id="loginform" action="/login_validation" method="post">
     <div class="cont_tabs_login">
       <ul class='ul_tabs'>
-        <li class="active"><a href="#" onclick="sign_in()">SIGN IN</a>
+        <li class="active"><a href="#" onclick="sign_in()" id="signin">SIGN IN</a>
         <span class="linea_bajo_nom"></span>
         </li>
-        <li><a href="#up" onclick="sign_up()">SIGN UP</a><span class="linea_bajo_nom"></span>
+        <li><a href="#up" onclick="sign_up()" id="signup">SIGN UP</a><span class="linea_bajo_nom"></span>
         </li>
       </ul>
       </div>
   <div class="cont_text_inputs">
       <input type="text" class="input_form_sign " placeholder="NAME" name="name_us" />
-    
-    <input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="emauil_us" />
 
-    <input type="password" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us" />  
-   <input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
+      <input type="hidden" class="input_form_sign " placeholder="NAME" name="username" value="" />
+
+      <input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="email" />
+
+    <input type="password" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="password" />
+    <input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
     
     </div>
       </div>
@@ -107,6 +118,7 @@
         <!-- Bootstrap core JavaScript -->
         <script src="/jquery/jquery.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/loginjs.js"></script>
 
     </body>
 </html>

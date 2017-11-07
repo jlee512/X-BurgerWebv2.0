@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 
     <head>
@@ -8,12 +8,12 @@
         
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/css/main.css" media="screen" type="text/css">
+        <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
         <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="/css/checkout-sidebar.css" />
+        <link rel="stylesheet" type="text/css" href="css/checkout-sidebar.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
          <link rel="stylesheet" type="text/css" href="css/orderstyle.css" />
-          <link href="/css/bootstrap.min.css" rel="stylesheet">
+          <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link rel="icon" href="" type="image/x-icon"> <!-- Add burger icon-->
@@ -31,20 +31,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/indexXburger.html">HOME |</a>
+              <a class="nav-link" href="/indexxburger.jsp">HOME |</a>
             
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/orderpage.html#">ORDER |</a>
+              <a class="nav-link" href="/orderpage.jsp#">ORDER |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login.html#">LOGIN |</a>
+              <a class="nav-link" href="/login.jsp#">LOGIN |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/indexXburger.html#about">ABOUT |</a>
+              <a class="nav-link" href="/indexxburger.jsp#about">ABOUT |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/indexXburger.html#contact">CONTACT |</a>
+              <a class="nav-link" href="/indexxburger.jsp#contact">CONTACT |</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">HISTORY</a>

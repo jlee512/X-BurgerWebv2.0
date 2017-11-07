@@ -41,7 +41,7 @@
 
     <servlet>
         <servlet-name>loginJSP</servlet-name>
-        <jsp-file>/login_page.jsp</jsp-file>
+        <jsp-file>/login.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
@@ -49,6 +49,15 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>orderJSP</servlet-name>
+        <jsp-file>/orderpage.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>orderJSP</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
     <!--TEST-->
     <servlet>
         <servlet-name>testJSP</servlet-name>

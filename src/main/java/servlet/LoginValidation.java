@@ -54,7 +54,7 @@ public class LoginValidation extends HttpServlet {
                 session.setAttribute("customer", customer_login_submission);
 
                 //REPLACE WITH REDIRECT TO APPROPRIATE JSP
-                out.write("<h1>Login Sucessful</h1>".getBytes());
+               response.sendRedirect("/order");
 
             } else {
                 response.sendRedirect("Login?loginStatus=incorrectPassword&username=" + username_entry);
