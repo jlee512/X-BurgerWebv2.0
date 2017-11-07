@@ -6,8 +6,8 @@
         <title>xBurger</title>
       
         <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -171,11 +171,11 @@
                 <div class="col-md-4"><p class="sub-footer-text text-center">Built By <a href="#" target="_blank">Team Extreme</a></p></div>
             </div>
         </footer>
- 
+
+        <script src="/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="/js/main.js" ></script>
         <!-- Bootstrap core JavaScript -->
-        <script src="/jquery/jquery.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
 
     </body>
