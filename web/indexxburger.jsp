@@ -55,7 +55,7 @@
     <!--======= Start Home ==========-->
          
         <div id="top" class="starter_container ">
-            <video autoplay loop id="video-background" muted plays-inline>
+            <video autoplay loop id="video-background" muted autoplay loop>
              <source src="images/LightBack.mp4" type="video/mp4">
             </video>
 
