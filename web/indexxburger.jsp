@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="images/logo-transparent.png" width="100" height="60">
+          <img src="images/logo-transparent.png" width="100" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -62,11 +62,10 @@
             <div class="follow_container">
                 <div class="col-md-6 col-md-offset-3">
                    
-                    <img src="/images/logo-transparent.png" width="450" height="320">
+                    <img src="images/logo-transparent.png" width="450" height="320">
                     
                     <hr>
-                    <button type="button" class="btn btn-primary">ORDER NOW</button>
-
+                    <button type="button" class="btn btn-primary" onclick="window.location.href='/order'">ORDER NOW</button>
                     <hr>
                 </div>
             </div>
@@ -87,7 +86,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="img-section">
-                       <img src="/images/bacon.png" width="400" height="400">
+                       <img src="images/bacon.png" width="400" height="400">
                    </div>
                 </div>
             </div>
@@ -172,11 +171,11 @@
             </div>
         </footer>
  
-        <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
-        <script type="text/javascript" src="/js/main.js" ></script>
+        <script type="text/javascript" src="js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="js/main.js" ></script>
         <!-- Bootstrap core JavaScript -->
-        <script src="/jquery/jquery.min.js"></script>
-        <script src="/js/bootstrap.bundle.min.js"></script>
+        <script src="jquery/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
