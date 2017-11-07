@@ -124,7 +124,7 @@
        
 
        <!-- ============ Sidebar animation script ============= -->
-        <script src="/xBurgers%20Website/js/classie.js"></script>
+        <script src="js/classie.js"></script>
         <script>
             (function() {
                 [].slice.call( document.querySelectorAll( '.checkout' ) ).forEach( function( el ) {
