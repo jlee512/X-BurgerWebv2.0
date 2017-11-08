@@ -42,10 +42,12 @@ public class Order_API {
 
             //Get item details and pass into ingredient objects
             JsonObject item_details = order_json.get("item_details_list").getAsJsonObject();
-            for (Map.Entry<String, JsonElement> entry : item_details.entrySet()) {
-//                JsonObject array = entry.getValue().getAsJsonObject().
 
+            //For each item, process the ingredients
+            for(Map.Entry<String, JsonElement> entry : item_details.entrySet()) {
+                System.out.println(entry.getKey());
             }
+
 
 
             //Get order metadata and parse elements into an order object
@@ -58,8 +60,6 @@ public class Order_API {
             String datetimeString = order_meta.get("DateTime").getAsString();
             int order_status_num = order_meta.get("Status").getAsInt();
             String order_status = Status_Information.getStatus(order_status_num);
-
-
 
             System.out.println(item_details.toString());
 

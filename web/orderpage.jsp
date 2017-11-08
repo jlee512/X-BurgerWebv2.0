@@ -31,20 +31,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/indexxburger.jsp">HOME |</a>
+              <a class="nav-link" href="/">HOME |</a>
             
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/orderpage.jsp#">ORDER |</a>
+              <a class="nav-link" href="/order">ORDER |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login.jsp#">LOGIN |</a>
+              <a class="nav-link" href="/login">LOGIN |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/indexxburger.jsp#about">ABOUT |</a>
+              <a class="nav-link" href="/#about">ABOUT |</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/indexxburger.jsp#contact">CONTACT |</a>
+              <a class="nav-link" href="/#contact">CONTACT |</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">HISTORY</a>
