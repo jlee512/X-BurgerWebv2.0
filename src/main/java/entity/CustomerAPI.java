@@ -19,7 +19,7 @@ public class CustomerAPI {
     CustomerAPI(){
     }
 
-    // Get customer details by username from the API (by username or email)
+    // Get customer details by username or email from the API
     public static Customer getCustomerDetailsAPI (String customer_detail, String method) {
         String api_url = api_base_url + method + "/" + customer_detail;
 

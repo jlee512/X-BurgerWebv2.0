@@ -1,5 +1,7 @@
 package main.java.entity;
 
+import com.google.gson.JsonObject;
+
 import java.io.Serializable;
 
 /**
@@ -71,4 +73,17 @@ public class Staff implements Serializable {
     public void setPassHash(String passHash) {
         this.passHash = passHash;
     }
+
+    public JsonObject createStaffJson() {
+        JsonObject staff_json_object = new JsonObject();
+        staff_json_object.addProperty("Username", this.username);
+        staff_json_object.addProperty("Staff_Type", this.staff_type);
+        staff_json_object.addProperty("Iterations", this.iterations);
+        staff_json_object.addProperty("Salt", this.salt);
+        staff_json_object.addProperty("PassHash", this.passHash);
+
+        return staff_json_object;
+
+    }
+
 }
