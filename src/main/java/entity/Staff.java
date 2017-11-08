@@ -1,6 +1,8 @@
 package main.java.entity;
 
 import com.google.gson.JsonObject;
+import main.java.helpers.Staff_Information;
+import main.java.helpers.Status_Information;
 
 import java.io.Serializable;
 
@@ -19,6 +21,14 @@ public class Staff implements Serializable {
 
     public Staff(int staff_id, String staff_type, String username, int iterations, String salt, String passHash) {
         this.staff_id = staff_id;
+        this.staff_type = staff_type;
+        this.username = username;
+        this.iterations = iterations;
+        this.salt = salt;
+        this.passHash = passHash;
+    }
+
+    public Staff(String staff_type, String username, int iterations, String salt, String passHash) {
         this.staff_type = staff_type;
         this.username = username;
         this.iterations = iterations;
@@ -77,7 +87,7 @@ public class Staff implements Serializable {
     public JsonObject createStaffJson() {
         JsonObject staff_json_object = new JsonObject();
         staff_json_object.addProperty("Username", this.username);
-        staff_json_object.addProperty("Staff_Type", this.staff_type);
+        staff_json_object.addProperty("Staff_Type", Staff_Information.getStaffTypeID(this.staff_type));
         staff_json_object.addProperty("Iterations", this.iterations);
         staff_json_object.addProperty("Salt", this.salt);
         staff_json_object.addProperty("PassHash", this.passHash);
