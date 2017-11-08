@@ -8,6 +8,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 /**
  * Created by Julian on 8/11/2017.
@@ -46,6 +47,40 @@ public class Staff_API {
 
             return new Staff(staff_id, staff_type, username, iterations, salt, passHash);
 
+        } catch (MalformedURLException e) {
+            //Not expected to be realised based on api_base_url setup
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    //Get staff list by staff type from the API
+    public static ArrayList<Staff> getStaffListByRole (String role) {
+        String api_url = api_base_url + "staff_type/" + role;
+
+        try {
+            //Request the json resource at the specified url
+            URL url = new URL(api_url);
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+            request.connect();
+
+            //Convert JSON object to access data
+            JsonParser jp = new JsonParser(); //json parser from gson library
+            JsonElement root = jp.parse(new InputStreamReader((InputStream)request.getContent()));
+            JsonArray jsonArrayStaff = root.getAsJsonArray();
+
+            Gson gson = new Gson();
+            for (JsonElement staff_element : jsonArrayStaff) {
+                JsonObject staff_object = staff_element.getAsJsonObject();
+                String username = staff_object.get("Username").getAsString();
+                System.out.println(username);
+                
+            }
+
+            System.out.println(root);
         } catch (MalformedURLException e) {
             //Not expected to be realised based on api_base_url setup
             e.printStackTrace();
@@ -107,25 +142,27 @@ public class Staff_API {
 
 
     public static void main(String[] args) {
-        Staff staff_test = Staff_API.getStaffDetailsAPI("m4ddi3", "username");
-        System.out.println(staff_test.getUsername());
-        System.out.println(staff_test.getStaff_type());
+//        Staff staff_test = Staff_API.getStaffDetailsAPI("m4ddi3", "username");
+//        System.out.println(staff_test.getUsername());
+//        System.out.println(staff_test.getStaff_type());
+//
+//        Staff staff_test1 = Staff_API.getStaffDetailsAPI("11", "staff_id");
+//        System.out.println(staff_test1.getIterations());
+//
+//        //Test staff addition API method
+//        String username = "o06h05ted0o";
+//        String staff_type = "Wizard";
+//        String password = "test";
+//        int iterations = Passwords.getNextNumIterations();
+//        byte[] salt = Passwords.getNextSalt(16);
+//        String saltString = Passwords.base64Encode(salt);
+//        String passHash = Passwords.base64Encode(Passwords.hash(password.toCharArray(), salt, iterations));
+//
+//        Staff newStaff = new Staff(staff_type, username, iterations, saltString, passHash);
+//
+//        Staff_API.addStafftoDBAPI(newStaff);
 
-        Staff staff_test1 = Staff_API.getStaffDetailsAPI("11", "staff_id");
-        System.out.println(staff_test1.getIterations());
-
-        //Test staff addition API method
-        String username = "o06h05ted0o";
-        String staff_type = "Wizard";
-        String password = "test";
-        int iterations = Passwords.getNextNumIterations();
-        byte[] salt = Passwords.getNextSalt(16);
-        String saltString = Passwords.base64Encode(salt);
-        String passHash = Passwords.base64Encode(Passwords.hash(password.toCharArray(), salt, iterations));
-
-        Staff newStaff = new Staff(staff_type, username, iterations, saltString, passHash);
-
-        Staff_API.addStafftoDBAPI(newStaff);
+        Staff_API.getStaffListByRole("wizard");
 
     }
 }
