@@ -16,6 +16,17 @@
         <url-pattern>/login_validation</url-pattern>
     </servlet-mapping>
 
+    <!--Jack to update-->
+    <servlet>
+        <servlet-name>loginValidation</servlet-name>
+        <servlet-class>main.java.servlet.LoginValidation</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>loginValidation</servlet-name>
+        <url-pattern>/login_validation</url-pattern>
+    </servlet-mapping>
+
     <!--TEST-->
     <servlet>
         <servlet-name>helloServlet</servlet-name>

@@ -15,7 +15,7 @@ import java.io.IOException;
  * Created by Julian on 5/11/2017.
  */
 
-public class LoginValidation extends HttpServlet {
+public class RegistrationUpdate extends HttpServlet {
 
     // If this servlet is accessed via HTTP GET: return the user to the login page (.jsp)
     @Override
@@ -34,38 +34,9 @@ public class LoginValidation extends HttpServlet {
         String email_entry = request.getParameter("email");
         String password_entry = request.getParameter("password");
 
-        //Check whether user has input a username or an email and access details from the API
-        if (username_entry.length() > 0) {
-            customer_login_submission = CustomerAPI.getCustomerDetailsAPI(username_entry, "username");
-        } else if (email_entry.length() > 0) {
-            customer_login_submission = CustomerAPI.getCustomerDetailsAPI(email_entry, "email");
-        }
+        System.out.println(username_entry);
 
-        ServletOutputStream out = response.getOutputStream();
-
-        if (customer_login_submission != null) {
-            if (CustomerAPI.validateCustomerPassword(password_entry, customer_login_submission.getPassHash(), customer_login_submission.getSalt(), customer_login_submission.getIterations())) {
-
-               //Login username and password verified
-               //Create user session and setMaxInactiveInterval to 12 hours. Also store the user details and login status variables in the session
-                HttpSession session = request.getSession(true);
-                session.setMaxInactiveInterval(60 * 60 * 12);
-                session.setAttribute("loginStatus", "active");
-                session.setAttribute("customer", customer_login_submission);
-
-                //REPLACE WITH REDIRECT TO APPROPRIATE JSP
-               response.sendRedirect("/order");
-
-            } else {
-                response.sendRedirect("Login?loginStatus=incorrectPassword&username=" + username_entry);
-            }
-        } else {
-            response.sendRedirect("Login?loginStatus=invalidUsername");
-        }
-
-        out.flush();
-        out.close();
-
+        response.sendRedirect("/");
     }
 
     /*Method to check a user's login-status and redirect accordingly
