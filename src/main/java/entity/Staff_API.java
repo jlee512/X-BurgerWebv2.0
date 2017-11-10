@@ -77,7 +77,7 @@ public class Staff_API {
                 JsonObject staff_object = staff_element.getAsJsonObject();
                 String username = staff_object.get("Username").getAsString();
                 System.out.println(username);
-                
+
             }
 
             System.out.println(root);

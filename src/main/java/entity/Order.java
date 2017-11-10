@@ -17,6 +17,7 @@ public class Order implements Serializable {
     String order_datetime;
     String status;
     ArrayList<Item> items;
+    double price;
 
     public Order(int order_id, Staff staff, Customer customer, String order_datetime, String status, ArrayList<Item> items) {
         this.order_id = order_id;
@@ -45,6 +46,23 @@ public class Order implements Serializable {
 
     public String getStatus() {
         return status;
+    }
+
+    public double getPrice() {
+
+        double price = 0.0;
+
+        for (Item item : items) {
+
+            for (Stock ingredient : item.getIngredients()) {
+
+                price += ingredient.getPrice();
+
+            }
+
+        }
+
+        return price;
     }
 
     public ArrayList<Item> getItems() {

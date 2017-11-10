@@ -4,8 +4,10 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import io.swagger.models.auth.In;
 import io.swagger.util.Json;
 import main.java.helpers.Status_Information;
+import main.java.helpers.Stock_Information;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -41,14 +44,14 @@ public class Order_API {
             JsonObject order_json = jp.parse(new InputStreamReader((InputStream)request.getContent())).getAsJsonObject();
 
             //Get item details and pass into ingredient objects
-            JsonObject item_details = order_json.get("item_details_list").getAsJsonObject();
-
-            //For each item, process the ingredients
-            for(Map.Entry<String, JsonElement> entry : item_details.entrySet()) {
-                System.out.println(entry.getKey());
+            JsonObject item_details = null;
+            try {
+                item_details = order_json.get("item_details_list").getAsJsonObject();
+            } catch (IllegalStateException e) {
+                //Catch case where order does not exist
+                System.out.println("Order does not exist");
+                return null;
             }
-
-
 
             //Get order metadata and parse elements into an order object
             JsonObject order_meta = order_json.get("order_details_list").getAsJsonObject();
@@ -61,7 +64,44 @@ public class Order_API {
             int order_status_num = order_meta.get("Status").getAsInt();
             String order_status = Status_Information.getStatus(order_status_num);
 
-            System.out.println(item_details.toString());
+
+            //Get items and ingredients
+            ArrayList<Item> items = new ArrayList<>();
+            //For each item, process the ingredients
+            for(Map.Entry<String, JsonElement> entry : item_details.entrySet()) {
+
+                int item_id = Integer.parseInt(entry.getKey());
+                //Initialise item ingredients array as a new array
+                ArrayList<Stock> ingredients = new ArrayList<>();
+
+                String item_type = "";
+
+                JsonArray ingredient_array = entry.getValue().getAsJsonArray();
+
+                for (int i = 0; i < ingredient_array.size(); i++) {
+
+                    int stock_id = Integer.parseInt(ingredient_array.get(i).toString());
+
+                    //Check the first ingredients to confirm the item type
+                    if (i == 0) {
+                        item_type = Stock_Information.getItemType(stock_id);
+                    }
+
+                    String stock_name = Stock_Information.getIngredientName(stock_id);
+                    String category = Stock_Information.getItemCategory(stock_id);
+                    double price = Stock_Information.getIngredientPrice(stock_id);
+                    Stock ingredient = new Stock(stock_id, stock_name, category, -1, price, "");
+
+                    ingredients.add(ingredient);
+                }
+
+                Item new_item = new Item(item_id, order_id, ingredients, item_type);
+                items.add(new_item);
+            }
+
+            Order order = new Order(order_id_received, staff, customer, datetimeString, order_status, items);
+
+            return order;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -72,8 +112,24 @@ public class Order_API {
     }
 
 
+
+
     //Test method developed for the getOrderDetails methods
     public static void main(String[] args) {
-        Order_API.getOrderDetailsByOrderIDCustomerAPI(1);
+//        Order order = Order_API.getOrderDetailsByOrderIDCustomerAPI(21);
+//
+//        System.out.println("Order " + order.getOrder_id() + " received");
+//        System.out.println("Order Price " + order.getPrice());
+//
+//        ArrayList<Item> items = order.getItems();
+//
+//        for (Item item : items) {
+//            System.out.println("Item: " + item.getItem_type());
+//            ArrayList<Stock> ingredients = item.getIngredients();
+//
+//            for (Stock ingredient : ingredients) {
+//                System.out.println("    " + ingredient.getCategory() + " -> " + ingredient.getIngredient_name());
+//            }
+//        }
     }
 }
