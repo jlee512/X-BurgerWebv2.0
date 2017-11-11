@@ -9,9 +9,7 @@ import io.swagger.util.Json;
 import main.java.helpers.Status_Information;
 import main.java.helpers.Stock_Information;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,6 +29,7 @@ public class Order_API {
     }
 
     // Get full order details from the API (by user_id or staff_id)
+    //Tested
     public static Order getOrderDetailsByOrderIDCustomerAPI(int order_id) {
         String api_url = api_base_url + order_id;
 
@@ -111,12 +110,69 @@ public class Order_API {
         return null;
     }
 
+    //Method for getting an orderlist by customer id
+    public static ArrayList<Order> getOrdersByCustomerID(int customer_id) {
+        return null;
+    }
 
+    //Method for getting an orderlist by staff id
+    public static ArrayList<Order> getOrdersByStaffID (int staff_id) {
+        return null;
+    }
 
+    //Method for adding orders - tested and functional
+    public static boolean addOrder(Order order, int customer_id) {
+
+        JsonObject order_json_object = order.createOrderJson();
+
+        String url_string = api_base_url + "add/" + customer_id;
+        System.out.println(url_string);
+
+        try {
+
+            URL url = new URL(url_string);
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+
+            request.setDoOutput(true);
+            request.setDoInput(true);
+
+            request.setRequestProperty("Content-Type", "application/json");
+            request.setRequestProperty("Accept", "application/json");
+            request.setRequestMethod("POST");
+
+            OutputStreamWriter out = new OutputStreamWriter(request.getOutputStream());
+            out.write(order_json_object.toString());
+            out.flush();
+
+            StringBuilder sb = new StringBuilder();
+            int HttpResult = request.getResponseCode();
+            if (HttpResult == HttpURLConnection.HTTP_OK) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream(), "utf-8"));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                br.close();
+                System.out.println("" + sb.toString());
+                return true;
+            } else {
+                System.out.println(request.getResponseMessage());
+                return false;
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //Method for assigning staff to orders
 
     //Test method developed for the getOrderDetails methods
     public static void main(String[] args) {
-//        Order order = Order_API.getOrderDetailsByOrderIDCustomerAPI(21);
+        Order order = Order_API.getOrderDetailsByOrderIDCustomerAPI(21);
 //
 //        System.out.println("Order " + order.getOrder_id() + " received");
 //        System.out.println("Order Price " + order.getPrice());
@@ -131,5 +187,7 @@ public class Order_API {
 //                System.out.println("    " + ingredient.getCategory() + " -> " + ingredient.getIngredient_name());
 //            }
 //        }
+
+//        Order_API.addOrder(order, 11);
     }
 }

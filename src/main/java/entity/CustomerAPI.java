@@ -90,8 +90,10 @@ public class CustomerAPI {
                 }
                 br.close();
                 System.out.println("" + sb.toString());
+                return true;
             } else {
                 System.out.println(request.getResponseMessage());
+                return false;
             }
 
         } catch (MalformedURLException e) {
@@ -99,12 +101,7 @@ public class CustomerAPI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println(customer_json_object);
-
-
-        return true;
-
+        return false;
     }
 
     public static boolean validateCustomerPassword(String password_entry, String hashDB, String saltDB, int iterationsDB) {
