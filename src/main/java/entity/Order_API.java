@@ -110,11 +110,13 @@ public class Order_API {
         return null;
     }
 
+    //TODO
     //Method for getting an orderlist by customer id
     public static ArrayList<Order> getOrdersByCustomerID(int customer_id) {
         return null;
     }
 
+    //TODO
     //Method for getting an orderlist by staff id
     public static ArrayList<Order> getOrdersByStaffID (int staff_id) {
         return null;

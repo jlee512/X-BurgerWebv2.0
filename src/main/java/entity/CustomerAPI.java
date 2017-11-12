@@ -32,8 +32,8 @@ public class CustomerAPI {
             //Convert JSON object to access data
             JsonParser jp = new JsonParser(); //json parser from gson library
             JsonElement root = jp.parse(new InputStreamReader((InputStream)request.getContent()));
-            JsonObject customer_object = root.getAsJsonObject();
             Gson gson = new GsonBuilder().serializeNulls().create();
+            JsonObject customer_object = root.getAsJsonObject();
 
 
             //Extract customer data from JSON
@@ -117,20 +117,20 @@ public class CustomerAPI {
 
     public static void main(String[] args) {
 
-        String username = "Blah";
-        String email = "blah@gmail.com";
-        String phone_number = "0211234567";
-        String password = "test";
-        int iterations = Passwords.getNextNumIterations();
-        byte[] salt = Passwords.getNextSalt(16);
-        String saltString = Passwords.base64Encode(salt);
-        String passHash = Passwords.base64Encode(Passwords.hash(password.toCharArray(), salt, iterations));
-        String passPin = null;
-        String cardToken = null;
-
-        Customer newCustomer = new Customer(username, email, phone_number, iterations, saltString, passHash, passPin, cardToken);
-
-        CustomerAPI.addCustomertoDBAPI(newCustomer);
+//        String username = "TestCustomer1";
+//        String email = "blah@gmail.com";
+//        String phone_number = "0211234567";
+//        String password = "test";
+//        int iterations = Passwords.getNextNumIterations();
+//        byte[] salt = Passwords.getNextSalt(16);
+//        String saltString = Passwords.base64Encode(salt);
+//        String passHash = Passwords.base64Encode(Passwords.hash(password.toCharArray(), salt, iterations));
+//        String passPin = null;
+//        String cardToken = null;
+//
+//        Customer newCustomer = new Customer(username, email, phone_number, iterations, saltString, passHash, passPin, cardToken);
+//
+//        CustomerAPI.addCustomertoDBAPI(newCustomer);
 
 
     }
