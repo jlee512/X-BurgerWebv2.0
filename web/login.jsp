@@ -72,7 +72,7 @@
         <li class="active"><a href="#" onclick="sign_in()" id="signin">SIGN IN</a>
         <span class="linea_bajo_nom"></span>
         </li>
-        <li><a href="#up" onclick="sign_up()" id="signup">SIGN UP</a><span class="linea_bajo_nom"></span>
+        <li><a href="#" onclick="sign_up()" id="signup">SIGN UP</a><span class="linea_bajo_nom"></span>
         </li>
       </ul>
       </div>

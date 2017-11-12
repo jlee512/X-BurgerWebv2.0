@@ -18,13 +18,13 @@
 
     <!--Jack to update-->
     <servlet>
-        <servlet-name>loginValidation</servlet-name>
-        <servlet-class>main.java.servlet.LoginValidation</servlet-class>
+        <servlet-name>registrationUpdate</servlet-name>
+        <servlet-class>main.java.servlet.RegistrationUpdate</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>loginValidation</servlet-name>
-        <url-pattern>/login_validation</url-pattern>
+        <servlet-name>registrationUpdate</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
     <!--TEST-->

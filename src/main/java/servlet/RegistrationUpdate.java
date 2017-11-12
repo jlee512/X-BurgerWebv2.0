@@ -2,6 +2,7 @@ package main.java.servlet;
 
 import main.java.entity.Customer;
 import main.java.entity.CustomerAPI;
+import main.java.password.Passwords;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -30,13 +31,26 @@ public class RegistrationUpdate extends HttpServlet {
         Customer customer_login_submission = null;
 
         //Get request parameters from form submission
-        String username_entry = request.getParameter("username");
+        String username_entry = request.getParameter("name_us");
         String email_entry = request.getParameter("email");
         String password_entry = request.getParameter("password");
+        //String password_confirm = request.getParameter("password");
+
+        byte[] saltArray = Passwords.getNextSalt(16);
+        int iterArray = Passwords.getNextNumIterations();
+
+        byte[] passwordArray = Passwords.hash(password_entry.toCharArray(),saltArray, iterArray);
+
+        String salt = Passwords.base64Encode(saltArray);
+        String passwordHash = Passwords.base64Encode(passwordArray);
+
+        Customer newCust = new Customer(username_entry, email_entry, "", iterArray, salt, passwordHash, "", "");
+
+        CustomerAPI.addCustomertoDBAPI(newCust);
 
         System.out.println(username_entry);
 
-        response.sendRedirect("/");
+        response.sendRedirect("/order");
     }
 
     /*Method to check a user's login-status and redirect accordingly
