@@ -140,7 +140,6 @@ public class Staff_API {
 
     }
 
-
     public static void main(String[] args) {
 //        Staff staff_test = Staff_API.getStaffDetailsAPI("m4ddi3", "username");
 //        System.out.println(staff_test.getUsername());
@@ -162,7 +161,7 @@ public class Staff_API {
 //
 //        Staff_API.addStafftoDBAPI(newStaff);
 
-        Staff_API.getStaffListByRole("wizard");
+//        Staff_API.getStaffListByRole("wizard");
 
     }
 }
