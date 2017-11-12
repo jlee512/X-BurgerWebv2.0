@@ -1,11 +1,10 @@
 package main.java.entity;
 
 import com.google.gson.*;
+import io.swagger.util.Json;
 import main.java.password.Passwords;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,7 +19,7 @@ public class CustomerAPI {
     CustomerAPI(){
     }
 
-    // Get customer details by username from the API (by username or email)
+    // Get customer details by username or email from the API
     public static Customer getCustomerDetailsAPI (String customer_detail, String method) {
         String api_url = api_base_url + method + "/" + customer_detail;
 
@@ -33,8 +32,8 @@ public class CustomerAPI {
             //Convert JSON object to access data
             JsonParser jp = new JsonParser(); //json parser from gson library
             JsonElement root = jp.parse(new InputStreamReader((InputStream)request.getContent()));
-            JsonObject customer_object = root.getAsJsonObject();
             Gson gson = new GsonBuilder().serializeNulls().create();
+            JsonObject customer_object = root.getAsJsonObject();
 
 
             //Extract customer data from JSON
@@ -60,6 +59,51 @@ public class CustomerAPI {
         return null;
     }
 
+    public static boolean addCustomertoDBAPI (Customer customer) {
+
+        JsonObject customer_json_object = customer.createCustomerJson();
+
+        String url_string = api_base_url + "add";
+        try {
+
+            URL url = new URL(url_string);
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+
+            request.setDoOutput(true);
+            request.setDoInput(true);
+            request.setRequestProperty("Content-Type", "application/json");
+            request.setRequestProperty("Accept", "application/json");
+            request.setRequestMethod("POST");
+
+            OutputStreamWriter out = new OutputStreamWriter(request.getOutputStream());
+            out.write(customer_json_object.toString());
+            out.flush();
+
+            StringBuilder sb = new StringBuilder();
+            int HttpResult = request.getResponseCode();
+            if (HttpResult == HttpURLConnection.HTTP_OK) {
+                BufferedReader br = new BufferedReader(
+                        new InputStreamReader(request.getInputStream(), "utf-8"));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                br.close();
+                System.out.println("" + sb.toString());
+                return true;
+            } else {
+                System.out.println(request.getResponseMessage());
+                return false;
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static boolean validateCustomerPassword(String password_entry, String hashDB, String saltDB, int iterationsDB) {
 
         //Use Passwords class to compare password_entry with hash from the database
@@ -71,5 +115,24 @@ public class CustomerAPI {
         return password_validation;
     }
 
+    public static void main(String[] args) {
+
+//        String username = "TestCustomer1";
+//        String email = "blah@gmail.com";
+//        String phone_number = "0211234567";
+//        String password = "test";
+//        int iterations = Passwords.getNextNumIterations();
+//        byte[] salt = Passwords.getNextSalt(16);
+//        String saltString = Passwords.base64Encode(salt);
+//        String passHash = Passwords.base64Encode(Passwords.hash(password.toCharArray(), salt, iterations));
+//        String passPin = null;
+//        String cardToken = null;
+//
+//        Customer newCustomer = new Customer(username, email, phone_number, iterations, saltString, passHash, passPin, cardToken);
+//
+//        CustomerAPI.addCustomertoDBAPI(newCustomer);
+
+
+    }
 
 }

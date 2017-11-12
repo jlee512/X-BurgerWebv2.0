@@ -1,5 +1,9 @@
 package main.java.entity;
 
+import com.google.gson.JsonObject;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -9,14 +13,32 @@ import java.io.Serializable;
 //Javabean to represent the Customer object - serializeable and therefore can be stored within a session
 public class Customer implements Serializable {
 
+    @SerializedName("Customer_ID")
+    @Expose
     int customer_id;
+    @SerializedName("Username")
+    @Expose
     String username;
+    @SerializedName("Email")
+    @Expose
     String email;
+    @SerializedName("Phone_Number")
+    @Expose
     String phone_number;
+    @SerializedName("Iterations")
+    @Expose
     int iterations;
+    @SerializedName("Salt")
+    @Expose
     String salt;
+    @SerializedName("PassHash")
+    @Expose
     String passHash;
+    @SerializedName("PassPin")
+    @Expose
     String passPin;
+    @SerializedName("Card_Token")
+    @Expose
     String cardToken;
 
     // Constructor for Customer object with full suite of details as pulled from the database
@@ -115,4 +137,20 @@ public class Customer implements Serializable {
     public void setCardToken(String cardToken) {
         this.cardToken = cardToken;
     }
+
+    public JsonObject createCustomerJson() {
+        JsonObject customer_json_object = new JsonObject();
+        customer_json_object.addProperty("Username", this.username);
+        customer_json_object.addProperty("Email", this.email);
+        customer_json_object.addProperty("Phone_Number", this.phone_number);
+        customer_json_object.addProperty("Iterations", this.iterations);
+        customer_json_object.addProperty("Salt", this.salt);
+        customer_json_object.addProperty("PassHash", this.passHash);
+        customer_json_object.addProperty("PassPin", this.passPin);
+        customer_json_object.addProperty("Card_Token", this.cardToken);
+
+        return customer_json_object;
+
+    }
+
 }
