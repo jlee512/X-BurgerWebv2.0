@@ -49,8 +49,9 @@
                     </a>
                 </div>
                 <div class="panel-footer">
+                    <button id="plain" style="width: 100%;">
                     <p>Plain</p>
-                    <input id="radio-hamburger" type="radio" name="burger-preset">
+                    </button>
                 </div>
 
             </div>
@@ -64,8 +65,9 @@
                     </a>
                 </div>
                 <div class="panel-footer">
-                    <p>Hamburger</p>
-                    <input id="radio-plain" type="radio" name="burger-preset">
+                    <button id="hamburger" style="width: 100%;">
+                    <p>Ham Burger</p>
+                    </button>
                 </div>
 
             </div>
@@ -80,8 +82,9 @@
                     </a>
                 </div>
                 <div class="panel-footer">
-                    <p>Cheeseburger</p>
-                    <input id="radio-cheeseburger" type="radio" name="burger-preset">
+                    <button id="cheeseburger" style="width: 100%;">
+                    <p>Cheese Burger</p>
+                    </button>
                 </div>
             </div>
         </div>
@@ -96,8 +99,9 @@
                     </a>
                 </div>
                 <div class="panel-footer">
+                    <button id="porkburger" style="width: 100%;">
                     <p>Pork Burger</p>
-                    <input id="radio-porkburger" type="radio" name="burger-preset">
+                    </button>
                 </div>
             </div>
         </div>
@@ -111,8 +115,8 @@
                     </a>
                 </div>
                 <div class="panel-footer">
+                    <button id="chickenburger" style="width: 100%;">
                     <p>Chicken Burger</p>
-                    <input id="radio-chickenburger" type="radio" name="burger-preset">
                 </div>
             </div>
         </div>
@@ -150,6 +154,14 @@
                             </div>
                             <div class="panel-footer">
                                 <p>${ingredient.ingredient_name}</p>
+                                <c:choose>
+                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                        <p>$${ingredient.price}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>$${ingredient.price}0</p>
+                                    </c:otherwise>
+                                </c:choose>
                                 <input id="${ingredient.ingredient_id}" class="burger" type="radio" name="${ingredient.category}">
                             </div>
 
@@ -179,6 +191,14 @@
                             </div>
                             <div class="panel-footer">
                                 <p>${ingredient.ingredient_name}</p>
+                                <c:choose>
+                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                        <p>$${ingredient.price}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>$${ingredient.price}0</p>
+                                    </c:otherwise>
+                                </c:choose>
                                 <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
                             </div>
 
@@ -208,6 +228,14 @@
                             </div>
                             <div class="panel-footer">
                                 <p>${ingredient.ingredient_name}</p>
+                                <c:choose>
+                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                        <p>$${ingredient.price}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>$${ingredient.price}0</p>
+                                    </c:otherwise>
+                                </c:choose>
                                 <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
                             </div>
 
@@ -238,6 +266,14 @@
                             </div>
                             <div class="panel-footer">
                                 <p>${ingredient.ingredient_name}</p>
+                                <c:choose>
+                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                        <p>$${ingredient.price}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>$${ingredient.price}0</p>
+                                    </c:otherwise>
+                                </c:choose>
                                 <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
                             </div>
 
@@ -265,6 +301,14 @@
                             </div>
                             <div class="panel-footer">
                                 <p>${ingredient.ingredient_name}</p>
+                                <c:choose>
+                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                        <p>$${ingredient.price}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>$${ingredient.price}0</p>
+                                    </c:otherwise>
+                                </c:choose>
                                 <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
                             </div>
 
@@ -307,6 +351,14 @@
                             </div>
                             <div class="panel-footer">
                                 <p>${ingredient.ingredient_name}</p>
+                                <c:choose>
+                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                        <p>$${ingredient.price}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p>$${ingredient.price}0</p>
+                                    </c:otherwise>
+                                </c:choose>
                                 <input id="${ingredient.ingredient_id}" class="side" type="checkbox" name="${ingredient.ingredient_id}">
                             </div>
 
@@ -337,6 +389,14 @@
                                 </div>
                                 <div class="panel-footer">
                                     <p>${ingredient.ingredient_name}</p>
+                                    <c:choose>
+                                        <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                            <p>$${ingredient.price}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>$${ingredient.price}0</p>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <input id="${ingredient.ingredient_id}" class="drink" type="checkbox" name="${ingredient.ingredient_id}">
                                 </div>
 
@@ -368,6 +428,15 @@
                                     </div>
                                     <div class="panel-footer">
                                         <p>${ingredient.ingredient_name}</p>
+                                        <c:choose>
+                                            <c:when test="${ingredient.ingredient_name == 'Aioli'}">
+                                                <p>$${ingredient.price}</p>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <p>$${ingredient.price}0</p>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                         <input id="${ingredient.ingredient_id}" class="special" type="checkbox" name="${ingredient.ingredient_id}">
                                     </div>
 
