@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="heroku_a30f91994430fa4@us-cdbr-iron-east-05.cleardb.net">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
     <root id="1"/>
     <schema id="2" parent="1" name="heroku_a30f91994430fa4">
       <Current>1</Current>

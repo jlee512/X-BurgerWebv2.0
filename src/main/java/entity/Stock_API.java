@@ -45,14 +45,14 @@ public class Stock_API {
                 JsonObject stock_object = stock_array.get(i).getAsJsonObject();
                 int category_id = Integer.parseInt(stock_object.get("Category_ID").getAsString());
                 //Currently includes nulls
-//                String img_file_path = stock_object.get("Img_File_Name").getAsString();
+                String img_file_path = stock_object.get("Img_File_Name").getAsString();
                 String ingredient_name = stock_object.get("Ingredient_Name").getAsString();
                 double price = stock_object.get("Price").getAsDouble();
                 int stock_id = Integer.parseInt(stock_object.get("Stock_ID").getAsString());
                 String ingredient_category = Stock_Information.getItemCategory(stock_id);
                 int stock_level = Integer.parseInt(stock_object.get("Stock_Level").getAsString());
 
-                Stock newStock = new Stock(stock_id, ingredient_name, ingredient_category, stock_level, price, "");
+                Stock newStock = new Stock(stock_id, ingredient_name, ingredient_category, stock_level, price, img_file_path);
 
                 allStock.add(newStock);
 
@@ -92,14 +92,14 @@ public class Stock_API {
                 JsonObject stock_object = stock_array.get(i).getAsJsonObject();
                 int category_id = Integer.parseInt(stock_object.get("Category_ID").getAsString());
                 //Currently includes nulls
-//                String img_file_path = stock_object.get("Img_File_Name").getAsString();
+                String img_file_path = stock_object.get("Img_File_Name").getAsString();
                 String ingredient_name = stock_object.get("Ingredient_Name").getAsString();
                 double price = stock_object.get("Price").getAsDouble();
                 int stock_id = Integer.parseInt(stock_object.get("Stock_ID").getAsString());
                 String ingredient_category = Stock_Information.getItemCategory(stock_id);
                 int stock_level = Integer.parseInt(stock_object.get("Stock_Level").getAsString());
 
-                Stock newStock = new Stock(stock_id, ingredient_name, ingredient_category, stock_level, price, "");
+                Stock newStock = new Stock(stock_id, ingredient_name, ingredient_category, stock_level, price, img_file_path);
 
                 allStock.add(newStock);
 
@@ -136,14 +136,14 @@ public class Stock_API {
                 JsonObject stock_object = stock_array.get(0).getAsJsonObject();
                 int category_id = Integer.parseInt(stock_object.get("Category_ID").getAsString());
                 //Currently includes nulls
-//                String img_file_path = stock_object.get("Img_File_Name").getAsString();
+                String img_file_path = stock_object.get("Img_File_Name").getAsString();
                 String ingredient_name = stock_object.get("Ingredient_Name").getAsString();
                 double price = stock_object.get("Price").getAsDouble();
                 int stock_id_result = Integer.parseInt(stock_object.get("Stock_ID").getAsString());
                 String ingredient_category = Stock_Information.getItemCategory(stock_id_result);
                 int stock_level = Integer.parseInt(stock_object.get("Stock_Level").getAsString());
 
-                Stock newStock = new Stock(stock_id_result, ingredient_name, ingredient_category, stock_level, price, "");
+                Stock newStock = new Stock(stock_id_result, ingredient_name, ingredient_category, stock_level, price, img_file_path);
 
             return newStock;
 
@@ -176,14 +176,14 @@ public class Stock_API {
             JsonObject stock_object = stock_array.get(0).getAsJsonObject();
             int category_id = Integer.parseInt(stock_object.get("Category_ID").getAsString());
             //Currently includes nulls
-//                String img_file_path = stock_object.get("Img_File_Name").getAsString();
+                String img_file_path = stock_object.get("Img_File_Name").getAsString();
             String ingredient_name = stock_object.get("Ingredient_Name").getAsString();
             double price = stock_object.get("Price").getAsDouble();
             int stock_id_result = Integer.parseInt(stock_object.get("Stock_ID").getAsString());
             String ingredient_category = Stock_Information.getItemCategory(stock_id_result);
             int stock_level = Integer.parseInt(stock_object.get("Stock_Level").getAsString());
 
-            Stock newStock = new Stock(stock_id_result, ingredient_name, ingredient_category, stock_level, price, "");
+            Stock newStock = new Stock(stock_id_result, ingredient_name, ingredient_category, stock_level, price, img_file_path);
 
             return newStock;
 
@@ -319,7 +319,7 @@ public class Stock_API {
                 JsonObject stock_object = stock_array.get(i).getAsJsonObject();
                 int category_id = Integer.parseInt(stock_object.get("Category_ID").getAsString());
                 //Currently includes nulls
-//                String img_file_path = stock_object.get("Img_File_Name").getAsString();
+                String img_file_path = stock_object.get("Img_File_Name").getAsString();
                 String ingredient_name = stock_object.get("Ingredient_Name").getAsString();
                 double price = stock_object.get("Price").getAsDouble();
                 int stock_id = Integer.parseInt(stock_object.get("Stock_ID").getAsString());

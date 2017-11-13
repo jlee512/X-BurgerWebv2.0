@@ -59,7 +59,7 @@
 
 
 #bunCol {
-    display:show;
+    display:inline-block;
 }
 
 #beefCol {
@@ -78,4 +78,23 @@
     display:none;
 }
 
+#sideCol {
+    display: inline-block;
+}
+
+#drinksCol {
+    display: none;
+}
+
+#specialCol {
+    display: none;
+}
+
+#add-drink, #add-special {
+    display: none;
+}
+
+#add-side {
+    display: block;
+}
 

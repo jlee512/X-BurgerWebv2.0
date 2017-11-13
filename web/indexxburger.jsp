@@ -11,46 +11,13 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="fonts/font-awesome.min.css" rel="stylesheet">
         <link rel="icon" href="" type="image/x-icon"> <!-- Add burger icon-->
     </head>
     <body>
 <!--======= Start Nav ==========-->
-        
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="images/logo-transparent.png" width="100" height="50">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="indexxburger.jsp">HOME |</a>
-              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/order">ORDER |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">LOGIN |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#about">ABOUT |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/#contact">CONTACT |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">HISTORY</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<jsp:include page="navbar.jsp" />
 
     <!--======= Start Home ==========-->
          
@@ -80,10 +47,10 @@
                     <h1>About us</h1>
                     <br></br>
                     <div class="fa fa-cutlery fa-2x"></div>
-                    <p class="desc-text">WE’VE BEEN PERFECTING GOURMET BURGERS SINCE 1989, AND KNOW THAT THE SECRET TO CREATING THE WORLD’S BEST BURGERS RIGHT HERE IN NZ IS SIMPLE ...</p>
+                    <p class="desc-text">WE&#39;VE BEEN PERFECTING GOURMET BURGERS SINCE 1989, AND KNOW THAT THE SECRET TO CREATING THE WORLD&#39;S BEST BURGERS RIGHT HERE IN NZ IS SIMPLE ...</p>
                     <br></br>
                     <p class="desc-text">
-                    IT’S ALL ABOUT MOUTHWATERING FLAVOUR AND SUPER-FRESH WHOLESOME FOOD, HANDMADE WITH LOVE FROM THE FINEST LOCAL INGREDIENTS.</p>
+                    IT&#39;S ALL ABOUT MOUTHWATERING FLAVOUR AND SUPER-FRESH WHOLESOME FOOD, HANDMADE WITH LOVE FROM THE FINEST LOCAL INGREDIENTS.</p>
                 </div>
                 <div class="col-md-6">
                     <div class="img-section">
