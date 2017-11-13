@@ -98,3 +98,9 @@
     display: block;
 }
 
+.burger-ingredient {
+    border: none;
+    background-color: transparent;
+}
+
+
