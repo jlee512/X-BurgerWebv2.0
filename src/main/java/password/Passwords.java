@@ -114,7 +114,7 @@ public class Passwords {
      * @throws IllegalArgumentException Thrown if the argument b64 is not a valid base64 string
      */
     public static byte[] base64Decode(String b64) throws IllegalArgumentException {
-        return Base64.getDecoder().decode(b64);
+        return Base64.getMimeDecoder().decode(b64);
     }
 
     /**

@@ -2,6 +2,7 @@ package main.java.entity;
 
 import com.google.gson.*;
 import io.swagger.util.Json;
+import main.java.helpers.Token_Generator;
 import main.java.password.Passwords;
 
 import java.io.*;
@@ -104,6 +105,94 @@ public class CustomerAPI {
         return false;
     }
 
+    public static void saveCustomerPaymentTokenDB(int customer_id, String pin, String card_token) {
+
+        JsonObject paymentDetailsUpdate = new JsonObject();
+
+        Customer customer = CustomerAPI.getCustomerDetailsAPI("" + customer_id, "user_id");
+        byte[] pinHash = Passwords.hash(pin.toCharArray(), Passwords.base64Decode(customer.getSalt()), customer.getIterations());
+        String pinHashString = Passwords.base64Encode(pinHash);
+
+        paymentDetailsUpdate.addProperty("customer_id", "" + customer_id);
+        paymentDetailsUpdate.addProperty("pass_pin", pinHashString);
+        paymentDetailsUpdate.addProperty("card_token", card_token);
+
+        String url_string = api_base_url + "save/payment";
+        System.out.println(url_string);
+        try {
+
+            URL url = new URL(url_string);
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+
+            request.setDoOutput(true);
+            request.setDoInput(true);
+            request.setRequestProperty("Content-Type", "application/json");
+            request.setRequestProperty("Accept", "application/json");
+            request.setRequestMethod("POST");
+
+            OutputStreamWriter out = new OutputStreamWriter(request.getOutputStream());
+            System.out.println(paymentDetailsUpdate);
+            out.write(paymentDetailsUpdate.toString());
+            out.flush();
+
+            StringBuilder sb = new StringBuilder();
+            int HttpResult = request.getResponseCode();
+            if (HttpResult == HttpURLConnection.HTTP_OK) {
+                BufferedReader br = new BufferedReader(
+                        new InputStreamReader(request.getInputStream(), "utf-8"));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                br.close();
+                System.out.println("" + sb.toString());
+                return;
+            } else {
+                System.out.println(request.getResponseMessage());
+                return;
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return;
+
+    }
+
+    public static String getPaymentToken(int customer_id) {
+        String api_url = api_base_url + "token/" + customer_id;
+
+        try {
+            //Request the json resource at the specified url
+            URL url = new URL(api_url);
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+            request.connect();
+
+            //Convert JSON object to access data
+            JsonParser jp = new JsonParser(); //json parser from gson library
+            JsonElement root = jp.parse(new InputStreamReader((InputStream)request.getContent()));
+            Gson gson = new GsonBuilder().serializeNulls().create();
+            JsonObject customer_object = root.getAsJsonObject();
+
+
+            //Extract customer data from JSON
+            String card_token = customer_object.get("Card_Token").getAsString();
+
+            return card_token;
+
+        } catch (MalformedURLException e) {
+            //Not expected to be realised based on api_base_url setup
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
     public static boolean validateCustomerPassword(String password_entry, String hashDB, String saltDB, int iterationsDB) {
 
         //Use Passwords class to compare password_entry with hash from the database
@@ -132,6 +221,9 @@ public class CustomerAPI {
 //
 //        CustomerAPI.addCustomertoDBAPI(newCustomer);
 
+//        CustomerAPI.saveCustomerPaymentTokenDB(1, "1234", Token_Generator.generateToken());
+//
+//        System.out.println(CustomerAPI.getPaymentToken(1));
 
     }
 
