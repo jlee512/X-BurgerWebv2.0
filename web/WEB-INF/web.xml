@@ -38,6 +38,16 @@
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OrderHistory</servlet-name>
+        <servlet-class>main.java.servlet.OrderHistory</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OrderHistory</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+
     <!--=======================================================================================================-->
     <!--JSP Mapping-->
     <servlet>
