@@ -1,9 +1,6 @@
 package main.java.entity;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import io.swagger.models.auth.In;
 import io.swagger.util.Json;
 import main.java.helpers.Status_Information;
@@ -171,10 +168,92 @@ public class Order_API {
     }
 
     //Method for assigning staff to orders
+    public static boolean assignStaffToOrder(int staff_id, int order_id) {
+
+        //Assign parameters to json object
+        JsonObject staff_order_assignment = new JsonObject();
+        staff_order_assignment.addProperty("order_ID", order_id);
+        staff_order_assignment.addProperty("staff_ID", staff_id);
+
+        String url_string = api_base_url + "assign";
+        System.out.println(url_string);
+
+        try {
+
+            URL url = new URL(url_string);
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+
+            request.setDoOutput(true);
+            request.setDoInput(true);
+            request.setRequestProperty("Content-Type", "application/json");
+            request.setRequestProperty("Accept", "application/json");
+            request.setRequestMethod("POST");
+
+            OutputStreamWriter out = new OutputStreamWriter(request.getOutputStream());
+            out.write(staff_order_assignment.toString());
+            out.flush();
+
+            StringBuilder sb = new StringBuilder();
+            int HttpResult = request.getResponseCode();
+            if (HttpResult == HttpURLConnection.HTTP_OK) {
+                BufferedReader br = new BufferedReader(
+                        new InputStreamReader(request.getInputStream(), "utf-8"));
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                br.close();
+                System.out.println("" + sb.toString());
+                return true;
+            } else {
+                System.out.println(request.getResponseMessage());
+                return false;
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static boolean completeOrder(int order_id) {
+
+        String url_string = api_base_url + "complete/" + order_id;
+        System.out.println(url_string);
+
+        try {
+
+            URL url = new URL(url_string);
+            HttpURLConnection request = (HttpURLConnection) url.openConnection();
+            request.connect();
+
+            //Convert JSON object to access data
+            JsonParser jp = new JsonParser(); //json parser from gson library
+            JsonElement root = jp.parse(new InputStreamReader((InputStream)request.getContent()));
+            Gson gson = new GsonBuilder().serializeNulls().create();
+            JsonObject return_object = root.getAsJsonObject();
+
+            if(return_object.get("Order Status").equals("Completed")) {
+                System.out.println("Order completed");
+                return true;
+            } else {
+                System.out.println("Order completion not successful");
+                return false;
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
     //Test method developed for the getOrderDetails methods
     public static void main(String[] args) {
-        Order order = Order_API.getOrderDetailsByOrderIDCustomerAPI(21);
+//        Order order = Order_API.getOrderDetailsByOrderIDCustomerAPI(21);
 //
 //        System.out.println("Order " + order.getOrder_id() + " received");
 //        System.out.println("Order Price " + order.getPrice());
@@ -190,6 +269,9 @@ public class Order_API {
 //            }
 //        }
 
-        Order_API.addOrder(order, 21);
+//        Order_API.addOrder(order, 21);
+
+//        Order_API.assignStaffToOrder(1, 21);
+        Order_API.completeOrder(21);
     }
 }
