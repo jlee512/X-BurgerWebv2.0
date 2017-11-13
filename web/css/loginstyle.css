@@ -180,4 +180,35 @@ position: relative;
 .cont_text_inputs > input:nth-child(4){
   transition-delay: 0.8s;
 }
- 
+
+#meter_wrapper
+{
+  position: relative;
+  float: left;
+  width: 90%;
+  border: none;
+  border-bottom: 1px solid #B0BEC5 ;
+  background-color: transparent;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.5s;
+  height: 0px;
+  margin: 0px;
+  padding: 0px;
+  opacity: 0;
+  display: none;
+}
+#meter
+{
+  width:0px;
+  height:35px;
+
+}
+#pass_type
+{
+  font-size:20px;
+  margin-top:20px;
+  margin-left:45%;
+  text-align:center;
+  color:grey;
+}

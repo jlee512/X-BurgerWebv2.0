@@ -33,7 +33,7 @@ public class RegistrationUpdate extends HttpServlet {
         //Get request parameters from form submission
         String username_entry = request.getParameter("name_us");
         String email_entry = request.getParameter("email");
-        String password_entry = request.getParameter("password");
+        String password_entry = request.getParameter("pass_us");
         //String password_confirm = request.getParameter("password");
 
         byte[] saltArray = Passwords.getNextSalt(16);

@@ -51,11 +51,14 @@
 
       <input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="email" />
 
-    <input type="password" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="password" />
-    <input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
-    
-    </div>
-      </div>
+      <input type="password" id="pass" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us" />
+      <input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
+      <label type="text" id="meter" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us"
+      />
+      <span id="pass_type"></span>
+  </div>
+
+
 <div class="cont_btn">
      <button class="btn_sign">SIGN IN</button>
       
@@ -87,6 +90,7 @@
         <script src="/jquery/jquery.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/loginjs.js"></script>
+        <script src="js/checkpass.js"></script>
 
     </body>
 </html>
