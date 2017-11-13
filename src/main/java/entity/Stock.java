@@ -1,5 +1,7 @@
 package main.java.entity;
 
+import main.java.helpers.Stock_Information;
+
 import java.io.Serializable;
 
 /**
@@ -21,6 +23,15 @@ public class Stock implements Serializable {
         this.stock_level = stock_level;
         this.price = price;
         this.img_file_name = img_file_name;
+    }
+
+    public Stock(int ingredient_id) {
+        this.ingredient_id = ingredient_id;
+        this.ingredient_name = Stock_Information.getIngredientName(ingredient_id);
+        this.category = Stock_Information.getItemCategory(ingredient_id);
+        this.stock_level = -1;
+        this.price = Stock_Information.getIngredientPrice(ingredient_id);
+        this.img_file_name = "";
     }
 
     public int getIngredient_id() {

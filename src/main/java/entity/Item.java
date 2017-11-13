@@ -1,5 +1,7 @@
 package main.java.entity;
 
+import main.java.helpers.Stock_Information;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -26,6 +28,15 @@ public class Item implements Serializable {
         } else {
             this.item_type = "burger";
         }
+    }
+
+    public Item(ArrayList<Stock> ingredients) {
+
+        this.order_details_id = -1;
+        this.ingredients = ingredients;
+        this.order_id = -1;
+        this.item_type = Stock_Information.getItemCategory(ingredients.get(0).getIngredient_id());
+
     }
 
     public int getOrder_details_id() {
