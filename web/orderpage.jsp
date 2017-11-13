@@ -191,14 +191,7 @@
                             </div>
                             <div class="panel-footer">
                                 <p>${ingredient.ingredient_name}</p>
-                                <c:choose>
-                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                        <p>$${ingredient.price}</p>
-                                    </c:when>
-                                    <c:otherwise>
                                         <p>$${ingredient.price}0</p>
-                                    </c:otherwise>
-                                </c:choose>
                                 <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
                             </div>
 
