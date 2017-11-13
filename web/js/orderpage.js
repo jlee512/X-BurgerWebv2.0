@@ -246,7 +246,7 @@ $('#plain').on('click', function () {
 $('#hamburger').on('click', function () {
 
     $('div input[type=checkbox]').each(function () {
-        if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr('id') == 131 || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
+        if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr('id') == "131" || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
             $(this).prop('checked', true);
         }
     });

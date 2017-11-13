@@ -377,7 +377,7 @@
             </div>
 
             <span><a class="btn btn-primary"
-                     style="display: block; width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     style="display: block;background-color: #e520c7; margin: 0 auto; color: white;"
                      id="add-burger"><strong>Add Burger to Order</strong></a></span>
             <br>
         </div>
@@ -438,7 +438,7 @@
                 </c:forEach>
             </div>
             <span><a class="btn btn-primary"
-                     style="display: block; width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     style="display: block; background-color: #e520c7; margin: 0 auto; color: white;"
                      id="add-side"><strong>Add Side to Order</strong></a></span>
             <br>
         </div>
@@ -488,7 +488,7 @@
                 </c:forEach>
             </div>
             <span><a class="btn btn-primary"
-                     style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     style="background-color: #e520c7; margin: 0 auto; color: white;"
                      id="add-drink"><strong>Add Drink to Order</strong></a></span>
             <br>
         </div>
@@ -519,13 +519,13 @@
                                         </c:otherwise>
                                     </c:choose>
 
-                                            <p>$${ingredient.price}0</p>
+                                    <p>$${ingredient.price}0</p>
 
                                     <c:choose>
-                                    <c:when test="${ingredient.stock_level > 5}">
-                                    <input id="${ingredient.ingredient_id}" class="special" type="checkbox"
-                                           name="${ingredient.ingredient_id}">
-                                    </c:when>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="special" type="checkbox"
+                                                   name="${ingredient.ingredient_id}">
+                                        </c:when>
                                         <c:otherwise>
                                         </c:otherwise>
                                     </c:choose>
@@ -540,39 +540,43 @@
 
             </div>
             <span><a class="btn btn-primary"
-                     style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     style="background-color: #e520c7; margin: 0 auto; color: white;"
                      id="add-special"><strong>Add Special to Order</strong></a></span>
             <br>
         </div>
-    </form>
-</div>
 
-<form action >
-    <div class="special-container">
-        <div class="row text-center" id="items">
-\
-                    <div class="col-lg-2 col-sm-3 col-xs-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+        <!-- Order Summary -->
 
-                                <p>test</p>
+        <div class="order-container">
+            <div class="row text-center" id="orderCol">
 
-                            </div>
-                            <div class="panel-footer">
+                <div class="col-lg-2 col-sm-3 col-xs-4 item-added">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
 
-                                <p>test</p>
-
-                            </div>
+                            <img src="images/hamburger.jpg" class="img-thumbnail img-responsive">
 
                         </div>
+                        <div class="panel-footer">
+
+                            <input class="burger-ingredient" type="text" name="burger-1" value="11" readonly/>
+                            <input class="burger-ingredient" type="text" name="burger-1" value="41" readonly/>
+                            <input class="burger-ingredient" type="text" name="burger-1" value="51" readonly/>
+                            <input class="burger-ingredient" type="text" name="burger-1" value="91" readonly/>
+                        </div>
+
                     </div>
+                </div>
+
+            </div>
+            <span><a class="btn btn-primary"
+                     style="display: block; background-color: #e520c7; margin: 0 auto; color: white;"
+                     id="confirm-order"><strong>Confirm Order</strong></a></span>
+            <br>
         </div>
-        <span><a class="btn btn-primary"
-                 style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
-                 id="confirm-items"><strong>Add Special to Order</strong></a></span>
-        <br>
-    </div>
-</form>
+
+    </form>
+</div>
 
 
 <!-- ============ Sidebar animation script ============= -->
