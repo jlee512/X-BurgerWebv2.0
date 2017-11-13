@@ -27,6 +27,26 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>setupOrderPage</servlet-name>
+        <servlet-class>main.java.servlet.SetupOrderPage</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>setupOrderPage</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>main.java.servlet.Logout</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
     <!--TEST-->
     <servlet>
         <servlet-name>helloServlet</servlet-name>
@@ -77,7 +97,7 @@
 
     <servlet-mapping>
         <servlet-name>orderJSP</servlet-name>
-        <url-pattern>/order</url-pattern>
+        <url-pattern>/make_order</url-pattern>
     </servlet-mapping>
     <!--TEST-->
     <servlet>

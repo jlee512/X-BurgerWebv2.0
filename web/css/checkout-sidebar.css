@@ -81,7 +81,7 @@ a.checkout__button:focus {
 
 .checkout__summary tbody td:last-child,
 .checkout__summary .checkout__total {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #4100d8 ! important;
 }
 

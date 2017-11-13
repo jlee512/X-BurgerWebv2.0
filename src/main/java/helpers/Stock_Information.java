@@ -93,7 +93,7 @@ public class Stock_Information {
         stockPrice.put(221, 1.5);
         stockPrice.put(231, 2.0);
         stockPrice.put(241, 0.1);
-        stockPrice.put(251, 0.25);
+        stockPrice.put(251, 0.2);
         stockPrice.put(261, 0.1);
         stockPrice.put(271, 0.1);
         stockPrice.put(281, 0.4);

@@ -8,13 +8,13 @@
         <title>Login</title>
       
         <link rel="stylesheet" href="/css/main.css" media="screen" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="/css/bootstrap.css">
         <link rel="stylesheet" href="/css/loginstyle.css">
         <link href="/css/bootstrap.min.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/fonts/font-awesome.min.css" rel="stylesheet">
         <link rel="icon" href="" type="image/x-icon"> <!-- Add burger icon-->
     </head>
     <body>
@@ -26,39 +26,7 @@
     <p>${loginStatus}</p>
 
 <!--======= Start Nav ==========-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <img src="/images/logo-transparent.png" width="100" height="50">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-            <a class="nav-link" href="/indexxburger.jsp">HOME |</a>
-              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="orderpage.jsp#">ORDER |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.jsp#">LOGIN |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="indexxburger.jsp#about">ABOUT |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="indexxburger.jsp#contact">CONTACT |</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">HISTORY</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <jsp:include page="navbar.jsp" />
 
 <!--======= Login ==========-->
 
@@ -83,11 +51,14 @@
 
       <input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="email" />
 
-    <input type="password" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="password" />
-    <input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
-    
-    </div>
-      </div>
+      <input type="password" id="pass" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us" />
+      <input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
+      <label type="text" id="meter" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us"
+      />
+      <span id="pass_type"></span>
+  </div>
+
+
 <div class="cont_btn">
      <button class="btn_sign">SIGN IN</button>
       
@@ -119,6 +90,7 @@
         <script src="/jquery/jquery.min.js"></script>
         <script src="/js/bootstrap.bundle.min.js"></script>
         <script src="/js/loginjs.js"></script>
+        <script src="js/checkpass.js"></script>
 
     </body>
 </html>
