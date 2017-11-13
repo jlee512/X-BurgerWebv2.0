@@ -1,32 +1,81 @@
 .wrapper {
-  float:left;
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-gap: 10px;
-  background-color: #fff;
-  color: #444;
+    float:left;
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-gap: 10px;
+    background-color: #fff;
+    color: #444;
 }
 
 .box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 150%;
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
 }
 
-#selectburger {
-	align-content: left;
-	text-align: left;
+#choose {
+    align-content: left;
+    text-align: left;
+    color: #fff;
 }
 
-.container {
-	background-color: #7a7a7a;
-}
+
 
 .modal-content {
     top: 150px;
 
+}
+
+
+
+.col {
+    border: 1px solid blue;
+    float: left;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+/* add a little bottom space under the images */
+
+#portfolio .row{
+    margin:50px /* margin around the "whole row" not inbetween "stacked rows" */
+
+}
+
+#portfolio .img-thumbnail{
+    border:150px;
+    border-radius:4px; /* slight round in images in gallery */
+    margin:0px;
+    padding:0px;
+
+}
+
+
+.panel-body {
+    padding: 1px;
+}
+
+
+#bunCol {
+    display:show;
+}
+
+#beefCol {
+    display:none;
+}
+
+#cheeseCol {
+    display:none;
+}
+
+#saladCol {
+    display:none;
+}
+
+#sauceCol {
+    display:none;
 }
 
 
