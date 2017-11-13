@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<jsp:include page="navbar.jsp" />
+<jsp:include page="navbar.jsp"/>
 
 <!-- ============ Ingredients Grid ============= -->
 
@@ -50,7 +50,7 @@
                 </div>
                 <div class="panel-footer">
                     <button id="plain" style="width: 100%;">
-                    <p>Plain</p>
+                        <p>Plain</p>
                     </button>
                 </div>
 
@@ -66,7 +66,7 @@
                 </div>
                 <div class="panel-footer">
                     <button id="hamburger" style="width: 100%;">
-                    <p>Ham Burger</p>
+                        <p>Ham Burger</p>
                     </button>
                 </div>
 
@@ -83,7 +83,7 @@
                 </div>
                 <div class="panel-footer">
                     <button id="cheeseburger" style="width: 100%;">
-                    <p>Cheese Burger</p>
+                        <p>Cheese Burger</p>
                     </button>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="panel-footer">
                     <button id="porkburger" style="width: 100%;">
-                    <p>Pork Burger</p>
+                        <p>Pork Burger</p>
                     </button>
                 </div>
             </div>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="panel-footer">
                     <button id="chickenburger" style="width: 100%;">
-                    <p>Chicken Burger</p>
+                        <p>Chicken Burger</p>
                 </div>
             </div>
         </div>
@@ -139,182 +139,246 @@
     <form>
 
         <div class="burger-container">
-        <div class="row text-center" id="bunCol">
+            <div class="row text-center" id="bunCol">
 
-            <c:forEach items="${all_stock}" var="ingredient">
+                <c:forEach items="${all_stock}" var="ingredient">
 
-                <c:if test="${ingredient.category == 'Bread'}">
+                    <c:if test="${ingredient.category == 'Bread'}">
 
-                    <div class="col-lg-2 col-sm-3 col-xs-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                        <div class="col-lg-2 col-sm-3 col-xs-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                                <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+
+                                </div>
+                                <div class="panel-footer">
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+
+                                    <p>$${ingredient.price}0</p>
+
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="burger" type="radio"
+                                                   name="${ingredient.category}">
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
 
                             </div>
-                            <div class="panel-footer">
-                                <p>${ingredient.ingredient_name}</p>
-                                <c:choose>
-                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                        <p>$${ingredient.price}</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>$${ingredient.price}0</p>
-                                    </c:otherwise>
-                                </c:choose>
-                                <input id="${ingredient.ingredient_id}" class="burger" type="radio" name="${ingredient.category}">
-                            </div>
-
                         </div>
-                    </div>
 
-                </c:if>
+                    </c:if>
 
-            </c:forEach>
+                </c:forEach>
 
-        </div>
+            </div>
 
-        <!-- Meat -->
+            <!-- Meat -->
 
-        <div class="row text-center" id="beefCol">
+            <div class="row text-center" id="beefCol">
 
-            <c:forEach items="${all_stock}" var="ingredient">
+                <c:forEach items="${all_stock}" var="ingredient">
 
-                <c:if test="${ingredient.category == 'Meat'}">
+                    <c:if test="${ingredient.category == 'Meat'}">
 
-                    <div class="col-lg-2 col-sm-3 col-xs-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                        <div class="col-lg-2 col-sm-3 col-xs-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                                <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+
+                                </div>
+                                <div class="panel-footer">
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <p>$${ingredient.price}0</p>
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="burger" type="checkbox"
+                                                   name="${ingredient.ingredient_id}">
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
 
                             </div>
-                            <div class="panel-footer">
-                                <p>${ingredient.ingredient_name}</p>
-                                        <p>$${ingredient.price}0</p>
-                                <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
-                            </div>
-
                         </div>
-                    </div>
 
-                </c:if>
+                    </c:if>
 
-            </c:forEach>
+                </c:forEach>
 
-        </div>
+            </div>
 
-        <!-- Cheese -->
+            <!-- Cheese -->
 
-        <div class="row text-center" id="cheeseCol">
+            <div class="row text-center" id="cheeseCol">
 
-            <c:forEach items="${all_stock}" var="ingredient">
+                <c:forEach items="${all_stock}" var="ingredient">
 
-                <c:if test="${ingredient.category == 'Cheese'}">
+                    <c:if test="${ingredient.category == 'Cheese'}">
 
-                    <div class="col-lg-2 col-sm-3 col-xs-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                        <div class="col-lg-2 col-sm-3 col-xs-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                                <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+
+                                </div>
+                                <div class="panel-footer">
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <p>$${ingredient.price}0</p>
+
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="burger" type="checkbox"
+                                                   name="${ingredient.ingredient_id}">
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
 
                             </div>
-                            <div class="panel-footer">
-                                <p>${ingredient.ingredient_name}</p>
-                                <c:choose>
-                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                        <p>$${ingredient.price}</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>$${ingredient.price}0</p>
-                                    </c:otherwise>
-                                </c:choose>
-                                <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
-                            </div>
-
                         </div>
-                    </div>
 
-                </c:if>
+                    </c:if>
 
-            </c:forEach>
+                </c:forEach>
 
-        </div>
+            </div>
 
-        <!-- Salad -->
+            <!-- Salad -->
 
 
-        <div class="row text-center" id="saladCol">
+            <div class="row text-center" id="saladCol">
 
-            <c:forEach items="${all_stock}" var="ingredient">
+                <c:forEach items="${all_stock}" var="ingredient">
 
-                <c:if test="${ingredient.category == 'Salad'}">
+                    <c:if test="${ingredient.category == 'Salad'}">
 
-                    <div class="col-lg-2 col-sm-3 col-xs-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                        <div class="col-lg-2 col-sm-3 col-xs-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                                <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+
+                                </div>
+                                <div class="panel-footer">
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <p>$${ingredient.price}</p>
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="burger" type="checkbox"
+                                                   name="${ingredient.ingredient_id}">
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                </div>
 
                             </div>
-                            <div class="panel-footer">
-                                <p>${ingredient.ingredient_name}</p>
-                                <c:choose>
-                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                        <p>$${ingredient.price}</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>$${ingredient.price}0</p>
-                                    </c:otherwise>
-                                </c:choose>
-                                <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
-                            </div>
-
                         </div>
-                    </div>
 
-                </c:if>
+                    </c:if>
 
-            </c:forEach>
+                </c:forEach>
 
-        </div>
-        <!-- Sauce -->
+            </div>
+            <!-- Sauce -->
 
-        <div class="row text-center" id="sauceCol">
-            <c:forEach items="${all_stock}" var="ingredient">
+            <div class="row text-center" id="sauceCol">
+                <c:forEach items="${all_stock}" var="ingredient">
 
-                <c:if test="${ingredient.category == 'Sauce'}">
+                    <c:if test="${ingredient.category == 'Sauce'}">
 
-                    <div class="col-lg-2 col-sm-3 col-xs-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                        <div class="col-lg-2 col-sm-3 col-xs-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                                <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+
+                                </div>
+                                <div class="panel-footer">
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <p>$${ingredient.price}</p>
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="burger" type="checkbox"
+                                                   name="${ingredient.ingredient_id}">
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                </div>
 
                             </div>
-                            <div class="panel-footer">
-                                <p>${ingredient.ingredient_name}</p>
-                                <c:choose>
-                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                        <p>$${ingredient.price}</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>$${ingredient.price}0</p>
-                                    </c:otherwise>
-                                </c:choose>
-                                <input id="${ingredient.ingredient_id}" class="burger" type="checkbox" name="${ingredient.ingredient_id}">
-                            </div>
-
                         </div>
-                    </div>
 
-                </c:if>
+                    </c:if>
 
-            </c:forEach>
+                </c:forEach>
 
-        </div>
+            </div>
 
-            <span><a class="btn btn-primary" style="display: block; width: 20%; background-color: #e520c7; margin: 0 auto; color: white;" id="add-burger"><strong>Add Burger to Order</strong></a></span>
+            <span><a class="btn btn-primary"
+                     style="display: block; width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     id="add-burger"><strong>Add Burger to Order</strong></a></span>
             <br>
         </div>
 
@@ -330,44 +394,57 @@
         <!-- Side -->
 
         <div class="side-container">
-        <div class="row text-center" id="sideCol">
-            <c:forEach items="${all_stock}" var="ingredient">
+            <div class="row text-center" id="sideCol">
+                <c:forEach items="${all_stock}" var="ingredient">
 
-                <c:if test="${ingredient.category == 'Side'}">
+                    <c:if test="${ingredient.category == 'Side'}">
 
-                    <div class="col-lg-2 col-sm-3 col-xs-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                        <div class="col-lg-2 col-sm-3 col-xs-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                                <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+
+                                </div>
+                                <div class="panel-footer">
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                    <p>$${ingredient.price}0</p>
+
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="side" type="checkbox"
+                                                   name="${ingredient.ingredient_id}">
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
 
                             </div>
-                            <div class="panel-footer">
-                                <p>${ingredient.ingredient_name}</p>
-                                <c:choose>
-                                    <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                        <p>$${ingredient.price}</p>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <p>$${ingredient.price}0</p>
-                                    </c:otherwise>
-                                </c:choose>
-                                <input id="${ingredient.ingredient_id}" class="side" type="checkbox" name="${ingredient.ingredient_id}">
-                            </div>
-
                         </div>
-                    </div>
 
-                </c:if>
+                    </c:if>
 
-            </c:forEach>
-        </div>
-            <span><a class="btn btn-primary" style="display: block; width: 20%; background-color: #e520c7; margin: 0 auto; color: white;" id="add-side"><strong>Add Side to Order</strong></a></span>
+                </c:forEach>
+            </div>
+            <span><a class="btn btn-primary"
+                     style="display: block; width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     id="add-side"><strong>Add Side to Order</strong></a></span>
             <br>
         </div>
 
-            <!-- Drinks -->
-            <div class="drinks-container">
+        <!-- Drinks -->
+        <div class="drinks-container">
             <div class="row text-center" id="drinksCol">
                 <c:forEach items="${all_stock}" var="ingredient">
 
@@ -381,16 +458,26 @@
 
                                 </div>
                                 <div class="panel-footer">
-                                    <p>${ingredient.ingredient_name}</p>
                                     <c:choose>
-                                        <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                            <p>$${ingredient.price}</p>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>$${ingredient.price}0</p>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
                                         </c:otherwise>
                                     </c:choose>
-                                    <input id="${ingredient.ingredient_id}" class="drink" type="checkbox" name="${ingredient.ingredient_id}">
+
+
+                                    <p>$${ingredient.price}0</p>
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <input id="${ingredient.ingredient_id}" class="drink" type="checkbox"
+                                                   name="${ingredient.ingredient_id}">
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
 
                             </div>
@@ -400,57 +487,91 @@
 
                 </c:forEach>
             </div>
-                <span><a class="btn btn-primary" style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;" id="add-drink" ><strong>Add Drink to Order</strong></a></span>
-                <br>
-            </div>
+            <span><a class="btn btn-primary"
+                     style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     id="add-drink"><strong>Add Drink to Order</strong></a></span>
+            <br>
+        </div>
 
-                <!-- Special -->
+        <!-- Special -->
 
-                <div class="special-container">
-                <div class="row text-center" id="specialCol">
-                    <c:forEach items="${all_stock}" var="ingredient">
+        <div class="special-container">
+            <div class="row text-center" id="specialCol">
+                <c:forEach items="${all_stock}" var="ingredient">
 
-                        <c:if test="${ingredient.category == 'Special'}">
+                    <c:if test="${ingredient.category == 'Special'}">
 
-                            <div class="col-lg-2 col-sm-3 col-xs-4">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
+                        <div class="col-lg-2 col-sm-3 col-xs-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
 
-                                        <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
-
-                                    </div>
-                                    <div class="panel-footer">
-                                        <p>${ingredient.ingredient_name}</p>
-                                        <c:choose>
-                                            <c:when test="${ingredient.ingredient_name == 'Aioli'}">
-                                                <p>$${ingredient.price}</p>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <p>$${ingredient.price}0</p>
-                                            </c:otherwise>
-                                        </c:choose>
-
-                                        <input id="${ingredient.ingredient_id}" class="special" type="checkbox" name="${ingredient.ingredient_id}">
-                                    </div>
+                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
 
                                 </div>
+                                <div class="panel-footer">
+
+                                    <c:choose>
+                                        <c:when test="${ingredient.stock_level > 5}">
+                                            <p>${ingredient.ingredient_name}</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                        </c:otherwise>
+                                    </c:choose>
+
+                                            <p>$${ingredient.price}0</p>
+
+                                    <c:choose>
+                                    <c:when test="${ingredient.stock_level > 5}">
+                                    <input id="${ingredient.ingredient_id}" class="special" type="checkbox"
+                                           name="${ingredient.ingredient_id}">
+                                    </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+
                             </div>
+                        </div>
 
-                        </c:if>
+                    </c:if>
 
-                    </c:forEach>
+                </c:forEach>
 
-                </div>
-                    <span><a class="btn btn-primary" style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;" id="add-special" ><strong>Add Special to Order</strong></a></span>
-                    <br>
-                </div>
+            </div>
+            <span><a class="btn btn-primary"
+                     style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                     id="add-special"><strong>Add Special to Order</strong></a></span>
+            <br>
+        </div>
     </form>
 </div>
 
-<form>
-<div id="order_items" style="display: none;">
+<form action >
+    <div class="special-container">
+        <div class="row text-center" id="items">
+\
+                    <div class="col-lg-2 col-sm-3 col-xs-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
 
-</div>
+                                <p>test</p>
+
+                            </div>
+                            <div class="panel-footer">
+
+                                <p>test</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+        </div>
+        <span><a class="btn btn-primary"
+                 style="width: 20%; background-color: #e520c7; margin: 0 auto; color: white;"
+                 id="confirm-items"><strong>Add Special to Order</strong></a></span>
+        <br>
+    </div>
 </form>
 
 

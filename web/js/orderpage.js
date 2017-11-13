@@ -146,50 +146,85 @@ function showSpecial() {
 
 //Gets all selected ingredient_id's into a JavaScript Array
 $('#add-burger').on('click', function () {
+    var cost = 0;
     var selected_ingredients = [];
     $('div.burger-container input[type=checkbox]').each(function () {
         if ($(this).is(":checked")) {
-            selected_ingredients.push($(this).attr('id'),
-                console.log(selected_ingredients);
+            var ingredient_id = $(this).attr('id');
+            selected_ingredients.push(ingredient_id);
+
+            cost += priceHash[ingredient_id];
+
+            //Deselect ingredient
+            $(this).prop("checked", false);
         }
     });
     $('div.burger-container input[type=radio]').each(function () {
         if ($(this).is(":checked")) {
-            selected_ingredients.push($(this).attr('id'));
-            console.log(selected_ingredients);
+            var ingredient_id = $(this).attr('id');
+            selected_ingredients.push(ingredient_id);
+
+            cost += priceHash[ingredient_id];
+
+            //Deselect ingredient
+            $(this).prop("checked", false);
         }
     });
+
+    console.log(Math.round(cost * 100) / 100);
+
 });
 
 //Gets all selected ingredient_id's into a JavaScript Array
 $('#add-side').on('click', function () {
+    var cost = 0;
     var selected_sides = [];
     $('div.side-container input[type=checkbox]').each(function () {
         if ($(this).is(":checked")) {
-            selected_sides.push([$(this).attr('id')]);
-            console.log(selected_sides);
+            var ingredient_id = $(this).attr('id');
+            selected_sides.push(ingredient_id);
+
+            cost += priceHash[ingredient_id];
+
+            //Deselect ingredient
+            $(this).prop("checked", false);
         }
     });
+    console.log(Math.round(cost * 100) / 100);
 });
 
 $('#add-drink').on('click', function () {
+    var cost = 0;
     var selected_drinks = [];
     $('div.drinks-container input[type=checkbox]').each(function () {
         if ($(this).is(":checked")) {
-            selected_drinks.push([$(this).attr('id')]);
-            console.log(selected_drinks);
+            var ingredient_id = $(this).attr('id');
+            selected_drinks.push(ingredient_id);
+
+            cost += priceHash[ingredient_id];
+
+            //Deselect ingredient
+            $(this).prop("checked", false);
         }
     });
+    console.log(Math.round(cost * 100) / 100);
 });
 
 $('#add-special').on('click', function () {
+    var cost = 0;
     var selected_specials = [];
     $('div.special-container input[type=checkbox]').each(function () {
         if ($(this).is(":checked")) {
-            selected_specials.push([$(this).attr('id')]);
-            console.log(selected_specials);
+            var ingredient_id = $(this).attr('id');
+            selected_specials.push(ingredient_id);
+
+            cost += priceHash[ingredient_id];
+
+            //Deselect ingredient
+            $(this).prop("checked", false);
         }
     });
+    console.log(Math.round(cost * 100) / 100);
 });
 
 
@@ -200,7 +235,7 @@ $('#plain').on('click', function () {
         $(this).prop('checked', false);
     });
     $('div input[type=radio]').each(function () {
-        if ($(this).attr("id") == "1") {
+        if ($(this).attr("id") == "11") {
             $(this).prop('checked', true);
         } else {
             $(this).prop('checked', false);
