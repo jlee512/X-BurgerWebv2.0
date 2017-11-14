@@ -714,6 +714,38 @@ public class Order_API {
     //Test method developed for the getOrderDetails methods
     public static void main(String[] args) {
 //        Order order = Order_API.getOrderDetailsByOrderIDCustomerAPI(21);
+
+        //Burger
+//        ArrayList<Stock> burger_ingredients = new ArrayList<>();
+//        Stock ingredient1 = new Stock(11);
+//        Stock ingredient2 = new Stock(41);
+//        Stock ingredient3 = new Stock(51);
+//        Stock ingredient4 = new Stock(151);
+//        Stock ingredient5 = new Stock(221);
+//        Stock ingredient6 = new Stock(251);
+//        burger_ingredients.add(ingredient1);
+//        burger_ingredients.add(ingredient2);
+//        burger_ingredients.add(ingredient3);
+//        burger_ingredients.add(ingredient4);
+//        burger_ingredients.add(ingredient5);
+//        burger_ingredients.add(ingredient6);
+//
+//        ArrayList<Item> items = new ArrayList<>();
+//
+//        Item burger = new Item(burger_ingredients);
+//
+//        ///Side
+//        ArrayList<Stock> side_ingredient = new ArrayList<>();
+//        Stock ingredient7 = new Stock(361);
+//        side_ingredient.add(ingredient7);
+//
+//        Item side = new Item(side_ingredient);
+//
+//        items.add(burger);
+//        items.add(side);
+//
+//        Order order = new Order(11, items);
+
 //
 //        System.out.println("Order " + order.getOrder_id() + " received");
 //        System.out.println("Order Price " + order.getPrice());
@@ -729,10 +761,10 @@ public class Order_API {
 //            }
 //        }
 
-//        Order_API.addOrder(order, 21);
+//        Order_API.addOrder(order, 11);
 
-//        Order_API.assignStaffToOrder(1, 211);
-        Order_API.completeOrder(211);
+//        Order_API.assignStaffToOrder(1, 391);
+//        Order_API.completeOrder(391);
 
 //        ArrayList<Order> test = Order_API.getOrdersByCustomerID(1);
 
@@ -742,36 +774,36 @@ public class Order_API {
 
 //        ArrayList<Order> test = Order_API.getOrdersByStaffID(1);
 
-        ArrayList<Order> test = Order_API.getOrdersByStatus(0);
-
-        if (test != null) {
-            for (int i = 0; i < test.size(); i++) {
-
-                Order order = test.get(i);
-                System.out.println("New order: " + order.getStatus());
-
-                for (int j = 0; j < order.getItems().size(); j++) {
-
-                    Item item = order.getItems().get(j);
-
-                    System.out.println("    Item: " + item.getItem_type());
-
-                    for (int k = 0; k < item.getIngredients().size(); k++) {
-
-                        Stock ingredient = item.getIngredients().get(k);
-
-                        System.out.println("        Ingredient: " + ingredient.getIngredient_name() + " " + ingredient.getPrice());
-
-                    }
-
-
-                }
-
-            }
-
+//        ArrayList<Order> test = Order_API.getOrdersByStatus(0);
 //
-        } else {
-            System.out.println("No orders for this search");
-        }
+//        if (test != null) {
+//            for (int i = 0; i < test.size(); i++) {
+//
+//                Order order = test.get(i);
+//                System.out.println("New order: " + order.getStatus());
+//
+//                for (int j = 0; j < order.getItems().size(); j++) {
+//
+//                    Item item = order.getItems().get(j);
+//
+//                    System.out.println("    Item: " + item.getItem_type());
+//
+//                    for (int k = 0; k < item.getIngredients().size(); k++) {
+//
+//                        Stock ingredient = item.getIngredients().get(k);
+//
+//                        System.out.println("        Ingredient: " + ingredient.getIngredient_name() + " " + ingredient.getPrice());
+//
+//                    }
+//
+//
+//                }
+//
+//            }
+//
+////
+//        } else {
+//            System.out.println("No orders for this search");
+//        }
     }
 }
