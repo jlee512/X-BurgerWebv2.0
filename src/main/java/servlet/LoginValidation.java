@@ -32,10 +32,10 @@ public class LoginValidation extends HttpServlet {
         //Get request parameters from form submission
         String username_entry = request.getParameter("username");
         String email_entry = request.getParameter("email");
-        String password_entry = request.getParameter("password");
+        String password_entry = request.getParameter("pass_us");
 
         //Check whether user has input a username or an email and access details from the API
-        if (username_entry.length() > 0) {
+        if (username_entry != null && username_entry.length() > 0) {
             customer_login_submission = CustomerAPI.getCustomerDetailsAPI(username_entry, "username");
         } else if (email_entry.length() > 0) {
             customer_login_submission = CustomerAPI.getCustomerDetailsAPI(email_entry, "email");
