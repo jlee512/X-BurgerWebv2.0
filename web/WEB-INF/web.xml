@@ -101,6 +101,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>orderHistory</servlet-name>
+        <jsp-file>/order_history.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>orderHistory</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>orderJSP</servlet-name>
         <jsp-file>/orderpage.jsp</jsp-file>
     </servlet>
