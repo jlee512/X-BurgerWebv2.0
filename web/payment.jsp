@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="/process_payment">
+                    <form role="form" action="/process_payment" method="post">
                         <div class="form-group">
                             <label for="cardNumber">
                                 CARD NUMBER</label>

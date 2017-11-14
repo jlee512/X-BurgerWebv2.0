@@ -57,6 +57,26 @@
         <url-pattern>/process_order</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OrderHistory</servlet-name>
+        <servlet-class>main.java.servlet.OrderHistory</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>OrderHistory</servlet-name>
+        <url-pattern>/process_history</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProcessPayment</servlet-name>
+        <servlet-class>main.java.servlet.ProcessPayment</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProcessPayment</servlet-name>
+        <url-pattern>/process_payment</url-pattern>
+    </servlet-mapping>
+
     <!--TEST-->
     <servlet>
         <servlet-name>helloServlet</servlet-name>
@@ -66,16 +86,6 @@
     <servlet-mapping>
         <servlet-name>helloServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>OrderHistory</servlet-name>
-        <servlet-class>main.java.servlet.OrderHistory</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>OrderHistory</servlet-name>
-        <url-pattern>/process_history</url-pattern>
     </servlet-mapping>
 
     <!--=======================================================================================================-->
