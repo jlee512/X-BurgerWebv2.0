@@ -544,9 +544,11 @@
                      id="add-special"><strong>Add Special to Order</strong></a></span>
             <br>
         </div>
+    </form>
 
         <!-- Order Summary -->
 
+    <form action="/process_order" method="post">
         <div class="order-container">
             <div class="row text-center" id="orderCol">
 
@@ -559,22 +561,26 @@
                         </div>
                         <div class="panel-footer">
 
-                            <input class="burger-ingredient" type="text" name="burger-1" value="11" readonly/>
-                            <input class="burger-ingredient" type="text" name="burger-1" value="41" readonly/>
-                            <input class="burger-ingredient" type="text" name="burger-1" value="51" readonly/>
-                            <input class="burger-ingredient" type="text" name="burger-1" value="91" readonly/>
+                            <p>Ingredient 1</p>
+                            <input class="burger-ingredient" type="text" name="burger-1" value="11" readonly hidden/>
+                            <p>Ingredient 2</p>
+                            <input class="burger-ingredient" type="text" name="burger-1" value="41" readonly hidden/>
+                            <p>Ingredient 3</p>
+                            <input class="burger-ingredient" type="text" name="burger-1" value="51" readonly hidden/>
+                            <p>Ingredient 4</p>
+                            <input class="burger-ingredient" type="text" name="burger-1" value="91" readonly hidden/>
+
                         </div>
 
                     </div>
                 </div>
 
             </div>
-            <span><a class="btn btn-primary"
-                     style="display: block; background-color: #e520c7; margin: 0 auto; color: white;"
-                     id="confirm-order"><strong>Confirm Order</strong></a></span>
+            <span><button class="btn btn-primary" type="submit"
+                     style="display: block; width: 100%; background-color: #e520c7; margin: 0 auto; color: white; font-weight: 700;"
+                          id="confirm-order">Confirm Order</button></span>
             <br>
         </div>
-
     </form>
 </div>
 
