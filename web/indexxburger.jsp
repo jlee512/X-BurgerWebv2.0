@@ -69,18 +69,15 @@
                     <span class="social_heading">FOLLOW US</span>
 
                     <ul class="social_icons">
-                    <li><img src="images/facebook.png" id=""  alt=""></li>
-                     <br></br>
-       
+                        <li><img src="images/facebook.png" alt=""></li>
+                        <li><img src="images/insta.png" alt=""></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <br></br>
                     <span class="social_heading">OR GET THE APP</span>
                     <ul class="social_icons">
-                        <li><img src="images/android.png" alt=""></li>
-                        <br></br>
-
+                        <li><img src="images/android1.png" alt=""></li>
                     </ul>
                 </div>
             </div>
@@ -93,7 +90,7 @@
                 <h1 id="contact-header">Contact Us</h1>
                 <br></br>
                 <br></br>
-                <br></br>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="inner contact">

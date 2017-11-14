@@ -74,13 +74,6 @@
 
 
         <!-- ============ Footer Section  ============= -->
-
-        <footer class="sub_footer">
-            <div class="container">
-            
-                <div class="col-md-4"><p class="sub-footer-text text-center">Built By <a href="#" target="_blank">Team Extreme</a></p></div>
-            </div>
-        </footer>
  
         <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="/js/main.js" ></script>
