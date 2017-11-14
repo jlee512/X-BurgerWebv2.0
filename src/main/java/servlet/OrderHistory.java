@@ -26,7 +26,7 @@ public class OrderHistory extends HttpServlet {
         System.out.println(list_of_orders.get(0).getOrder_id());
 
         req.setAttribute("order_list", list_of_orders);
-        req.getRequestDispatcher("/history").forward(req, resp);
+        req.getRequestDispatcher("/process_history").forward(req, resp);
     }
 
 

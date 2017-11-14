@@ -64,7 +64,7 @@
 
     <servlet-mapping>
         <servlet-name>OrderHistory</servlet-name>
-        <url-pattern>/process_history</url-pattern>
+        <url-pattern>/history</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -117,7 +117,7 @@
 
     <servlet-mapping>
         <servlet-name>orderHistory</servlet-name>
-        <url-pattern>/history</url-pattern>
+        <url-pattern>/process_history</url-pattern>
     </servlet-mapping>
 
     <servlet>
