@@ -39,7 +39,7 @@
                 <a class="nav-link" href="/#contact">CONTACT |</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">HISTORY</a>
+                <a class="nav-link" href="/process_history">HISTORY</a>
             </li>
             <c:if test="${sessionScope.loginStatus == 'active'}" >
                 <li class="nav-item">

@@ -65,7 +65,7 @@
 
     <servlet-mapping>
         <servlet-name>OrderHistory</servlet-name>
-        <url-pattern>/history</url-pattern>
+        <url-pattern>/process_history</url-pattern>
     </servlet-mapping>
 
     <!--=======================================================================================================-->
@@ -99,6 +99,17 @@
         <servlet-name>orderJSP</servlet-name>
         <url-pattern>/make_order</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Order_History</servlet-name>
+        <jsp-file>/order_history.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Order_History</servlet-name>
+        <url-pattern>/history</url-pattern>
+    </servlet-mapping>
+
     <!--TEST-->
     <servlet>
         <servlet-name>testJSP</servlet-name>

@@ -122,7 +122,7 @@ public class Order_API {
             JsonParser jp = new JsonParser(); //json parser from gson library
             JsonArray order_json_list = jp.parse(new InputStreamReader((InputStream)request.getContent())).getAsJsonArray();
 
-            System.out.println(order_json_list);
+//            System.out.println(order_json_list);
 
 //            JsonArray order_jsonArray = order_json_list.getAsJsonArray();
             ArrayList<Order> order_list = new ArrayList<Order>();
@@ -725,7 +725,7 @@ public class Order_API {
 //        Order_API.assignStaffToOrder(1, 21);
 //        Order_API.completeOrder(21);
 
-//        ArrayList<Order> test = Order_API.getOrdersByCustomerID(21);
+        ArrayList<Order> test = Order_API.getOrdersByCustomerID(21);
 
 //        ArrayList<Order> test = Order_API.getLastMonthOfOrders();
 
@@ -733,7 +733,7 @@ public class Order_API {
 
 //        ArrayList<Order> test = Order_API.getOrdersByStaffID(1);
 
-        ArrayList<Order> test = Order_API.getOrdersByStatus(0);
+//        ArrayList<Order> test = Order_API.getOrdersByStatus(0);
 
         for (int i = 0; i < test.size(); i++) {
 
