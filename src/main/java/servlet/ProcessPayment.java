@@ -25,6 +25,8 @@ public class ProcessPayment extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
+
         String cardNum = req.getParameter("cardNum");
         int expiryYear = Integer.parseInt(req.getParameter("expiryYear"));
         int expiryMonth = Integer.parseInt(req.getParameter("expiryMon"));
@@ -61,7 +63,7 @@ public class ProcessPayment extends HttpServlet {
 
         Order_API.addOrder(pending_order, customer.getCustomer_id());
 
-        resp.sendRedirect("/history");
+        resp.sendRedirect("/history?order=completed");
 
     }
 }
