@@ -19,21 +19,32 @@ public class OrderHistory extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = req.getSession(true);
-        loginStatusRedirection(req, resp);
+//        loginStatusRedirection(req, resp);
 
         Customer currentCustomer = (Customer) session.getAttribute("customer");
-        int current_customer_id = currentCustomer.getCustomer_id();
-        System.out.println(current_customer_id);
 
-        //get order details for the customer
-        ArrayList<Order> list_of_orders = Order_API.getOrdersByCustomerID(current_customer_id);
+        //Check customer not null (if null, redirect to login)
+        if (currentCustomer == null) {
+            resp.sendRedirect("/login");
+        } else {
+            System.out.println(currentCustomer);
+            int current_customer_id = currentCustomer.getCustomer_id();
+            System.out.println(current_customer_id);
 
-        System.out.println(list_of_orders.get(0).getOrder_id());
+            //get order details for the customer
+            ArrayList<Order> list_of_orders = Order_API.getOrdersByCustomerID(current_customer_id);
+            ArrayList<Order> reverse_list = new ArrayList<Order>();
 
-        req.setAttribute("order_list", list_of_orders);
-        req.getRequestDispatcher("/process_history").forward(req, resp);
+            for (int i = 0; i < list_of_orders.size(); i++) {
+                reverse_list.add((reverse_list.size() - i), list_of_orders.get(i));
+            }
+
+            System.out.println(reverse_list.get(0).getOrder_id());
+
+            req.setAttribute("order_list", reverse_list);
+            req.getRequestDispatcher("/process_history").forward(req, resp);
+        }
     }
-
 
 
     /*Method to check a user's login-status and redirect accordingly
@@ -44,7 +55,7 @@ public class OrderHistory extends HttpServlet {
         if (session.getAttribute("loginStatus") != "active"){
             response.sendRedirect("/login");
         } else {
-            Customer customer = (Customer) session.getAttribute("customer");
+//            Customer customer = (Customer) session.getAttribute("customer");
             response.sendRedirect("/history");
         }
     }

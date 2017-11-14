@@ -34,29 +34,108 @@
 
 <c:forEach items="${order_list}" var="order" varStatus="outerloop">
     <div class="col-sm-6, col-md-4, col-lg-3">
-    <div class="card">
-        <div class="card-body">
-            <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
-            <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
-            <p class="card-text"><strong>Status: ${order.status}</strong></p>
-            ${order.setPriceString()}
-            <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
+        <c:choose>
+            <c:when test="${param['order'] && outerloop.index == 0}">
+            <div class="card" style="background-color: #ab58a0; color: white;">
+                <div class="card-body">
+                    <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
+                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Status: ${order.status}</strong></p>
+                        ${order.setPriceString()}
+                    <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
-            <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
-                Ingredients
-            </a>
-            <div class="collapse" id="${outerloop.index}">
-                <c:forEach items="${order.items}" var="item" varStatus="innerloop">
-            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
-                    <c:forEach items="${item.ingredients}" var="stock">
-            <p class="card-text">           ${stock.ingredient_name}</p>
-        </c:forEach>
-        <p></p>
-    </c:forEach>
-        </div>
+                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                        Ingredients
+                    </a>
+                    <div class="collapse" id="${outerloop.index}">
+                        <c:forEach items="${order.items}" var="item" varStatus="innerloop">
+                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
+                            <c:forEach items="${item.ingredients}" var="stock">
+                                <p class="card-text"> ${stock.ingredient_name}</p>
+                            </c:forEach>
+                            <p></p>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
     </div>
-    </div>
-    </div>
+    </c:when>
+        <c:when test="${order.status == 'Pending'}">
+            <div class="card" style="background-color: #98506f">
+                <div class="card-body">
+                    <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
+                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Status: ${order.status}</strong></p>
+                        ${order.setPriceString()}
+                    <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
+
+                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                        Ingredients
+                    </a>
+                    <div class="collapse" id="${outerloop.index}">
+                        <c:forEach items="${order.items}" var="item" varStatus="innerloop">
+                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
+                            <c:forEach items="${item.ingredients}" var="stock">
+                                <p class="card-text"> ${stock.ingredient_name}</p>
+                            </c:forEach>
+                            <p></p>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </c:when>
+        <c:when test="${order.status == 'Making'}">
+            <div class="card" style="background-color: #96b4ed">
+                <div class="card-body">
+                    <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
+                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Status: ${order.status}</strong></p>
+                        ${order.setPriceString()}
+                    <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
+
+                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                        Ingredients
+                    </a>
+                    <div class="collapse" id="${outerloop.index}">
+                        <c:forEach items="${order.items}" var="item" varStatus="innerloop">
+                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
+                            <c:forEach items="${item.ingredients}" var="stock">
+                                <p class="card-text"> ${stock.ingredient_name}</p>
+                            </c:forEach>
+                            <p></p>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+</div>
+        </c:when>
+        <c:when test="${order.status == 'Completed'}">
+            <div class="card" style="background-color: #acf8ff">
+                <div class="card-body">
+                    <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
+                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Status: ${order.status}</strong></p>
+                        ${order.setPriceString()}
+                    <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
+
+                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                        Ingredients
+                    </a>
+                    <div class="collapse" id="${outerloop.index}">
+                        <c:forEach items="${order.items}" var="item" varStatus="innerloop">
+                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
+                            <c:forEach items="${item.ingredients}" var="stock">
+                                <p class="card-text"> ${stock.ingredient_name}</p>
+                            </c:forEach>
+                            <p></p>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </c:when>
+    </c:choose>
 </c:forEach>
 </div>
 
