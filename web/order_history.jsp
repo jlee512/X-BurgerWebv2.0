@@ -32,12 +32,14 @@
 
 <div class="container">
 
+    <%--<p>${param["order"]}</p>--%>
+
 <c:forEach items="${order_list}" var="order" varStatus="outerloop">
     <div class="col-sm-6, col-md-4, col-lg-3">
         <c:choose>
-            <c:when test="${param['order'] && outerloop.index == 0}">
-            <div class="card" style="background-color: #ab58a0; color: white;">
-                <div class="card-body">
+            <c:when test="${param['order']=='completed' && outerloop.index == 0}">
+            <div class="card" style="background-color: #ab58a0;">
+                <div class="card-body" style=" color: white;">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
                     <p class="card-text"><strong>Status: ${order.status}</strong></p>
