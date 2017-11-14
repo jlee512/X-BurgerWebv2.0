@@ -28,13 +28,13 @@
 
 <body>
 
-<%--<jsp:include page="navbar.jsp"/>--%>
+<jsp:include page="navbar.jsp"/>
 
 <div class="container">
 
-<c:forEach items="${order_list}" var="order">
+<c:forEach items="${order_list}" var="order" varStatus="outerloop">
     <div class="col-sm-6, col-md-4, col-lg-3">
-    <div class="card" style="width: 20rem">
+    <div class="card">
         <div class="card-body">
             <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
             <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
@@ -42,20 +42,19 @@
             ${order.setPriceString()}
             <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
-    <c:forEach items="${order.items}" var="item" varStatus="loop">
-            <p class="card-text"><strong> ${loop.index+1}: ${item.item_type}</strong></p>
-        <c:if test="${item != order.items[0]}">
-
-            <%--<c:if test="${item != order.item.order_details_id[${loop.index}]}">--%>
-                <%--<p><strong>     ${item.item_type}</strong></p>--%>
-            <%--</c:if>--%>
-        </c:if>
+            <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                Ingredients
+            </a>
+            <div class="collapse" id="${outerloop.index}">
+    <c:forEach items="${order.items}" var="item" varStatus="innerloop">
+            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
         <c:forEach items="${item.ingredients}" var="stock">
             <p class="card-text">           ${stock.ingredient_name}</p>
         </c:forEach>
         <p></p>
     </c:forEach>
         </div>
+    </div>
     </div>
     </div>
 </c:forEach>
