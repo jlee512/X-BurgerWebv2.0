@@ -78,9 +78,8 @@ public class ProcessOrder extends HttpServlet {
         }
 
 
-        request.setAttribute("order_pending", order);
-        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/payment");
-        rd.forward(request, response);
+        session.setAttribute("order_pending", order);
+        response.sendRedirect("/payment");
 
     }
 }

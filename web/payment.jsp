@@ -42,7 +42,7 @@
                             <label for="cardNumber">
                                 CARD NUMBER</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                <input type="text" class="form-control" id="cardNumber" name="cardNum" placeholder="Valid Card Number"
                                        required autofocus />
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                             </div>
@@ -53,17 +53,17 @@
                                     <label for="expityMonth">
                                         EXPIRY DATE</label>
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                                        <input type="text" class="form-control" id="expityMonth" name="expiryMon" placeholder="MM" required />
                                     </div>
                                     <div class="col-xs-6 col-lg-6 pl-ziro">
-                                        <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                                        <input type="text" class="form-control" id="expityYear" name="expiryYear" placeholder="YY" required /></div>
                                 </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
                                     <label for="cvCode">
                                         CCV</label>
-                                    <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                    <input type="password" class="form-control" id="cvCode" name="ccv" placeholder="CV" required />
                                 </div>
                             </div>
                         </div>
