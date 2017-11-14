@@ -13,6 +13,8 @@
     <meta charset="UTF-8">
     <title>Order History</title>
 
+    <meta http-equiv="refresh" content="10" />
+
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
@@ -37,7 +39,7 @@
 <c:forEach items="${order_list}" var="order" varStatus="outerloop">
     <div class="col-sm-6, col-md-4, col-lg-3">
         <c:choose>
-            <c:when test="${param['order']=='completed' && outerloop.index == 0}">
+            <c:when test="${param['order']=='completed' && outerloop.index == 0 && order.status == 'Pending'}">
             <div class="card" style="background-color: #ab58a0;">
                 <div class="card-body" style=" color: white;">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
