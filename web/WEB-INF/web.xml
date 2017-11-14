@@ -111,13 +111,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Order_History</servlet-name>
-        <jsp-file>/order_history.jsp</jsp-file>
+        <servlet-name>paymentJSP</servlet-name>
+        <jsp-file>/payment.jsp</jsp-file>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Order_History</servlet-name>
-        <url-pattern>/history</url-pattern>
+        <servlet-name>paymentJSP</servlet-name>
+        <url-pattern>/payment</url-pattern>
     </servlet-mapping>
 
     <!--TEST-->

@@ -50,6 +50,172 @@ var priceHash = {
     "471": 4.0,
     "481": 10.0,
     "491": 1.0
+};
+
+var item_id = 1;
+var ingredient_id = 1;
+var button_enabled = false;
+
+var templateOrderItem = '<div class="col-lg-2 col-sm-3 col-xs-4 item-added">'
+    + '<div class="panel panel-default">'
+    + '<div class="panel-body">'
+    + '<img src="" class="img-thumbnail img-responsive item-type-img">'
+    + '</div>'
+    + '<div class="panel-footer ingredient-ids">'
+    + '<div><p class="order-item"></p>'
+    + '</div>'
+    + '</div>'
+    + '</div>';
+
+var templateItemIngredient = '<div><input class="burger-ingredient" type="text" readonly hidden/></div>';
+
+function addBurger(ingredients, cost) {
+
+    if (!button_enabled) {
+        button_enabled = true;
+        $('#submit-order').prop('disabled', false);
+    }
+
+    var item_name = "burger-" + item_id;
+
+    //Get jquery object for templates
+    var item_template = $(templateOrderItem);
+    // Append image for item type
+    item_template.find('.item-type-img').attr('src', "images/hamburger.jpg");
+    // Update ingredient template
+    item_template.find('.order-item').text("1 x Burger: $" + cost.toFixed(1) + "0");
+
+    for (var i = 0; i < ingredients.length; i++) {
+        var ingredient_template = $(templateItemIngredient);
+        ingredient_template.find('.burger-ingredient').attr('name', item_name);
+        ingredient_template.find('.burger-ingredient').attr('id', ingredient_id);
+
+        ingredient_template.find('.burger-ingredient').attr('value', ingredients[i]);
+
+        // Append ingredient template to item template
+        item_template.find('.ingredient-ids').append(ingredient_template);
+    }
+    item_id++;
+    ingredient_id++;
+    // Append ingredient template to orderCol
+    $('#orderCol').append(item_template);
+
+}
+
+function addSides(sides, sides_names, cost) {
+
+    if (!button_enabled) {
+        button_enabled = true;
+        $('#submit-order').prop('disabled', false);
+    }
+
+    for (var i = 0; i < sides.length; i++) {
+
+        var item_name = "side-" + item_id;
+
+        //Get jquery object for templates
+        var item_template = $(templateOrderItem);
+        // Append image for item type
+        var image_filename = sides_names[i].replace(/\s/g, '');
+        if (image_filename === 'RegularFries') {
+            image_filename = 'fries';
+        }
+        item_template.find('.item-type-img').attr('src', "images/" + image_filename + ".jpg");
+        // Update ingredient template
+        item_template.find('.order-item').text("1 x " + sides_names[i] + ": $" + cost[i].toFixed(1) + "0");
+
+        var ingredient_template = $(templateItemIngredient);
+        ingredient_template.find('.burger-ingredient').attr('name', item_name);
+        ingredient_template.find('.burger-ingredient').attr('id', ingredient_id);
+
+        ingredient_template.find('.burger-ingredient').attr('value', sides[i]);
+
+        // Append ingredient template to item template
+        item_template.find('.ingredient-ids').append(ingredient_template);
+
+        item_id++;
+        ingredient_id++;
+        // Append ingredient template to orderCol
+        $('#orderCol').append(item_template);
+    }
+
+}
+
+function addDrinks(drinks, drinks_name, cost) {
+
+    if (!button_enabled) {
+        button_enabled = true;
+        $('#submit-order').prop('disabled', false);
+    }
+
+    for (var i = 0; i < drinks.length; i++) {
+
+        var item_name = "drink-" + item_id;
+
+        //Get jquery object for templates
+        var item_template = $(templateOrderItem);
+        // Append image for item type
+        var image_filename = drinks_name[i].replace(/\s/g, '');
+        item_template.find('.item-type-img').attr('src', "images/" + image_filename + ".jpg");
+        // Update ingredient template
+        item_template.find('.order-item').text("1 x " + drinks_name[i] + ": $" + cost[i].toFixed(1) + "0");
+
+        var ingredient_template = $(templateItemIngredient);
+        ingredient_template.find('.burger-ingredient').attr('name', item_name);
+        ingredient_template.find('.burger-ingredient').attr('id', ingredient_id);
+
+        ingredient_template.find('.burger-ingredient').attr('value', drinks[i]);
+
+        // Append ingredient template to item template
+        item_template.find('.ingredient-ids').append(ingredient_template);
+
+        item_id++;
+        ingredient_id++;
+        // Append ingredient template to orderCol
+        $('#orderCol').append(item_template);
+    }
+
+}
+
+function addSpecial(special, special_name, cost) {
+
+    if (!button_enabled) {
+        button_enabled = true;
+        $('#submit-order').prop('disabled', false);
+    }
+
+    for (var i = 0; i < special.length; i++) {
+
+        var item_name = "special-" + item_id;
+
+        //Get jquery object for templates
+        var item_template = $(templateOrderItem);
+        // Append image for item type
+        var image_filename = special_name[i].replace(/\s/g, '');
+        if (image_filename === "Bill'sSpaghetti") {
+            image_filename = 'billsspaghetti';
+        } else if (image_filename === 'One-up') {
+            image_filename = 'oneup';
+        }
+        item_template.find('.item-type-img').attr('src', "images/" + image_filename + ".jpg");
+        // Update ingredient template
+        item_template.find('.order-item').text("1 x " + special_name[i] + ": $" + cost[i].toFixed(1) + "0");
+
+        var ingredient_template = $(templateItemIngredient);
+        ingredient_template.find('.burger-ingredient').attr('name', item_name);
+        ingredient_template.find('.burger-ingredient').attr('id', ingredient_id);
+
+        ingredient_template.find('.burger-ingredient').attr('value', special[i]);
+
+        // Append ingredient template to item template
+        item_template.find('.ingredient-ids').append(ingredient_template);
+
+        item_id++;
+        ingredient_id++;
+        // Append ingredient template to orderCol
+        $('#orderCol').append(item_template);
+    }
+
 }
 
 function showCheese() {
@@ -171,60 +337,72 @@ $('#add-burger').on('click', function () {
         }
     });
 
-    console.log(Math.round(cost * 100) / 100);
+    cost = Math.round(cost * 100) / 100;
+
+    addBurger(selected_ingredients, cost);
 
 });
 
 //Gets all selected ingredient_id's into a JavaScript Array
 $('#add-side').on('click', function () {
-    var cost = 0;
+    var cost = [];
     var selected_sides = [];
+    var selected_names = [];
     $('div.side-container input[type=checkbox]').each(function () {
         if ($(this).is(":checked")) {
-            var ingredient_id = $(this).attr('id');
+            var ingredient_id = $(this).attr('name');
+            var ingredient_name = $(this).attr('id');
             selected_sides.push(ingredient_id);
+            selected_names.push(ingredient_name);
 
-            cost += priceHash[ingredient_id];
+            cost.push(Math.round(priceHash[ingredient_id] * 100) / 100);
 
             //Deselect ingredient
             $(this).prop("checked", false);
         }
     });
-    console.log(Math.round(cost * 100) / 100);
+
+    addSides(selected_sides, selected_names, cost);
 });
 
 $('#add-drink').on('click', function () {
-    var cost = 0;
+    var cost = [];
     var selected_drinks = [];
+    var selected_names = [];
     $('div.drinks-container input[type=checkbox]').each(function () {
         if ($(this).is(":checked")) {
-            var ingredient_id = $(this).attr('id');
+            var ingredient_id = $(this).attr('name');
+            var ingredient_name = $(this).attr('id');
             selected_drinks.push(ingredient_id);
+            selected_names.push(ingredient_name);
 
-            cost += priceHash[ingredient_id];
+            cost.push(Math.round(priceHash[ingredient_id] * 100) / 100);
 
             //Deselect ingredient
             $(this).prop("checked", false);
         }
     });
-    console.log(Math.round(cost * 100) / 100);
+    addDrinks(selected_drinks, selected_names, cost);
 });
 
 $('#add-special').on('click', function () {
-    var cost = 0;
+    var cost = [];
     var selected_specials = [];
+    var selected_names = [];
     $('div.special-container input[type=checkbox]').each(function () {
         if ($(this).is(":checked")) {
-            var ingredient_id = $(this).attr('id');
+            var ingredient_id = $(this).attr('name');
+            var ingredient_name = $(this).attr('id');
             selected_specials.push(ingredient_id);
+            selected_names.push(ingredient_name);
 
-            cost += priceHash[ingredient_id];
+            cost.push(Math.round(priceHash[ingredient_id] * 100) / 100);
 
             //Deselect ingredient
             $(this).prop("checked", false);
         }
     });
-    console.log(Math.round(cost * 100) / 100);
+    addSpecial(selected_specials, selected_names, cost);
 });
 
 

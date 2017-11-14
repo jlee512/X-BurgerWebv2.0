@@ -47,8 +47,6 @@
   <div class="cont_text_inputs">
       <input type="text" class="input_form_sign " placeholder="NAME" name="name_us" />
 
-      <input type="hidden" class="input_form_sign " placeholder="NAME" name="username" value="" />
-
       <input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="email" />
 
       <input type="password" id="pass" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us" />
@@ -76,13 +74,6 @@
 
 
         <!-- ============ Footer Section  ============= -->
-
-        <footer class="sub_footer">
-            <div class="container">
-            
-                <div class="col-md-4"><p class="sub-footer-text text-center">Built By <a href="#" target="_blank">Team Extreme</a></p></div>
-            </div>
-        </footer>
  
         <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="/js/main.js" ></script>

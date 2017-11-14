@@ -36,6 +36,13 @@ public class Order implements Serializable {
     // Order creation method for John
     public Order(int order_id, int customer_id, ArrayList<Item> items) {
         this.order_id = order_id;
+        this.items = items;
+        this.staff = null;
+        this.customer = new Customer(customer_id, null, null, null, -1, null, null, null, null);
+    }
+
+    public Order(int customer_id, ArrayList<Item> items) {
+        this.items = items;
         this.staff = null;
         this.customer = new Customer(customer_id, null, null, null, -1, null, null, null, null);
     }
