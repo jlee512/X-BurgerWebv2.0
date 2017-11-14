@@ -99,6 +99,17 @@
         <servlet-name>orderJSP</servlet-name>
         <url-pattern>/make_order</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>paymentJSP</servlet-name>
+        <jsp-file>/payment.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>paymentJSP</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+
     <!--TEST-->
     <servlet>
         <servlet-name>testJSP</servlet-name>
