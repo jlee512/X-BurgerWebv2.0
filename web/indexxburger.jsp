@@ -69,7 +69,7 @@
                     <span class="social_heading">FOLLOW US</span>
 
                     <ul class="social_icons">
-                    <br></br>
+                    <li><img src="images/facebook.png" id=""  alt=""></li>
                      <br></br>
        
                     </ul>
@@ -77,10 +77,11 @@
                 <div class="col-md-4">
                     <br></br>
                     <span class="social_heading">OR GET THE APP</span>
-                    <br></br>
-                    <br></br>
-                    <br></br>
-                    
+                    <ul class="social_icons">
+                        <li><img src="images/android.png" alt=""></li>
+                        <br></br>
+
+                    </ul>
                 </div>
             </div>
         </section>

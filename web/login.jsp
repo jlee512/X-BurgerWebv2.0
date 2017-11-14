@@ -47,8 +47,6 @@
   <div class="cont_text_inputs">
       <input type="text" class="input_form_sign " placeholder="NAME" name="name_us" />
 
-      <input type="hidden" class="input_form_sign " placeholder="NAME" name="username" value="" />
-
       <input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="email" />
 
       <input type="password" id="pass" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us" />
