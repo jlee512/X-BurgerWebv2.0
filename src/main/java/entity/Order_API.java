@@ -695,7 +695,7 @@ public class Order_API {
             Gson gson = new GsonBuilder().serializeNulls().create();
             JsonObject return_object = root.getAsJsonObject();
 
-            if(return_object.get("Order Status").equals("Completed")) {
+            if(return_object.get("Order Status").getAsString().equals("Completed")) {
                 System.out.println("Order completed");
                 return true;
             } else {
