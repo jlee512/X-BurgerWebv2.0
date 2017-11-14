@@ -422,7 +422,7 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <input id="${ingredient.ingredient_id}" class="side" type="checkbox"
+                                            <input id="${ingredient.ingredient_name}" class="side" type="checkbox"
                                                    name="${ingredient.ingredient_id}">
                                         </c:when>
                                         <c:otherwise>
@@ -472,7 +472,7 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <input id="${ingredient.ingredient_id}" class="drink" type="checkbox"
+                                            <input id="${ingredient.ingredient_name}" class="drink" type="checkbox"
                                                    name="${ingredient.ingredient_id}">
                                         </c:when>
                                         <c:otherwise>
@@ -523,7 +523,7 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <input id="${ingredient.ingredient_id}" class="special" type="checkbox"
+                                            <input id="${ingredient.ingredient_name}" class="special" type="checkbox"
                                                    name="${ingredient.ingredient_id}">
                                         </c:when>
                                         <c:otherwise>
@@ -548,37 +548,18 @@
 
         <!-- Order Summary -->
 
+    <h2 id="choose-2" style="text-align: left; color: #FFFFFF;">4) Order Summary</h2>
+
     <form action="/process_order" method="post">
         <div class="order-container">
             <div class="row text-center" id="orderCol">
 
-                <div class="col-lg-2 col-sm-3 col-xs-4 item-added">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
 
-                            <img src="images/hamburger.jpg" class="img-thumbnail img-responsive">
-
-                        </div>
-                        <div class="panel-footer">
-
-                            <p>Ingredient 1</p>
-                            <input class="burger-ingredient" type="text" name="burger-1" value="11" readonly hidden/>
-                            <p>Ingredient 2</p>
-                            <input class="burger-ingredient" type="text" name="burger-1" value="41" readonly hidden/>
-                            <p>Ingredient 3</p>
-                            <input class="burger-ingredient" type="text" name="burger-1" value="51" readonly hidden/>
-                            <p>Ingredient 4</p>
-                            <input class="burger-ingredient" type="text" name="burger-1" value="91" readonly hidden/>
-
-                        </div>
-
-                    </div>
-                </div>
 
             </div>
-            <span><button class="btn btn-primary" type="submit"
+            <span><button id="submit-order" class="btn btn-primary" type="submit"
                      style="display: block; width: 100%; background-color: #e520c7; margin: 0 auto; color: white; font-weight: 700;"
-                          id="confirm-order">Confirm Order</button></span>
+                          id="confirm-order" disabled>Confirm Order</button></span>
             <br>
         </div>
     </form>
