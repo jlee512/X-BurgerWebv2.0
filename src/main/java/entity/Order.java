@@ -22,6 +22,7 @@ public class Order implements Serializable {
     String status;
     ArrayList<Item> items;
     double price;
+    String priceString;
 
     public Order(int order_id, Staff staff, Customer customer, String order_datetime, String status, ArrayList<Item> items) {
         this.order_id = order_id;
@@ -76,6 +77,8 @@ public class Order implements Serializable {
         return price;
     }
 
+    public String getPriceString(){ return priceString; }
+
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -102,6 +105,11 @@ public class Order implements Serializable {
 
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    public void setPriceString(){
+        double newPrice = Math.round(getPrice());
+        this.priceString = "$" + newPrice + "0";
     }
 
     public JsonObject createOrderJson () {
