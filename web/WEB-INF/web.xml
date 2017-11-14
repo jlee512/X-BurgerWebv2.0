@@ -47,6 +47,16 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>processOrders</servlet-name>
+        <servlet-class>main.java.servlet.ProcessOrder</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>processOrders</servlet-name>
+        <url-pattern>/process_order</url-pattern>
+    </servlet-mapping>
+
     <!--TEST-->
     <servlet>
         <servlet-name>helloServlet</servlet-name>

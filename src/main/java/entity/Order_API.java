@@ -120,9 +120,8 @@ public class Order_API {
 
             //Convert the JSON object to access data
             JsonParser jp = new JsonParser(); //json parser from gson library
-            JsonArray order_json_list = jp.parse(new InputStreamReader((InputStream)request.getContent())).getAsJsonArray();
+                JsonArray order_json_list = jp.parse(new InputStreamReader((InputStream) request.getContent())).getAsJsonArray();
 
-            System.out.println(order_json_list);
 
 //            JsonArray order_jsonArray = order_json_list.getAsJsonArray();
             ArrayList<Order> order_list = new ArrayList<Order>();
@@ -197,6 +196,8 @@ public class Order_API {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e) {
+            return null;
         }
         return null;
     }
@@ -289,6 +290,8 @@ public class Order_API {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e) {
+            return null;
         }
         return null;
     }
@@ -381,6 +384,8 @@ public class Order_API {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e) {
+            return null;
         }
         return null;
     }
@@ -472,6 +477,8 @@ public class Order_API {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e) {
+            return null;
         }
         return null;
 
@@ -564,6 +571,8 @@ public class Order_API {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalStateException e) {
+            return null;
         }
         return null;
 
@@ -725,7 +734,7 @@ public class Order_API {
 //        Order_API.assignStaffToOrder(1, 21);
 //        Order_API.completeOrder(21);
 
-//        ArrayList<Order> test = Order_API.getOrdersByCustomerID(21);
+//        ArrayList<Order> test = Order_API.getOrdersByCustomerID(1);
 
 //        ArrayList<Order> test = Order_API.getLastMonthOfOrders();
 
@@ -735,30 +744,34 @@ public class Order_API {
 
         ArrayList<Order> test = Order_API.getOrdersByStatus(0);
 
-        for (int i = 0; i < test.size(); i++) {
+        if (test != null) {
+            for (int i = 0; i < test.size(); i++) {
 
-            Order order = test.get(i);
-            System.out.println("New order: " + order.getStatus());
+                Order order = test.get(i);
+                System.out.println("New order: " + order.getStatus());
 
-            for (int j = 0; j < order.getItems().size(); j++) {
+                for (int j = 0; j < order.getItems().size(); j++) {
 
-                Item item = order.getItems().get(j);
+                    Item item = order.getItems().get(j);
 
-                System.out.println("    Item: " + item.getItem_type());
+                    System.out.println("    Item: " + item.getItem_type());
 
-                for (int k = 0; k < item.getIngredients().size(); k++) {
+                    for (int k = 0; k < item.getIngredients().size(); k++) {
 
-                    Stock ingredient = item.getIngredients().get(k);
+                        Stock ingredient = item.getIngredients().get(k);
 
-                    System.out.println("        Ingredient: " + ingredient.getIngredient_name() + " " + ingredient.getPrice());
+                        System.out.println("        Ingredient: " + ingredient.getIngredient_name() + " " + ingredient.getPrice());
+
+                    }
+
 
                 }
 
-
             }
 
-        }
-
 //
+        } else {
+            System.out.println("No orders for this search");
+        }
     }
 }

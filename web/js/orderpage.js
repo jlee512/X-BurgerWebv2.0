@@ -248,6 +248,8 @@ $('#hamburger').on('click', function () {
     $('div input[type=checkbox]').each(function () {
         if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr('id') == "131" || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
             $(this).prop('checked', true);
+        } else {
+            $(this).prop('checked', false);
         }
     });
     $('div input[type=radio]').each(function () {
@@ -264,6 +266,8 @@ $('#cheeseburger').on('click', function () {
     $('div input[type=checkbox]').each(function () {
         if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr("id") == "201" || $(this).attr('id') == 131 || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
             $(this).prop('checked', true);
+        } else {
+            $(this).prop('checked', false);
         }
     });
     $('div input[type=radio]').each(function () {
@@ -278,7 +282,7 @@ $('#cheeseburger').on('click', function () {
 $('#porkburger').on('click', function () {
 
     $('div input[type=checkbox]').each(function () {
-        if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr("id") == "201" || $(this).attr('id') == 171 || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
+        if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr("id") == "201" || $(this).attr('id') == "171" || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
             $(this).prop('checked', true);
         }
     });
@@ -294,8 +298,10 @@ $('#porkburger').on('click', function () {
 $('#chickenburger').on('click', function () {
 
     $('div input[type=checkbox]').each(function () {
-        if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr("id") == "201" || $(this).attr('id') == 141 || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
+        if ($(this).attr('id') == "41" || $(this).attr("id") == "51" || $(this).attr("id") == "91" || $(this).attr("id") == "201" || $(this).attr('id') == "141" || $(this).attr("id") == "241" || $(this).attr('id') == '261') {
             $(this).prop('checked', true);
+        } else {
+            $(this).prop('checked', false);
         }
     });
     $('div input[type=radio]').each(function () {
