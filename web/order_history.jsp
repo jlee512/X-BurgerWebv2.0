@@ -30,17 +30,20 @@
 
 <%--<jsp:include page="navbar.jsp"/>--%>
 
+<div class="container">
+
 <c:forEach items="${order_list}" var="order">
+    <div class="col-sm-6, col-md-4, col-lg-3">
     <div class="card" style="width: 20rem">
         <div class="card-body">
-            <h4><class = "card-title"><b>Order ${order.order_id}</b></h4>
-        <p><b>Time: ${order.order_datetime}</b></p>
-        <p><b>Status: ${order.status}</b></p>
-        ${order.setPriceString()}
-        <p><b>Price: ${order.priceString}</b></p>
+            <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
+            <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+            <p class="card-text"><strong>Status: ${order.status}</strong></p>
+            ${order.setPriceString()}
+            <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
     <c:forEach items="${order.items}" var="item" varStatus="loop">
-            <p><strong> ${loop.index+1}: ${item.item_type}</strong></p>
+            <p class="card-text"><strong> ${loop.index+1}: ${item.item_type}</strong></p>
         <c:if test="${item != order.items[0]}">
 
             <%--<c:if test="${item != order.item.order_details_id[${loop.index}]}">--%>
@@ -48,13 +51,15 @@
             <%--</c:if>--%>
         </c:if>
         <c:forEach items="${item.ingredients}" var="stock">
-            <p>           ${stock.ingredient_name}</p>
+            <p class="card-text">           ${stock.ingredient_name}</p>
         </c:forEach>
         <p></p>
     </c:forEach>
-            </div>
+        </div>
+    </div>
     </div>
 </c:forEach>
+</div>
 
 <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="/js/main.js" ></script>
