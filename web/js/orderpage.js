@@ -116,8 +116,8 @@ function addSides(sides, sides_names, cost) {
         //Get jquery object for templates
         var item_template = $(templateOrderItem);
         // Append image for item type
-        var image_filename = sides_names[i].replace(/\s/g, '');
-        if (image_filename === 'RegularFries') {
+        var image_filename = sides_names[i].replace(/\s/g, '').toLowerCase();
+        if (image_filename === 'regularfries') {
             image_filename = 'fries';
         }
         item_template.find('.item-type-img').attr('src', "images/" + image_filename + ".jpg");
@@ -155,7 +155,7 @@ function addDrinks(drinks, drinks_name, cost) {
         //Get jquery object for templates
         var item_template = $(templateOrderItem);
         // Append image for item type
-        var image_filename = drinks_name[i].replace(/\s/g, '');
+        var image_filename = drinks_name[i].replace(/\s/g, '').toLowerCase();
         item_template.find('.item-type-img').attr('src', "images/" + image_filename + ".jpg");
         // Update ingredient template
         item_template.find('.order-item').text("1 x " + drinks_name[i] + ": $" + cost[i].toFixed(1) + "0");
@@ -191,10 +191,10 @@ function addSpecial(special, special_name, cost) {
         //Get jquery object for templates
         var item_template = $(templateOrderItem);
         // Append image for item type
-        var image_filename = special_name[i].replace(/\s/g, '');
-        if (image_filename === "Bill'sSpaghetti") {
+        var image_filename = special_name[i].replace(/\s/g, '').toLowerCase();
+        if (image_filename === "bill'sspaghetti") {
             image_filename = 'billsspaghetti';
-        } else if (image_filename === 'One-up') {
+        } else if (image_filename === 'one-up') {
             image_filename = 'oneup';
         }
         item_template.find('.item-type-img').attr('src', "images/" + image_filename + ".jpg");

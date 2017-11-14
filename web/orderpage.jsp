@@ -149,7 +149,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
-                                    <img src="${ingredient.img_file_name}" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" style="width: 100%;" class="img-thumbnail img-responsive">
 
                                 </div>
                                 <div class="panel-footer">
