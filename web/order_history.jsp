@@ -46,9 +46,9 @@
                 Ingredients
             </a>
             <div class="collapse" id="${outerloop.index}">
-    <c:forEach items="${order.items}" var="item" varStatus="innerloop">
+                <c:forEach items="${order.items}" var="item" varStatus="innerloop">
             <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
-        <c:forEach items="${item.ingredients}" var="stock">
+                    <c:forEach items="${item.ingredients}" var="stock">
             <p class="card-text">           ${stock.ingredient_name}</p>
         </c:forEach>
         <p></p>

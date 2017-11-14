@@ -18,10 +18,15 @@ public class OrderHistory extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        int customer_id = 1;
+        HttpSession session = req.getSession(true);
+        loginStatusRedirection(req, resp);
+
+        Customer currentCustomer = (Customer) session.getAttribute("customer");
+        int current_customer_id = currentCustomer.getCustomer_id();
+        System.out.println(current_customer_id);
 
         //get order details for the customer
-        ArrayList<Order> list_of_orders = Order_API.getOrdersByCustomerID(customer_id);
+        ArrayList<Order> list_of_orders = Order_API.getOrdersByCustomerID(current_customer_id);
 
         System.out.println(list_of_orders.get(0).getOrder_id());
 
