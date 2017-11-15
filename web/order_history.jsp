@@ -59,7 +59,7 @@
             <div class="card" style="background-color: #bd90b7; border-style: solid; border-width: 5px; border-color: #ab58a0 ">
                 <div class="card-body" style=" color: black;">
                     <h4> class = "card-title"><strong> New Order! ${order.order_id}</strong></h4>
-                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Time: ${order.convertTime(order.order_datetime)}</strong></p>
                     <p class="card-text"><strong>Status: ${order.status} (new) </strong></p>
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
@@ -96,7 +96,7 @@
             <div class="card" style="background-color: #d0adbc; border-style: solid; border-width: 5px; border-color: #98506f; margin: 5px">
                 <div class="card-body">
                     <h4 class = "card-title"><strong>Order ${order.order_id}</strong></h4>
-                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Time: ${order.convertTime(order.order_datetime)}</strong></p>
                     <p class="card-text"><strong>Status: ${order.status}</strong></p>
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
@@ -133,7 +133,7 @@
             <div class="card" style="background-color: #96b4ed; border-style: solid; border-width: 5px; border-color: #6b99ec; margin: 5px">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
-                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Time: ${order.convertTime(order.order_datetime)}</strong></p>
                     <p class="card-text"><strong>Status: ${order.status}</strong></p>
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
@@ -170,7 +170,7 @@
             <div class="card" style="background-color: #acf8ff; border-style: solid; border-width: 5px; border-color: #6cdde7; margin: 5px ">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
-                    <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
+                    <p class="card-text"><strong>Time: ${order.convertTime(order.order_datetime)}</strong></p>
                     <p class="card-text"><strong>Status: ${order.status}</strong></p>
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>

@@ -7,7 +7,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.TimeZone;
 
 /**
  * Created by Julian on 7/11/2017.
@@ -140,6 +145,28 @@ public class Order implements Serializable {
         orderObject.add("item_details_list", orderItems);
 
         return orderObject;
+    }
+
+    public String convertTime(String order_datetime){
+
+//        System.out.println("1: " + order_datetime);
+
+        LocalDateTime ldt = LocalDateTime.parse(order_datetime, DateTimeFormatter.RFC_1123_DATE_TIME);
+        ZoneId nz = ZoneId.of("Pacific/Auckland");
+        ZonedDateTime gmt = ldt.atZone(TimeZone.getTimeZone("GMT+0").toZoneId());
+        String gmtString = "" + gmt;
+//        System.out.println(gmtString);
+
+        ZonedDateTime nzTime = gmt.withZoneSameInstant(TimeZone.getTimeZone("GMT+13:00").toZoneId());
+        String nzTimeString = "" + nzTime;
+//        System.out.println(nzTimeString);
+
+//        String nice = nzTime.getHour() +":"+ nzTime.getMinute() +", "+ nzTime.getDayOfWeek() +" "+ nzTime.getDayOfMonth() +" "+ nzTime.getMonth() +" "+ nzTime.getYear();
+//        System.out.println(nice);
+
+        String nice = DateTimeFormatter.ofPattern("dd MMMM yyyy - hh:mm a").format(nzTime);
+
+        return nice;
     }
 
     public static void main(String[] args) {
