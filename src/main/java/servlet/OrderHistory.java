@@ -33,16 +33,23 @@ public class OrderHistory extends HttpServlet {
 
             //get order details for the customer
             ArrayList<Order> list_of_orders = Order_API.getOrdersByCustomerID(current_customer_id);
-            ArrayList<Order> reverse_list = new ArrayList<Order>();
+            if(list_of_orders != null){
+                ArrayList<Order> reverse_list = new ArrayList<Order>();
 
-            for (int i = 0; i < list_of_orders.size(); i++) {
-                reverse_list.add((reverse_list.size() - i), list_of_orders.get(i));
+                for (int i = 0; i < list_of_orders.size(); i++) {
+                    reverse_list.add((reverse_list.size() - i), list_of_orders.get(i));
+                }
+
+//            System.out.println(reverse_list.get(0).getOrder_id());
+
+                req.setAttribute("order_list", reverse_list);
+                req.getRequestDispatcher("/process_history").forward(req, resp);
+            }
+            else{
+                req.setAttribute("no_orders", true);
+                req.getRequestDispatcher("/process_history").forward(req, resp);
             }
 
-            System.out.println(reverse_list.get(0).getOrder_id());
-
-            req.setAttribute("order_list", reverse_list);
-            req.getRequestDispatcher("/process_history").forward(req, resp);
         }
     }
 

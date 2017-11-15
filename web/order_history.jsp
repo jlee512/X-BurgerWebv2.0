@@ -34,17 +34,33 @@
 
 <div class="container">
 
+<c:choose>
+    <c:when test="${no_orders}">
+        <div class="col-sm-3, col-md-4"></div>
+        <div class="col-sm-6, col-md-4">
+        <div class="card" style="background-color: #96b4ed">
+            <h4 class="card-title"> No Orders </h4>
+            <p class="card-text"> You haven't placed any orders yet. </p>
+            <p class="card-text"> Click the button below to order! </p>
+            <a href="/order" class="btn btn-primary"> Place Order </a>
+        </div>
+        </div>
+        <div class="col-sm-3, col-md-4"></div>
+    </c:when>
+
+    <c:otherwise>
+
     <%--<p>${param["order"]}</p>--%>
 
 <c:forEach items="${order_list}" var="order" varStatus="outerloop">
     <div class="col-sm-6, col-md-4, col-lg-3">
         <c:choose>
             <c:when test="${param['order']=='completed' && outerloop.index == 0 && order.status == 'Pending'}">
-            <div class="card" style="background-color: #ab58a0;">
-                <div class="card-body" style=" color: white;">
-                    <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
+            <div class="card" style="background-color: #bd90b7; border-style: solid; border-width: 5px; border-color: #ab58a0 ">
+                <div class="card-body" style=" color: black;">
+                    <h4><class = "card-title"><strong> New Order! ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
-                    <p class="card-text"><strong>Status: ${order.status}</strong></p>
+                    <p class="card-text"><strong>Status: ${order.status} (new) </strong></p>
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
@@ -53,11 +69,23 @@
                     </a>
                     <div class="collapse" id="${outerloop.index}">
                         <c:forEach items="${order.items}" var="item" varStatus="innerloop">
-                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
-                            <c:forEach items="${item.ingredients}" var="stock">
-                                <p class="card-text"> ${stock.ingredient_name}</p>
+                            <div style="border-style: solid; border-width: 5px; border-color: #ab58a0 ">
+                                <c:choose>
+                                    <c:when test="${item.item_type == 'burger'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Burger </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'side'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Sides </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'drink'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Drinks </strong></p>
+                                    </c:when>
+                                </c:choose>
+                                <c:forEach items="${item.ingredients}" var="stock">
+                                <p class="card-text" style="margin: 0"> ${stock.ingredient_name}</p>
                             </c:forEach>
                             <p></p>
+                            </div>
                         </c:forEach>
                     </div>
                 </div>
@@ -65,7 +93,7 @@
     </div>
     </c:when>
         <c:when test="${order.status == 'Pending'}">
-            <div class="card" style="background-color: #98506f">
+            <div class="card" style="background-color: #d0adbc; border-style: solid; border-width: 5px; border-color: #98506f ">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
@@ -78,11 +106,23 @@
                     </a>
                     <div class="collapse" id="${outerloop.index}">
                         <c:forEach items="${order.items}" var="item" varStatus="innerloop">
-                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
-                            <c:forEach items="${item.ingredients}" var="stock">
-                                <p class="card-text"> ${stock.ingredient_name}</p>
+                            <div  style="border-style: solid; border-width: 5px; border-color: #98506f ">
+                                <c:choose>
+                                    <c:when test="${item.item_type == 'burger'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Burger </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'side'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Sides </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'drink'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Drinks </strong></p>
+                                    </c:when>
+                                </c:choose>
+                                <c:forEach items="${item.ingredients}" var="stock">
+                                <p class="card-text" style="margin: 0"> ${stock.ingredient_name}</p>
                             </c:forEach>
                             <p></p>
+                            </div>
                         </c:forEach>
                     </div>
                 </div>
@@ -90,7 +130,7 @@
             </div>
         </c:when>
         <c:when test="${order.status == 'Making'}">
-            <div class="card" style="background-color: #96b4ed">
+            <div class="card" style="background-color: #96b4ed; border-style: solid; border-width: 5px; border-color: #6b99ec ">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
@@ -103,11 +143,23 @@
                     </a>
                     <div class="collapse" id="${outerloop.index}">
                         <c:forEach items="${order.items}" var="item" varStatus="innerloop">
-                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
-                            <c:forEach items="${item.ingredients}" var="stock">
-                                <p class="card-text"> ${stock.ingredient_name}</p>
+                            <div  style="border-style: solid; border-width: 5px; border-color: #6b99ec ">
+                                <c:choose>
+                                    <c:when test="${item.item_type == 'burger'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Burger </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'side'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Sides </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'drink'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Drinks </strong></p>
+                                    </c:when>
+                                </c:choose>
+                                <c:forEach items="${item.ingredients}" var="stock">
+                                <p class="card-text" style="margin: 0"> ${stock.ingredient_name}</p>
                             </c:forEach>
                             <p></p>
+                            </div>
                         </c:forEach>
                     </div>
                 </div>
@@ -115,7 +167,7 @@
 </div>
         </c:when>
         <c:when test="${order.status == 'Completed'}">
-            <div class="card" style="background-color: #acf8ff">
+            <div class="card" style="background-color: #acf8ff; border-style: solid; border-width: 5px; border-color: #6cdde7 ">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
@@ -128,11 +180,23 @@
                     </a>
                     <div class="collapse" id="${outerloop.index}">
                         <c:forEach items="${order.items}" var="item" varStatus="innerloop">
-                            <p class="card-text"><strong> ${innerloop.index+1}: ${item.item_type}</strong></p>
+                            <div  style="border-style: solid; border-width: 5px; border-color: #6cdde7 ">
+                                <c:choose>
+                                    <c:when test="${item.item_type == 'burger'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Burger </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'side'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Sides </strong></p>
+                                    </c:when>
+                                    <c:when test="${item.item_type == 'drink'}">
+                                        <p class="card-text" style="margin: 0"><strong> Item ${innerloop.index+1}: Drinks </strong></p>
+                                    </c:when>
+                                </c:choose>
                             <c:forEach items="${item.ingredients}" var="stock">
-                                <p class="card-text"> ${stock.ingredient_name}</p>
+                                <p class="card-text" style="margin: 0"> ${stock.ingredient_name}</p>
                             </c:forEach>
                             <p></p>
+                            </div>
                         </c:forEach>
                     </div>
                 </div>
@@ -141,6 +205,8 @@
         </c:when>
     </c:choose>
 </c:forEach>
+    </c:otherwise>
+</c:choose>
 </div>
 
 <script type="text/javascript" src="/js/bootstrap.min.js" ></script>
