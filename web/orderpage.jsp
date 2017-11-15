@@ -34,8 +34,7 @@
 
     <h2 id="choose">1) Choose a burger:</h2>
 
-        <div class="d-flex flex-row justify-content-around align-items-center">
-            <div class="col-lg-2 col-sm-3 col-xs-4">
+        <div class="d-flex flex-row flex-wrap justify-content-around align-items-center">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <a href="#">
@@ -43,15 +42,13 @@
                         </a>
                     </div>
                     <div class="panel-footer">
-                        <button id="plain" style="width: 100%;">
-                            <p>Plain</p>
+                        <button id="plain" class="btn btn-info" style="min-width: 100%;">
+                            Plain
                         </button>
                     </div>
 
                 </div>
-            </div>
 
-            <div class="col-lg-2 col-sm-3 col-xs-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <a href="#">
@@ -59,15 +56,12 @@
                         </a>
                     </div>
                     <div class="panel-footer">
-                        <button id="hamburger" style="width: 100%;">
-                            <p>Hamburger</p>
+                        <button id="hamburger" class="btn btn-info" style="min-width: 100%;">
+                            Hamburger
                         </button>
                     </div>
 
                 </div>
-            </div>
-
-            <div class="col-lg-2 col-sm-3 col-xs-4">
 
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -76,15 +70,11 @@
                         </a>
                     </div>
                     <div class="panel-footer">
-                        <button id="cheeseburger" style="width: 100%;">
-                            <p>Cheeseburger</p>
+                        <button id="cheeseburger" class="btn btn-info" style="min-width: 100%;">
+                            Cheeseburger
                         </button>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="col-lg-2 col-sm-3 col-xs-4">
 
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -93,14 +83,11 @@
                         </a>
                     </div>
                     <div class="panel-footer">
-                        <button id="porkburger" style="width: 100%;">
-                            <p>Porkburger</p>
+                        <button id="porkburger" class="btn btn-info" style="min-width: 100%;">
+                            Porkburger
                         </button>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-2 col-sm-3 col-xs-4">
 
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -109,24 +96,23 @@
                         </a>
                     </div>
                     <div class="panel-footer">
-                        <button id="chickenburger" style="width: 100%;">
-                            <p>Chickenburger</p>
+                        <button id="chickenburger" class="btn btn-info" style="min-width: 100%;">
+                            Chickenburger
                         </button>
                     </div>
                 </div>
-            </div>
         </div>
 
     <!--Create own-->
 
     <h2 id="choose">2) Or create your own:</h2>
 
-    <div class="d-flex flex-row justify-content-center align-items-center">
-        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showBun()">Bun</a></span>
-        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showBeef()">Meat</a></span>
-        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showCheese()">Cheese</a></span>
-        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSalad()">Salad</a></span>
-        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSauce()">Sauce</a></span>
+    <div class="d-flex flex-row flex-wrap justify-content-center align-items-center">
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showBun()"><strong style="color: white">Bun</strong></a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showBeef()"><strong style="color: white">Meat</strong></a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showCheese()"><strong style="color: white">Cheese</strong></a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSalad()"><strong style="color: white">Salad</strong></a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSauce()"><strong style="color: white">Sauce</strong></a></span>
     </div>
 
     <br/>
@@ -137,13 +123,11 @@
     <form>
 
         <div class="burger-container">
-            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="bunCol">
+            <div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="bunCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Bread'}">
-
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -155,10 +139,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -177,7 +161,6 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
@@ -187,13 +170,12 @@
 
             <!-- Meat -->
 
-            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="beefCol">
+            <div class="d-none flex-row justify-content-center align-items-center flex-wrap" id="beefCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Meat'}">
 
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -204,10 +186,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -224,7 +206,6 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
@@ -234,13 +215,12 @@
 
             <!-- Cheese -->
 
-            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="cheeseCol">
+            <div class="d-none flex-row justify-content-center align-items-center flex-wrap" id="cheeseCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Cheese'}">
 
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -251,15 +231,14 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
                                     <p>$${ingredient.price}0</p>
-
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
@@ -272,7 +251,6 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
@@ -283,13 +261,12 @@
             <!-- Salad -->
 
 
-            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="saladCol">
+            <div class="d-none flex-row justify-content-center align-items-center flex-wrap" id="saladCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Salad'}">
 
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -300,14 +277,14 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
-                                    <p>$${ingredient.price}</p>
+                                    <p>$${ingredient.price}0</p>
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
@@ -321,7 +298,6 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
@@ -330,12 +306,11 @@
             </div>
             <!-- Sauce -->
 
-            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="sauceCol">
+            <div class="d-none flex-row justify-content-center align-items-center flex-wrap" id="sauceCol">
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Sauce'}">
 
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -346,14 +321,14 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
-                                    <p>$${ingredient.price}</p>
+                                    <p>$${ingredient.price}0</p>
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
@@ -367,7 +342,6 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
@@ -376,29 +350,28 @@
             </div>
 
             <span><a class="btn btn-primary"
-                     style="display: block;background-color: #e520c7; margin: 0 auto; color: white;"
+                     style="display: block;background-color: #e520c7; margin: 0 auto; color: white; text-align: center;"
                      id="add-burger"><strong>Add Burger to Order</strong></a></span>
             <br>
         </div>
 
 
-        <h2 id="choose-2" style="text-align: left; color: #FFFFFF;">3) Choose your sides and drinks:</h2>
+        <h2 id="choose-3" style="text-align: left; color: #FFFFFF;">3) Choose your sides and drinks:</h2>
 
-        <div class="btn-group btn-group-justified">
-            <span><a class="btn btn-primary" onclick="showSides()">Sides</a></span>
-            <span><a class="btn btn-primary" onclick="showDrinks()">Drinks</a></span>
-            <span><a class="btn btn-primary" onclick="showSpecial()">Secret</a></span>
+        <div class="d-flex flex-row flex-wrap justify-content-center align-items-center">
+            <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSides()"><strong style="color: white">Sides</strong></a></span>
+            <span style="margin: 5px;"><a class="btn btn-primary" onclick="showDrinks()"><strong style="color: white">Drinks</strong></a></span>
+            <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSpecial()"><strong style="color: white">Secret</strong></a></span>
         </div>
 
         <!-- Side -->
 
         <div class="side-container">
-            <div class="row text-center" id="sideCol">
+            <div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="sideCol">
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Side'}">
 
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -409,15 +382,14 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
                                     <p>$${ingredient.price}0</p>
-
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
@@ -430,26 +402,24 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
                 </c:forEach>
             </div>
-            <span><a class="btn btn-primary"
-                     style="display: block; background-color: #e520c7; margin: 0 auto; color: white;"
+            <span><a class="btn btn-primary d-flex justify-content-center align-items-center"
+                     style="background-color: #e520c7; margin: 0 auto; color: white; text-align: center;"
                      id="add-side"><strong>Add Side to Order</strong></a></span>
             <br>
         </div>
 
         <!-- Drinks -->
         <div class="drinks-container">
-            <div class="row text-center" id="drinksCol">
+            <div class="d-none flex-row justify-content-center align-items-center flex-wrap" id="drinksCol">
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Drink'}">
 
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -459,13 +429,12 @@
                                 <div class="panel-footer">
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
-
 
                                     <p>$${ingredient.price}0</p>
 
@@ -480,14 +449,13 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
                 </c:forEach>
             </div>
-            <span><a class="btn btn-primary"
-                     style="background-color: #e520c7; margin: 0 auto; color: white;"
+            <span><a class="btn btn-primary d-none justify-content-center align-items-center"
+                     style="background-color: #e520c7; margin: 0 auto; color: white; text-align: center;"
                      id="add-drink"><strong>Add Drink to Order</strong></a></span>
             <br>
         </div>
@@ -495,12 +463,11 @@
         <!-- Special -->
 
         <div class="special-container">
-            <div class="row text-center" id="specialCol">
+            <div class="d-none flex-row justify-content-center align-items-center flex-wrap" id="specialCol">
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Special'}">
 
-                        <div class="col-lg-2 col-sm-3 col-xs-4">
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
@@ -511,10 +478,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <p>${ingredient.ingredient_name}</p>
+                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <p>${ingredient.ingredient_name} Unavailable</p>
+                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -531,16 +498,15 @@
                                 </div>
 
                             </div>
-                        </div>
 
                     </c:if>
 
                 </c:forEach>
 
             </div>
-            <span><a class="btn btn-primary"
-                     style="background-color: #e520c7; margin: 0 auto; color: white;"
-                     id="add-special"><strong>Add Special to Order</strong></a></span>
+            <span><a class="btn btn-primary d-none justify-content-center align-items-center"
+                     style="background-color: #e520c7; margin: 0 auto; color: white; text-align: center;"
+                     id="add-special"><strong>Add Secret to Order</strong></a></span>
             <br>
         </div>
     </form>

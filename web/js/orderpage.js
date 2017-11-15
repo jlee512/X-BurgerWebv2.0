@@ -275,37 +275,37 @@ function showSauce() {
 }
 
 function showSides() {
-    document.getElementById("sideCol").style.display = "inline-block";
-    document.getElementById("drinksCol").style.display = "none";
-    document.getElementById("specialCol").style.display = "none";
+    $("#sideCol").addClass('d-flex').removeClass('d-none');
+    $("#drinksCol").addClass('d-none').removeClass('d-flex');
+    $("#specialCol").addClass('d-none').removeClass('d-flex');
 
-    document.getElementById("add-side").style.display = "block";
-    document.getElementById("add-drink").style.display = "none";
-    document.getElementById("add-special").style.display = "none";
+    $("#add-side").addClass('d-flex').removeClass('d-none');
+    $("#add-drink").addClass('d-none').removeClass('d-flex');
+    $("#add-special").addClass('d-none').removeClass('d-flex');
 
     document.getElementById("sideCol").scrollTop = 0;
 }
 
 function showDrinks() {
-    document.getElementById("sideCol").style.display = "none";
-    document.getElementById("drinksCol").style.display = "inline-block";
-    document.getElementById("specialCol").style.display = "none";
+    $("#sideCol").addClass('d-none').removeClass('d-flex');
+    $("#drinksCol").addClass('d-flex').removeClass('d-none');
+    $("#specialCol").addClass('d-none').removeClass('d-flex');
 
-    document.getElementById("add-side").style.display = "none";
-    document.getElementById("add-drink").style.display = "block";
-    document.getElementById("add-special").style.display = "none";
+    $("#add-side").addClass('d-none').removeClass('d-flex');
+    $("#add-drink").addClass('d-flex').removeClass('d-none');
+    $("#add-special").addClass('d-none').removeClass('d-flex');
 
     document.getElementById("drinksCol").scrollTop = 0;
 }
 
 function showSpecial() {
-    document.getElementById("sideCol").style.display = "none";
-    document.getElementById("drinksCol").style.display = "none";
-    document.getElementById("specialCol").style.display = "inline-block";
+    $("#sideCol").addClass('d-none').removeClass('d-flex');
+    $("#drinksCol").addClass('d-none').removeClass('d-flex');
+    $("#specialCol").addClass('d-flex').removeClass('d-none');
 
-    document.getElementById("add-side").style.display = "none";
-    document.getElementById("add-drink").style.display = "none";
-    document.getElementById("add-special").style.display = "block";
+    $("#add-side").addClass('d-none').removeClass('d-flex');
+    $("#add-drink").addClass('d-none').removeClass('d-flex');
+    $("#add-special").addClass('d-flex').removeClass('d-none');
 
     document.getElementById("specialCol").scrollTop = 0;
 }
