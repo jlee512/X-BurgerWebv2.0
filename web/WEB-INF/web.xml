@@ -37,6 +37,11 @@
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>setupOrderPage</servlet-name>
+        <url-pattern>/statistics</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>main.java.servlet.Logout</servlet-class>
