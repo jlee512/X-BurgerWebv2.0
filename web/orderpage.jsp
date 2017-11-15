@@ -9,17 +9,12 @@
     <title>Order</title>
 
 
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/checkout-sidebar.css"/>
+    <jsp:include page="headertags.jsp"/>
+
     <link rel="stylesheet" type="text/css" href="css/demo.css"/>
     <link rel="stylesheet" type="text/css" href="css/orderstyle.css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="fonts/font-awesome.min.css" rel="stylesheet">
-    <link rel="icon" href="" type="image/x-icon"> <!-- Add burger icon-->
+    <link rel="stylesheet" type="text/css" href="css/checkout-sidebar.css"/>
+
 </head>
 <body>
 
@@ -39,107 +34,110 @@
 
     <h2 id="choose">1) Choose a burger:</h2>
 
-    <div class="row text-center" style="display: inline-block">
+        <div class="d-flex flex-row justify-content-around align-items-center">
+            <div class="col-lg-2 col-sm-3 col-xs-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="#">
+                            <img src="images/white.jpg" class="img-thumbnail img-responsive">
+                        </a>
+                    </div>
+                    <div class="panel-footer">
+                        <button id="plain" style="width: 100%;">
+                            <p>Plain</p>
+                        </button>
+                    </div>
 
-        <div class="col-lg-2 col-sm-3 col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <a href="#">
-                        <img src="images/white.jpg" class="img-thumbnail img-responsive">
-                    </a>
-                </div>
-                <div class="panel-footer">
-                    <button id="plain" style="width: 100%;">
-                        <p>Plain</p>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-lg-2 col-sm-3 col-xs-4">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <a href="#">
-                        <img src="images/hamburger.jpg" class="img-thumbnail img-responsive">
-                    </a>
-                </div>
-                <div class="panel-footer">
-                    <button id="hamburger" style="width: 100%;">
-                        <p>Ham Burger</p>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-lg-2 col-sm-3 col-xs-4">
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <a href="#">
-                        <img src="images/cheeseburger.jpg" class="img-thumbnail img-responsive">
-                    </a>
-                </div>
-                <div class="panel-footer">
-                    <button id="cheeseburger" style="width: 100%;">
-                        <p>Cheese Burger</p>
-                    </button>
                 </div>
             </div>
-        </div>
 
+            <div class="col-lg-2 col-sm-3 col-xs-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="#">
+                            <img src="images/hamburger.jpg" class="img-thumbnail img-responsive">
+                        </a>
+                    </div>
+                    <div class="panel-footer">
+                        <button id="hamburger" style="width: 100%;">
+                            <p>Hamburger</p>
+                        </button>
+                    </div>
 
-        <div class="col-lg-2 col-sm-3 col-xs-4">
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <a href="#">
-                        <img src="images/porkburger.jpg" class="img-thumbnail img-responsive">
-                    </a>
                 </div>
-                <div class="panel-footer">
-                    <button id="porkburger" style="width: 100%;">
-                        <p>Pork Burger</p>
-                    </button>
+            </div>
+
+            <div class="col-lg-2 col-sm-3 col-xs-4">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="#">
+                            <img src="images/cheeseburger.jpg" class="img-thumbnail img-responsive">
+                        </a>
+                    </div>
+                    <div class="panel-footer">
+                        <button id="cheeseburger" style="width: 100%;">
+                            <p>Cheeseburger</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-2 col-sm-3 col-xs-4">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="#">
+                            <img src="images/porkburger.jpg" class="img-thumbnail img-responsive">
+                        </a>
+                    </div>
+                    <div class="panel-footer">
+                        <button id="porkburger" style="width: 100%;">
+                            <p>Porkburger</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-sm-3 col-xs-4">
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="#">
+                            <img src="images/chickenburger.jpg" class="img-thumbnail img-responsive">
+                        </a>
+                    </div>
+                    <div class="panel-footer">
+                        <button id="chickenburger" style="width: 100%;">
+                            <p>Chickenburger</p>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-2 col-sm-3 col-xs-4">
-
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <a href="#">
-                        <img src="images/chickenburger.jpg" class="img-thumbnail img-responsive">
-                    </a>
-                </div>
-                <div class="panel-footer">
-                    <button id="chickenburger" style="width: 100%;">
-                        <p>Chicken Burger</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!--Create own-->
 
     <h2 id="choose">2) Or create your own:</h2>
 
-    <div class="btn-group btn-group-justified">
-        <span><a class="btn btn-primary" onclick="showBun()">Bun</a></span>
-        <span><a class="btn btn-primary" onclick="showBeef()">Meat</a></span>
-        <span><a class="btn btn-primary" onclick="showCheese()">Cheese</a></span>
-        <span><a class="btn btn-primary" onclick="showSalad()">Salad</a></span>
-        <span><a class="btn btn-primary" onclick="showSauce()">Sauce</a></span>
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showBun()">Bun</a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showBeef()">Meat</a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showCheese()">Cheese</a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSalad()">Salad</a></span>
+        <span style="margin: 5px;"><a class="btn btn-primary" onclick="showSauce()">Sauce</a></span>
     </div>
+
+    <br/>
+    <br/>
 
     <%--start bun--%>
 
     <form>
 
         <div class="burger-container">
-            <div class="row text-center" id="bunCol">
+            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="bunCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
@@ -149,7 +147,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
 
-                                    <img src="${ingredient.img_file_name}" style="width: 100%;" class="img-thumbnail img-responsive">
+                                    <img src="${ingredient.img_file_name}" style="width: 100%;"
+                                         class="img-thumbnail img-responsive">
 
                                 </div>
                                 <div class="panel-footer">
@@ -188,7 +187,7 @@
 
             <!-- Meat -->
 
-            <div class="row text-center" id="beefCol">
+            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="beefCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
@@ -235,7 +234,7 @@
 
             <!-- Cheese -->
 
-            <div class="row text-center" id="cheeseCol">
+            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="cheeseCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
@@ -284,7 +283,7 @@
             <!-- Salad -->
 
 
-            <div class="row text-center" id="saladCol">
+            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="saladCol">
 
                 <c:forEach items="${all_stock}" var="ingredient">
 
@@ -331,7 +330,7 @@
             </div>
             <!-- Sauce -->
 
-            <div class="row text-center" id="sauceCol">
+            <div class="d-flex flex-row justify-content-around align-items-center flex-wrap" id="sauceCol">
                 <c:forEach items="${all_stock}" var="ingredient">
 
                     <c:if test="${ingredient.category == 'Sauce'}">
@@ -546,7 +545,7 @@
         </div>
     </form>
 
-        <!-- Order Summary -->
+    <!-- Order Summary -->
 
     <h2 id="choose-2" style="text-align: left; color: #FFFFFF;">4) Order Summary</h2>
 
@@ -555,10 +554,9 @@
             <div class="row text-center" id="orderCol">
 
 
-
             </div>
             <span><button id="submit-order" class="btn btn-primary" type="submit"
-                     style="display: block; width: 100%; background-color: #e520c7; margin: 0 auto; color: white; font-weight: 700;"
+                          style="display: block; width: 100%; background-color: #e520c7; margin: 0 auto; color: white; font-weight: 700;"
                           id="confirm-order" disabled>Confirm Order</button></span>
             <br>
         </div>
@@ -589,12 +587,7 @@
 </script>
 
 <!-- Bootstrap core JavaScript -->
-<script src="/jquery/jquery.min.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<jsp:include page="footertags.jsp" />
 <script type="text/javascript" src="js/orderpage.js"></script>
 
 </body>
