@@ -9,14 +9,11 @@
 <html>
 <head>
     <title>Payment Page</title>
+
+
+    <jsp:include page="headertags.jsp" />
+
     <link rel="stylesheet" href="css/payment.css" media="screen" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="fonts/font-awesome.min.css" rel="stylesheet">
-    <link rel="icon" href="" type="image/x-icon"> <!-- Add burger icon-->
 </head>
 <body>
 
@@ -107,11 +104,10 @@
 
 <!-- If you're using Stripe for payments -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-<script src="/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script src="/js/bootstrap.bundle.min.js"></script>
+
 <script src="/js/payment.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
 
 </body>
 </html>
