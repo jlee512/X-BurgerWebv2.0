@@ -42,7 +42,7 @@
             <h4 class="card-title"> No Orders </h4>
             <p class="card-text"> You haven't placed any orders yet. </p>
             <p class="card-text"> Click the button below to order! </p>
-            <a href="/order" class="btn btn-primary"> Place Order </a>
+            <a href="/order" class="btn btn-info"> Place Order </a>
         </div>
         </div>
         <div class="col-sm-3, col-md-4"></div>
@@ -64,7 +64,7 @@
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
-                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                    <a class="btn btn-info" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
                         Ingredients
                     </a>
                     <div class="collapse" id="${outerloop.index}">
@@ -93,7 +93,7 @@
     </div>
     </c:when>
         <c:when test="${order.status == 'Pending'}">
-            <div class="card" style="background-color: #d0adbc; border-style: solid; border-width: 5px; border-color: #98506f ">
+            <div class="card" style="background-color: #d0adbc; border-style: solid; border-width: 5px; border-color: #98506f; margin: 5px">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
@@ -101,7 +101,7 @@
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
-                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                    <a class="btn btn-info" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
                         Ingredients
                     </a>
                     <div class="collapse" id="${outerloop.index}">
@@ -130,7 +130,7 @@
             </div>
         </c:when>
         <c:when test="${order.status == 'Making'}">
-            <div class="card" style="background-color: #96b4ed; border-style: solid; border-width: 5px; border-color: #6b99ec ">
+            <div class="card" style="background-color: #96b4ed; border-style: solid; border-width: 5px; border-color: #6b99ec; margin: 5px">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
@@ -138,7 +138,7 @@
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
-                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                    <a class="btn btn-info" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
                         Ingredients
                     </a>
                     <div class="collapse" id="${outerloop.index}">
@@ -167,7 +167,7 @@
 </div>
         </c:when>
         <c:when test="${order.status == 'Completed'}">
-            <div class="card" style="background-color: #acf8ff; border-style: solid; border-width: 5px; border-color: #6cdde7 ">
+            <div class="card" style="background-color: #acf8ff; border-style: solid; border-width: 5px; border-color: #6cdde7; margin: 5px ">
                 <div class="card-body">
                     <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
@@ -175,7 +175,7 @@
                         ${order.setPriceString()}
                     <p class="card-text"><strong>Price: ${order.priceString}</strong></p>
 
-                    <a class="btn btn-primary" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
+                    <a class="btn btn-info" data-toggle="collapse" href="#${outerloop.index}" aria-expanded="false" aria-controls="${outerloop.index}">
                         Ingredients
                     </a>
                     <div class="collapse" id="${outerloop.index}">
