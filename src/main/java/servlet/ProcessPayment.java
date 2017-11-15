@@ -59,6 +59,18 @@ public class ProcessPayment extends HttpServlet {
         HttpSession session = req.getSession(true);
         Customer customer = (Customer) session.getAttribute("customer");
         Order pending_order = (Order) session.getAttribute("order_pending");
+
+        for (int i = 0; i < pending_order.getItems().size(); i++) {
+
+            System.out.println("New Item: " + pending_order.getItems().get(i).getItem_type());
+
+            for (int j = 0; j < pending_order.getItems().get(i).getIngredients().size(); j++) {
+
+                System.out.println("    Ingredient: " + pending_order.getItems().get(i).getIngredients().get(j).getIngredient_name());
+            }
+
+        }
+
         session.removeAttribute("pending_order");
 
         Order_API.addOrder(pending_order, customer.getCustomer_id());
