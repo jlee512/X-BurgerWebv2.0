@@ -42,7 +42,7 @@
             <c:when test="${param['order']=='completed' && outerloop.index == 0 && order.status == 'Pending'}">
             <div class="card" style="background-color: #ab58a0;">
                 <div class="card-body" style=" color: white;">
-                    <h4><class = "card-title"><strong>Order ${order.order_id}</strong></h4>
+                    <h4 class = "card-title"><strong>Order ${order.order_id}</strong></h4>
                     <p class="card-text"><strong>Time: ${order.order_datetime}</strong></p>
                     <p class="card-text"><strong>Status: ${order.status}</strong></p>
                         ${order.setPriceString()}
