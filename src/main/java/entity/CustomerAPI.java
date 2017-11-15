@@ -37,7 +37,7 @@ public class CustomerAPI {
             JsonObject customer_object = root.getAsJsonObject();
 
 
-            if (customer_object != null) {
+            if (customer_object.get("Customer_ID") != null) {
                 //Extract customer data from JSON
                 int customer_id = customer_object.get("Customer_ID").getAsInt();
                 String username = customer_object.get("Username").getAsString();
