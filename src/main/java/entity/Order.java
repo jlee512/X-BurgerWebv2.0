@@ -115,7 +115,7 @@ public class Order implements Serializable {
     }
 
     public void setPriceString(){
-        double newPrice = Math.round(getPrice());
+        double newPrice = Math.round(getPrice()*100.0)/100.0;
         this.priceString = "$" + newPrice + "0";
     }
 
