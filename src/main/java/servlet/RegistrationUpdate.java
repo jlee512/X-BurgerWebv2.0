@@ -48,12 +48,8 @@ public class RegistrationUpdate extends HttpServlet {
 
         CustomerAPI.addCustomertoDBAPI(newCust);
 
-        HttpSession session = request.getSession(true);
-        session.setMaxInactiveInterval(60 * 60 * 12);
-        session.setAttribute("loginStatus", "active");
-        session.setAttribute("customer", newCust);
+        System.out.println(username_entry);
 
-        //REPLACE WITH REDIRECT TO APPROPRIATE JSP
         response.sendRedirect("/order");
     }
 
