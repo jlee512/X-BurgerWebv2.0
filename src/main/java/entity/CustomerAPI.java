@@ -225,6 +225,9 @@ public class CustomerAPI {
 //
 //        System.out.println(CustomerAPI.getPaymentToken(1));
 
+       Customer customer = CustomerAPI.getCustomerDetailsAPI("julian@gmail.com","email");
+
+
     }
 
 }

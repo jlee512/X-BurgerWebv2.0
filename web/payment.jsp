@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: julia
@@ -11,16 +12,20 @@
     <title>Payment Page</title>
 
 
-    <jsp:include page="headertags.jsp" />
+    <jsp:include page="headertags.jsp"/>
 
     <link rel="stylesheet" href="css/payment.css" media="screen" type="text/css">
 </head>
 <body>
 
+<c:if test="${order_pending == null}">
+    <c:redirect url="/order"/>
+</c:if>
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">&nbsp</div>
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-4" style="padding-top: 15px; background-color: white;">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -30,18 +35,22 @@
                 <div class="panel-body">
                     <form role="form" action="/process_payment" method="post">
                         <div class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="radio" class="use-saved" id="saved" name="saved-card"/>
-                                    Use Saved Card
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="radio" class="use-saved" id="remember" name="saved-card"/>
-                                    Remember My Card
-                                </label>
-                            </div>
+                            <c:if test="${sessionScope.loginStatus == 'active' && customer.cardToken != ''}">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio" class="use-saved" id="saved" name="saved-card"/>
+                                        Use Saved Card
+                                    </label>
+                                </div>
+                            </c:if>
+                            <c:if test="${sessionScope.loginStatus == 'active'}">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="radio" class="use-saved" id="remember" name="saved-card"/>
+                                        Remember My Card
+                                    </label>
+                                </div>
+                            </c:if>
                             <div class="checkbox">
                                 <label>
                                     <input type="radio" class="use-saved" id="guest" name="saved-card" checked/>
@@ -59,21 +68,21 @@
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                             </div>
                         </div>
-                        <div class="row" id="cardDetails2">
-                            <div class="col-xs-7 col-md-7">
+                        <div class="d-flex flex-column justify-content-center" id="cardDetails2">
+                            <div class="d-flex flex-row justify-content-center">
                                 <div class="form-group">
                                     <label for="expityMonth">
                                         EXPIRY DATE</label>
-                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <div class="d-flex">
                                         <input type="text" class="form-control" id="expityMonth" name="expiryMon"
-                                               placeholder="MM" required/>
+                                               placeholder="MM" minlength="2" maxlength="2" required/>
                                     </div>
-                                    <div class="col-xs-6 col-lg-6 pl-ziro">
+                                    <div class="d-flex">
                                         <input type="text" class="form-control" id="expityYear" name="expiryYear"
-                                               placeholder="YY" required/></div>
+                                               placeholder="YYYY" minlength="4" maxlength="4" required/></div>
                                 </div>
                             </div>
-                            <div class="col-xs-5 col-md-5 pull-right">
+                            <div class="d-flex flex-row justify-content-center">
                                 <div class="form-group">
                                     <label for="cvCode">
                                         CCV</label>
@@ -84,14 +93,13 @@
                         </div>
                         <br/>
                         <div id="pin-append">
-                            <div class="col-xs-12 col-md-12" id="guestname-template">
+                            <div class="d-flex flex-row justify-content-center" id="guestname-template">
                                 <div class="form-group">
                                     <label for="guestname"></label>
-                                        <label>ENTER YOUR AN ORDER NAME</label>
-                                        <input type="password" class="form-control" id="guestname" name="guestname"
-                                               placeholder="Order Name" required/>
+                                    <label>ENTER YOUR AN ORDER NAME</label>
+                                    <input type="password" class="form-control" id="guestname" name="guestname" placeholder="Order Name" required />
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                         <button type="submit" class="btn btn-success btn-lg btn-block" role="button">Pay</button>
                     </form>
@@ -103,7 +111,7 @@
 </div>
 
 <!-- If you're using Stripe for payments -->
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<jsp:include page="footertags.jsp"/>
 
 <script src="/js/payment.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>

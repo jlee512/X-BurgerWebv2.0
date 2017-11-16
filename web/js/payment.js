@@ -2,23 +2,23 @@
  * Created by julia on 14/11/2017.
  */
 
-var pin_input_template = '<div class="col-xs-5 col-md-5" id="pin-template-new">'
+var pin_input_template = '<div class="d-flex flex-row justify-content-center" id="pin-template-new">'
     + '<div class="form-group">'
     + '<label for="pin"></label>'
     + '<label>CHOOSE A PIN (4 DIGIT)</label>'
-    + '<input type="password" class="form-control" id="pin" name="pin-new" placeholder="PIN" required />'
+    + '<input type="password" class="form-control" id="pin" name="pin-new" placeholder="PIN" minlength="4" maxlength="4" required />'
     + '</div>'
     + '</div>';
 
-var pin_check_template = '<div class="col-xs-5 col-md-5" id="pin-template-saved">'
+var pin_check_template = '<div class="d-flex flex-row justify-content-center" id="pin-template-saved">'
     + '<div class="form-group">'
     + '<label for="pin"></label>'
     + '<label>ENTER YOUR PIN (4 DIGIT)</label>'
-    + '<input type="password" class="form-control" id="pin" name="pin-saved" placeholder="PIN" required />'
+    + '<input type="password" class="form-control" id="pin" name="pin-saved" placeholder="PIN" minlength="4" maxlength="4" required />'
     + '</div>'
     + '</div>';
 
-var order_name_template = '<div class="col-xs-12 col-md-12" id="guestname-template">'
+var order_name_template = '<div class="d-flex flex-row justify-content-center" id="guestname-template">'
     + '<div class="form-group">'
     + '<label for="guestname"></label>'
     + '<label>ENTER YOUR AN ORDER NAME</label>'

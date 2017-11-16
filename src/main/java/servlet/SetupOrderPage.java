@@ -23,6 +23,13 @@ public class SetupOrderPage extends HttpServlet {
 
         ArrayList<Stock> all_available_stock = Stock_API.getAllStockDetails();
 
+        HttpSession session = request.getSession(true);
+
+        //Reset session order pending attribute if it exists
+        if (session.getAttribute("order_pending") != null) {
+            session.removeAttribute("order_pending");
+        }
+
         request.setAttribute("all_stock", all_available_stock);
 
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/make_order");
