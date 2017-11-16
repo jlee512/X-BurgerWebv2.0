@@ -220,11 +220,11 @@ function addSpecial(special, special_name, cost) {
 
 function showCheese() {
 
-    document.getElementById("cheeseCol").style.display = "inline-block";
-    document.getElementById("beefCol").style.display = "none";
-    document.getElementById("saladCol").style.display = "none";
-    document.getElementById("bunCol").style.display = "none";
-    document.getElementById("sauceCol").style.display = "none";
+    $("#bunCol").addClass('d-none').removeClass('d-flex');
+    $("#cheeseCol").removeClass('d-none').addClass('d-flex');
+    $("#beefCol").addClass('d-none').removeClass('d-flex');
+    $("#saladCol").addClass('d-none').removeClass('d-flex');
+    $("#sauceCol").addClass('d-none').removeClass('d-flex');
 
     document.getElementById("cheeseCol").scrollTop = 0;
 }
@@ -232,44 +232,44 @@ function showCheese() {
 
 function showBeef() {
 
-    document.getElementById("beefCol").style.display = "inline-block";
-    document.getElementById("cheeseCol").style.display = "none";
-    document.getElementById("saladCol").style.display = "none";
-    document.getElementById("bunCol").style.display = "none";
-    document.getElementById("sauceCol").style.display = "none";
+    $("#bunCol").addClass('d-none').removeClass('d-flex');
+    $("#cheeseCol").addClass('d-none').removeClass('d-flex');
+    $("#beefCol").removeClass('d-none').addClass('d-flex');
+    $("#saladCol").addClass('d-none').removeClass('d-flex');
+    $("#sauceCol").addClass('d-none').removeClass('d-flex');
 
     document.getElementById("beefCol").scrollTop = 0;
 }
 
 function showSalad() {
 
-    document.getElementById("saladCol").style.display = "inline-block";
-    document.getElementById("cheeseCol").style.display = "none";
-    document.getElementById("beefCol").style.display = "none";
-    document.getElementById("bunCol").style.display = "none";
-    document.getElementById("sauceCol").style.display = "none";
+    $("#bunCol").addClass('d-none').removeClass('d-flex');
+    $("#cheeseCol").addClass('d-none').removeClass('d-flex');
+    $("#beefCol").addClass('d-none').removeClass('d-flex');
+    $("#saladCol").removeClass('d-none').addClass('d-flex');
+    $("#sauceCol").addClass('d-none').removeClass('d-flex');
 
     document.getElementById("saladCol").scrollTop = 0;
 }
 
 function showBun() {
 
-    document.getElementById("bunCol").style.display = "inline-block";
-    document.getElementById("cheeseCol").style.display = "none";
-    document.getElementById("beefCol").style.display = "none";
-    document.getElementById("saladCol").style.display = "none";
-    document.getElementById("sauceCol").style.display = "none";
+    $("#bunCol").removeClass('d-none').addClass('d-flex');
+    $("#cheeseCol").addClass('d-none').removeClass('d-flex');
+    $("#beefCol").addClass('d-none').removeClass('d-flex');
+    $("#saladCol").addClass('d-none').removeClass('d-flex');
+    $("#sauceCol").addClass('d-none').removeClass('d-flex');
 
     document.getElementById("bunCol").scrollTop = 0;
 }
 
 function showSauce() {
 
-    document.getElementById("sauceCol").style.display = "inline-block";
-    document.getElementById("cheeseCol").style.display = "none";
-    document.getElementById("beefCol").style.display = "none";
-    document.getElementById("saladCol").style.display = "none";
-    document.getElementById("bunCol").style.display = "none";
+    $("#bunCol").addClass('d-none').removeClass('d-flex');
+    $("#cheeseCol").addClass('d-none').removeClass('d-flex');
+    $("#beefCol").addClass('d-none').removeClass('d-flex');
+    $("#saladCol").addClass('d-none').removeClass('d-flex');
+    $("#sauceCol").removeClass('d-none').addClass('d-flex');
 
     document.getElementById("sauceCol").scrollTop = 0;
 }

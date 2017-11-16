@@ -53,6 +53,12 @@
 
 }
 
+.panel.panel-default {
+    background-color: #46b8da;
+    padding: 2px;
+    margin: 5px;
+    border-radius: 5px;
+}
 
 .panel-body {
     padding: 1px;

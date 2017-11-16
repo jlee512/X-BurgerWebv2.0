@@ -11,6 +11,6 @@
     <title>test</title>
 </head>
 <body>
-    <img src="/images/test.jpg">
+
 </body>
 </html>
