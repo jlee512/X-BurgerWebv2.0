@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by Julian on 5/11/2017.
@@ -54,8 +55,14 @@ public class LoginValidation extends HttpServlet {
                 session.setAttribute("customer", customer_login_submission);
 
                 //REPLACE WITH REDIRECT TO APPROPRIATE JSP
-               response.sendRedirect("/order");
-
+                URL url = new URL(request.getRequestURL().toString());
+                String urlString = url.toString();
+                if(urlString.contains("goingToHistory=true")) {
+                    response.sendRedirect("/history");
+                }
+                else {
+                    response.sendRedirect("/order");
+                }
             } else {
                 response.sendRedirect("Login?loginStatus=incorrectPassword&username=" + username_entry);
             }
