@@ -49,7 +49,10 @@ public class ProcessPayment extends HttpServlet {
 
                 byte[] pinArray = Passwords.base64Decode(customer.getPassPin());
 
-                if (Passwords.isExpectedPassword(pinHash_entry.toCharArray(), saltArray, customer.getIterations(), pinArray)) {
+                System.out.println("pinHash entry: " + pinHash_entry);
+                System.out.println("pinHash: " + customer.getPassPin());
+
+                if (Passwords.isExpectedPassword(pin_entry.toCharArray(), saltArray, iterArray, pinArray)) {
                     //Payment successful if pin matches DB pin
                     System.out.println("Payment Successful");
                 } else {
@@ -71,12 +74,12 @@ public class ProcessPayment extends HttpServlet {
 
                 }
 
-                session.removeAttribute("pending_order");
+                session.removeAttribute("order_pending");
 
                 Order_API.addOrder(pending_order, customer.getCustomer_id());
 
                 //Redirect to history if logged in, else redirect to home page with status = completed
-                if (session.getAttribute("loginStatus") == "active") {
+                if (session.getAttribute("loginStatus").equals("active")) {
                     resp.sendRedirect("/history?order=completed");
                 } else {
                     resp.sendRedirect("/?guest_order=completed");
@@ -110,12 +113,14 @@ public class ProcessPayment extends HttpServlet {
                         //Invalid card details - redirect to payment and display feedback
                         System.out.println("Payment Unsuccessful");
                         resp.sendRedirect("/payment?status=cardExpired");
+                        break;
                     }
 
                 } else {
                     //Invalid card details - redirect to payment and display feedback
                     System.out.println("Payment Unsuccessful");
                     resp.sendRedirect("/payment?status=invalidDetails");
+                    break;
                 }
 
                 //Add card to the database by generating a token and hashing the pin (replace with adopted payment operator)
@@ -152,12 +157,12 @@ public class ProcessPayment extends HttpServlet {
 
                 }
 
-                session.removeAttribute("pending_order");
+                session.removeAttribute("order_pending");
 
                 Order_API.addOrder(pending_order, customer.getCustomer_id());
 
                 //Redirect to history if logged in, else redirect to home page with status = completed
-                if (session.getAttribute("loginStatus") == "active") {
+                if (session.getAttribute("loginStatus").equals("active")) {
                     resp.sendRedirect("/history?order=completed");
                 } else {
                     resp.sendRedirect("/?guest_order=completed");
@@ -191,17 +196,19 @@ public class ProcessPayment extends HttpServlet {
                         //Invalid card details - redirect to payment and display feedback
                         System.out.println("Payment Unsuccessful");
                         resp.sendRedirect("/payment?status=cardExpired");
+                        break;
                     }
 
                 } else {
                     //Invalid card details - redirect to payment and display feedback
                     System.out.println("Payment Unsuccessful");
                     resp.sendRedirect("/payment?status=invalidDetails");
+                    break;
                 }
 
                 Customer customer = null;
                 //Get customer details to add to order (or generate placeholder for guest if not logged in
-                if (session.getAttribute("loginStatus") == "active") {
+                if (session.getAttribute("loginStatus").equals("active")) {
                     customer = (Customer) session.getAttribute("customer");
                 } else {
                     customer = CustomerAPI.getCustomerDetailsAPI("guest", "username");
@@ -220,12 +227,12 @@ public class ProcessPayment extends HttpServlet {
 
                 }
 
-                session.removeAttribute("pending_order");
+                session.removeAttribute("order_pending");
 
                 Order_API.addOrder(pending_order, customer.getCustomer_id());
 
                 //Redirect to history if logged in, else redirect to home page with status = completed
-                if (session.getAttribute("loginStatus") == "active") {
+                if (session.getAttribute("loginStatus").equals("active")) {
                     resp.sendRedirect("/history?order=completed");
                 } else {
                     resp.sendRedirect("/?guest_order=completed");

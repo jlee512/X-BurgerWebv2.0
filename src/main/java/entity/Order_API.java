@@ -766,7 +766,7 @@ public class Order_API {
 //        Order_API.assignStaffToOrder(1, 391);
 //        Order_API.completeOrder(391);
 
-//        ArrayList<Order> test = Order_API.getOrdersByCustomerID(1);
+        ArrayList<Order> test = Order_API.getOrdersByCustomerID(171);
 
 //        ArrayList<Order> test = Order_API.getLastMonthOfOrders();
 
@@ -776,34 +776,34 @@ public class Order_API {
 
 //        ArrayList<Order> test = Order_API.getOrdersByStatus(0);
 //
-//        if (test != null) {
-//            for (int i = 0; i < test.size(); i++) {
+        if (test != null) {
+            for (int i = 0; i < test.size(); i++) {
+
+                Order order = test.get(i);
+                System.out.println("New order: " + order.getStatus());
+
+                for (int j = 0; j < order.getItems().size(); j++) {
+
+                    Item item = order.getItems().get(j);
+
+                    System.out.println("    Item: " + item.getItem_type());
+
+                    for (int k = 0; k < item.getIngredients().size(); k++) {
+
+                        Stock ingredient = item.getIngredients().get(k);
+
+                        System.out.println("        Ingredient: " + ingredient.getIngredient_name() + " " + ingredient.getPrice());
+
+                    }
+
+
+                }
+
+            }
+
 //
-//                Order order = test.get(i);
-//                System.out.println("New order: " + order.getStatus());
-//
-//                for (int j = 0; j < order.getItems().size(); j++) {
-//
-//                    Item item = order.getItems().get(j);
-//
-//                    System.out.println("    Item: " + item.getItem_type());
-//
-//                    for (int k = 0; k < item.getIngredients().size(); k++) {
-//
-//                        Stock ingredient = item.getIngredients().get(k);
-//
-//                        System.out.println("        Ingredient: " + ingredient.getIngredient_name() + " " + ingredient.getPrice());
-//
-//                    }
-//
-//
-//                }
-//
-//            }
-//
-////
-//        } else {
-//            System.out.println("No orders for this search");
-//        }
+        } else {
+            System.out.println("No orders for this search");
+        }
     }
 }
