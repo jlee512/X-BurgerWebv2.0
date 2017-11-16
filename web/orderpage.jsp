@@ -139,10 +139,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -186,10 +186,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -231,10 +231,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -277,10 +277,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -321,10 +321,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -382,10 +382,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -429,10 +429,10 @@
                                 <div class="panel-footer">
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -478,10 +478,10 @@
 
                                     <c:choose>
                                         <c:when test="${ingredient.stock_level > 5}">
-                                            <button class="btn btn-info" style="min-width: 100%;">${ingredient.ingredient_name}</button>
+                                            <button type="button" class="btn btn-info check-ingredient" style="min-width: 100%;">${ingredient.ingredient_name}</button>
                                         </c:when>
                                         <c:otherwise>
-                                            <button class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
+                                            <button type="button" class="btn btn-info" style="min-width: 100%;" disabled>${ingredient.ingredient_name} Unavailable</button>
                                         </c:otherwise>
                                     </c:choose>
 
@@ -517,7 +517,7 @@
 
     <form action="/process_order" method="post">
         <div class="order-container">
-            <div class="row text-center" id="orderCol">
+            <div class="d-flex flex-row justify-content-center align-items-center flex-wrap" id="orderCol">
 
 
             </div>

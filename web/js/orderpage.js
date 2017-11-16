@@ -56,18 +56,41 @@ var item_id = 1;
 var ingredient_id = 1;
 var button_enabled = false;
 
-var templateOrderItem = '<div class="col-lg-2 col-sm-3 col-xs-4 item-added">'
-    + '<div class="panel panel-default">'
+var templateOrderItem = '<div class="panel panel-default">'
     + '<div class="panel-body">'
     + '<img src="" class="img-thumbnail img-responsive item-type-img">'
     + '</div>'
     + '<div class="panel-footer ingredient-ids">'
     + '<div><p class="order-item"></p>'
     + '</div>'
-    + '</div>'
     + '</div>';
 
 var templateItemIngredient = '<div><input class="burger-ingredient" type="text" readonly hidden/></div>';
+
+$(document).ready(function () {
+
+    $('.btn.btn-info.check-ingredient').on('click', function () {
+
+        //If a radio button, check if unchecked and not disabled, otherwise ignore button click
+        if($(this).next().next().is(':radio')) {
+
+            if (!$(this).next().next().prop('checked') && $(this).prop('disabled', false)){
+                $(this).next().next().prop('checked', true)
+            }
+        }
+
+        //If a checkbox, toggle check if it is not diabled
+        if($(this).next().next().is(':checkbox')) {
+            //
+            if ($(this).next().next().prop('checked') && $(this).prop('disabled', false)) {
+                $(this).next().next().prop('checked', false);
+            } else if (!$(this).next().next().prop('checked') && $(this).prop('disabled', false)) {
+                $(this).next().next().prop('checked', true);
+            }
+        }
+    });
+
+});
 
 function addBurger(ingredients, cost) {
 
