@@ -25,7 +25,7 @@ public class OrderHistory extends HttpServlet {
 
         //Check customer not null (if null, redirect to login)
         if (currentCustomer == null) {
-            resp.sendRedirect("/login");
+            resp.sendRedirect("/login?goingToHistory=true");
         } else {
             System.out.println(currentCustomer);
             int current_customer_id = currentCustomer.getCustomer_id();
@@ -50,20 +50,6 @@ public class OrderHistory extends HttpServlet {
                 req.getRequestDispatcher("/process_history").forward(req, resp);
             }
 
-        }
-    }
-
-
-    /*Method to check a user's login-status and redirect accordingly
-(this method is used across most user-sensitive servlets to confirm their login status)*/
-    public static void loginStatusRedirection(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        if (session.getAttribute("loginStatus") != "active"){
-            response.sendRedirect("/login");
-        } else {
-//            Customer customer = (Customer) session.getAttribute("customer");
-            response.sendRedirect("/history");
         }
     }
 }
