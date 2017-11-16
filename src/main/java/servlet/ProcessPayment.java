@@ -19,63 +19,65 @@ public class ProcessPayment extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/");
+        resp.sendRedirect("/order");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        if (req.getParameterMap().containsKey("username")) {
 
 
-        String cardNum = req.getParameter("cardNum");
-        int expiryYear = Integer.parseInt(req.getParameter("expiryYear"));
-        int expiryMonth = Integer.parseInt(req.getParameter("expiryMon"));
-        String ccv = req.getParameter("ccv");
+            String cardNum = req.getParameter("cardNum");
+            int expiryYear = Integer.parseInt(req.getParameter("expiryYear"));
+            int expiryMonth = Integer.parseInt(req.getParameter("expiryMon"));
+            String ccv = req.getParameter("ccv");
 
-        int current_year = Calendar.getInstance().get(Calendar.YEAR);
-        int current_month = Calendar.getInstance().get(Calendar.MONTH);
+            int current_year = Calendar.getInstance().get(Calendar.YEAR);
+            int current_month = Calendar.getInstance().get(Calendar.MONTH);
 
-        //Dummy payment checking, to be replaced by integrated payment method of client's choice
-        //Chec
-        if (cardNum.length() == 16) {
+            //Dummy payment checking, to be replaced by integrated payment method of client's choice
+            //Chec
+            if (cardNum.length() == 16) {
 
-            if (expiryYear > current_year) {
-                //Note further validation will be required by the payment services provider
-                System.out.println("Payment Successful");
-            } else if(expiryMonth > current_month){
-                System.out.println("Payment Successful");
+                if (expiryYear > current_year) {
+                    //Note further validation will be required by the payment services provider
+                    System.out.println("Payment Successful");
+                } else if (expiryMonth > current_month) {
+                    System.out.println("Payment Successful");
+                } else {
+                    //Invalid card details - redirect to payment and display feedback
+                    System.out.println("Payment Unsuccessful");
+                    resp.sendRedirect("/payment?status=cardExpired");
+                }
+
             } else {
                 //Invalid card details - redirect to payment and display feedback
                 System.out.println("Payment Unsuccessful");
-                resp.sendRedirect("/payment?status=cardExpired");
+                resp.sendRedirect("/payment?status=invalidDetails");
             }
 
-        } else {
-            //Invalid card details - redirect to payment and display feedback
-            System.out.println("Payment Unsuccessful");
-            resp.sendRedirect("/payment?status=invalidDetails");
-        }
+            HttpSession session = req.getSession(true);
+            Customer customer = (Customer) session.getAttribute("customer");
+            Order pending_order = (Order) session.getAttribute("order_pending");
 
-        HttpSession session = req.getSession(true);
-        Customer customer = (Customer) session.getAttribute("customer");
-        Order pending_order = (Order) session.getAttribute("order_pending");
+            for (int i = 0; i < pending_order.getItems().size(); i++) {
 
-        for (int i = 0; i < pending_order.getItems().size(); i++) {
+                System.out.println("New Item: " + pending_order.getItems().get(i).getItem_type());
 
-            System.out.println("New Item: " + pending_order.getItems().get(i).getItem_type());
+                for (int j = 0; j < pending_order.getItems().get(i).getIngredients().size(); j++) {
 
-            for (int j = 0; j < pending_order.getItems().get(i).getIngredients().size(); j++) {
+                    System.out.println("    Ingredient: " + pending_order.getItems().get(i).getIngredients().get(j).getIngredient_name());
+                }
 
-                System.out.println("    Ingredient: " + pending_order.getItems().get(i).getIngredients().get(j).getIngredient_name());
             }
 
+            session.removeAttribute("pending_order");
+
+            Order_API.addOrder(pending_order, customer.getCustomer_id());
+
+            resp.sendRedirect("/history?order=completed");
+
         }
-
-        session.removeAttribute("pending_order");
-
-        Order_API.addOrder(pending_order, customer.getCustomer_id());
-
-        resp.sendRedirect("/history?order=completed");
-
     }
 }

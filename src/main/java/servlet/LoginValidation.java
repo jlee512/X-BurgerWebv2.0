@@ -64,10 +64,10 @@ public class LoginValidation extends HttpServlet {
                     response.sendRedirect("/order");
                 }
             } else {
-                response.sendRedirect("Login?loginStatus=incorrectPassword&username=" + username_entry);
+                response.sendRedirect("/login?loginStatus=incorrectPassword&username=" + username_entry);
             }
         } else {
-            response.sendRedirect("Login?loginStatus=invalidUsername");
+            response.sendRedirect("/login?loginStatus=invalidUsername");
         }
 
         out.flush();
