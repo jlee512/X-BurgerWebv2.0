@@ -61,6 +61,7 @@
                                 </label>
                             </div>
                         </div>
+                        <div id="new-card-entry">
                         <div class="form-group" id="cardDetails">
                             <label for="cardNumber">
                                 CARD NUMBER</label>
@@ -94,6 +95,7 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
                         <br/>
                         <div id="pin-append">
 
@@ -103,7 +105,7 @@
                                 <div class="d-flex flex-row justify-content-center" id="guestname-template">
                                     <div class="form-group">
                                         <label for="guestname"></label>
-                                        <label>ENTER YOUR AN ORDER NAME</label>
+                                        <label>ENTER AN ORDER NAME</label>
                                         <input type="text" class="form-control" id="guestname" name="guestname"
                                                placeholder="Order Name" required/>
                                     </div>

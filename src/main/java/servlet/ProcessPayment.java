@@ -36,6 +36,51 @@ public class ProcessPayment extends HttpServlet {
             //Payment with saved card
             case "savedCard": {
 
+                String pin_entry = req.getParameter("pin-saved");
+
+                Customer customer = (Customer) session.getAttribute("customer");
+
+                //Check customer pin to confirm payment successful
+                byte[] saltArray = Passwords.base64Decode(customer.getSalt());
+                int iterArray = customer.getIterations();
+                byte[] pinArray_entry = Passwords.hash(pin_entry.toCharArray(),saltArray, iterArray);
+                String pinHash_entry = Passwords.base64Encode(pinArray_entry);
+
+                byte[] pinArray = Passwords.base64Decode(customer.getPassPin());
+
+                if (Passwords.isExpectedPassword(pinHash_entry.toCharArray(), saltArray, customer.getIterations(), pinArray)) {
+                    //Payment successful if pin matches DB pin
+                    System.out.println("Payment Successful");
+                } else {
+                    //Invalid pin - redirect to payment and display feedback
+                    System.out.println("Payment Unsuccessful");
+                    resp.sendRedirect("/payment?status=incorrectPin");
+                }
+
+                Order pending_order = (Order) session.getAttribute("order_pending");
+
+                for (int i = 0; i < pending_order.getItems().size(); i++) {
+
+                    System.out.println("New Item: " + pending_order.getItems().get(i).getItem_type());
+
+                    for (int j = 0; j < pending_order.getItems().get(i).getIngredients().size(); j++) {
+
+                        System.out.println("    Ingredient: " + pending_order.getItems().get(i).getIngredients().get(j).getIngredient_name());
+                    }
+
+                }
+
+                session.removeAttribute("pending_order");
+
+                Order_API.addOrder(pending_order, customer.getCustomer_id());
+
+                //Redirect to history if logged in, else redirect to home page with status = completed
+                if (session.getAttribute("loginStatus") == "active") {
+                    resp.sendRedirect("/history?order=completed");
+                } else {
+                    resp.sendRedirect("/?guest_order=completed");
+                }
+
                 break;
             }
             //Payment with card and remember details (with user pin)
@@ -84,6 +129,9 @@ public class ProcessPayment extends HttpServlet {
 
                 customer.setCardToken(payment_token);
                 customer.setPassPin(pinHash);
+
+                //Update session attribute with customer saved payment details
+                session.setAttribute("customer", customer);
 
                 //Update customer pin and token in database
                 CustomerAPI.saveCustomerPaymentTokenDB(customer.getCustomer_id(), customer.getPassPin(), customer.getCardToken());
