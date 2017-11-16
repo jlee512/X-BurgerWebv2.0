@@ -29,12 +29,13 @@ public class ProcessPayment extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String payment_method = req.getParameter("saved-card");
-        HttpSession session = req.getSession(true);
 
         switch (payment_method) {
 
             //Payment with saved card
             case "savedCard": {
+
+                HttpSession session = req.getSession(true);
 
                 String pin_entry = req.getParameter("pin-saved");
 
@@ -85,6 +86,8 @@ public class ProcessPayment extends HttpServlet {
             }
             //Payment with card and remember details (with user pin)
             case "rememberCard": {
+
+                HttpSession session = req.getSession(true);
                 //Get card details and check validity
                 String cardNum = req.getParameter("cardNum");
                 int expiryYear = Integer.parseInt(req.getParameter("expiryYear"));
@@ -164,6 +167,8 @@ public class ProcessPayment extends HttpServlet {
             }
             //Payment with card and not remembered, check if user is logged in, if not
             case "guest": {
+
+                HttpSession session = req.getSession(true);
 
                 String cardNum = req.getParameter("cardNum");
                 int expiryYear = Integer.parseInt(req.getParameter("expiryYear"));
