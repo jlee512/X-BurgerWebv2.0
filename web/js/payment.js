@@ -22,7 +22,7 @@ var order_name_template = '<div class="d-flex flex-row justify-content-center" i
     + '<div class="form-group">'
     + '<label for="guestname"></label>'
     + '<label>ENTER YOUR AN ORDER NAME</label>'
-    + '<input type="password" class="form-control" id="guestname" name="guestname" placeholder="Order Name" required />'
+    + '<input type="text" class="form-control" id="guestname" name="guestname" placeholder="Order Name" required />'
     + '</div>'
     + '</div>';
 
@@ -32,23 +32,33 @@ $(document).ready(function (){
 
         //If not checked previously
         if ($('#remember').prop('checked')) {
+            console.log("remember");
             $('#pin-template-saved').remove();
-            $('#guestname-template').remove();
+            if ($('#order-name-append').length > 0) {
+                $('#guestname-template').remove();
+            }
             $('#cardDetails').show();
             $('#cardDetails2').show();
             $('#pin-append').append(pin_input_template);
         } else if ($('#saved').prop('checked')) {
+            console.log("use saved");
             $('#pin-template-new').remove();
-            $('#guestname-template').remove();
+            if ($('#order-name-append').length > 0) {
+                $('#guestname-template').remove();
+            }
             $('#cardDetails').hide();
             $('#cardDetails2').hide();
             $('#pin-append').append(pin_check_template);
         } else {
+            console.log("guest");
             $('#pin-template-saved').remove();
             $('#pin-template-new').remove();
             $('#cardDetails').show();
             $('#cardDetails2').show();
-            $('#pin-append').append(order_name_template);
+
+            if ($('#order-name-append').length > 0) {
+                $('#order-name-append').append(order_name_template);
+            }
 
         }
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +11,6 @@
 </head>
 <body>
 <!--======= Start Nav ==========-->
-
 <jsp:include page="navbar.jsp"/>
 
 <!--======= Start Home ==========-->
@@ -19,6 +19,15 @@
     <video autoplay loop id="video-background" muted plays-inline>
         <source src="images/lightBack.mp4" type="video/mp4">
     </video>
+
+    <c:if test="${param.guest_order == 'completed'}">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 70px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Thanks for your order</strong> If you enjoy your order please sign up or use our mobile app
+        </div>
+    </c:if>
 
     <div class="follow_container">
         <%--Spacer--%>

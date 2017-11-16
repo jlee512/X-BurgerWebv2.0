@@ -38,7 +38,8 @@
                             <c:if test="${sessionScope.loginStatus == 'active' && customer.cardToken != ''}">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="radio" class="use-saved" id="saved" name="saved-card"/>
+                                        <input type="radio" class="use-saved" id="saved" name="saved-card"
+                                               value="savedCard"/>
                                         Use Saved Card
                                     </label>
                                 </div>
@@ -46,14 +47,16 @@
                             <c:if test="${sessionScope.loginStatus == 'active'}">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="radio" class="use-saved" id="remember" name="saved-card"/>
+                                        <input type="radio" class="use-saved" id="remember" name="saved-card"
+                                               value="rememberCard"/>
                                         Remember My Card
                                     </label>
                                 </div>
                             </c:if>
                             <div class="checkbox">
                                 <label>
-                                    <input type="radio" class="use-saved" id="guest" name="saved-card" checked/>
+                                    <input type="radio" class="use-saved" id="guest" name="saved-card" value="guest"
+                                           checked/>
                                     Checkout as Guest
                                 </label>
                             </div>
@@ -86,21 +89,27 @@
                                 <div class="form-group">
                                     <label for="cvCode">
                                         CCV</label>
-                                    <input type="password" class="form-control" id="cvCode" name="ccv" placeholder="CV"
+                                    <input type="password" class="form-control" id="cvCode" name="ccv" placeholder="CCV"
                                            required/>
                                 </div>
                             </div>
                         </div>
                         <br/>
                         <div id="pin-append">
-                            <div class="d-flex flex-row justify-content-center" id="guestname-template">
-                                <div class="form-group">
-                                    <label for="guestname"></label>
-                                    <label>ENTER YOUR AN ORDER NAME</label>
-                                    <input type="password" class="form-control" id="guestname" name="guestname" placeholder="Order Name" required />
+
+                        </div>
+                        <c:if test="${sessionScope.loginStatus != 'active'}">
+                            <div id="order-name-append">
+                                <div class="d-flex flex-row justify-content-center" id="guestname-template">
+                                    <div class="form-group">
+                                        <label for="guestname"></label>
+                                        <label>ENTER YOUR AN ORDER NAME</label>
+                                        <input type="text" class="form-control" id="guestname" name="guestname"
+                                               placeholder="Order Name" required/>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
+                        </c:if>
                         <button type="submit" class="btn btn-success btn-lg btn-block" role="button">Pay</button>
                     </form>
                 </div>

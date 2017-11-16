@@ -1,9 +1,6 @@
 package main.java.servlet;
 
-import main.java.entity.Customer;
-import main.java.entity.Item;
-import main.java.entity.Order;
-import main.java.entity.Stock;
+import main.java.entity.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,7 +31,8 @@ public class ProcessOrder extends HttpServlet {
         int customer_id;
         HttpSession session = request.getSession(true);
         if (session.getAttribute("loginStatus") != "active"){
-            customer_id = -10;
+            Customer customer = CustomerAPI.getCustomerDetailsAPI("guest", "username");
+            customer_id = customer.getCustomer_id();
         } else {
             Customer customer = (Customer) session.getAttribute("customer");
             customer_id = customer.getCustomer_id();

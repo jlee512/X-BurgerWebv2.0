@@ -43,7 +43,7 @@
                     </div>
                     <div class="panel-footer">
                         <button id="plain" class="btn btn-info" style="min-width: 100%;">
-                            Plain
+                            Customise
                         </button>
                     </div>
 

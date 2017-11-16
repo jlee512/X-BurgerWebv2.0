@@ -28,8 +28,6 @@ public class RegistrationUpdate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Customer customer_login_submission = null;
-
         //Get request parameters from form submission
         String username_entry = request.getParameter("name_us");
         String email_entry = request.getParameter("email");
@@ -47,6 +45,13 @@ public class RegistrationUpdate extends HttpServlet {
         Customer newCust = new Customer(username_entry, email_entry, "", iterArray, salt, passwordHash, "", "");
 
         CustomerAPI.addCustomertoDBAPI(newCust);
+
+        Customer customer = CustomerAPI.getCustomerDetailsAPI(newCust.getUsername(), "username");
+
+        HttpSession session = request.getSession(true);
+        session.setMaxInactiveInterval(60 * 60 * 12);
+        session.setAttribute("loginStatus", "active");
+        session.setAttribute("customer", customer);
 
         System.out.println(username_entry);
 

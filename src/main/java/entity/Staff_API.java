@@ -54,6 +54,8 @@ public class Staff_API {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NumberFormatException e) {
+            return null;
         }
 
         return null;
@@ -147,7 +149,7 @@ public class Staff_API {
 //        System.out.println(staff_test.getUsername());
 //        System.out.println(staff_test.getStaff_type());
 //
-//        Staff staff_test1 = Staff_API.getStaffDetailsAPI("11", "staff_id");
+        Staff staff_test1 = Staff_API.getStaffDetailsAPI("aech", "username");
 //        System.out.println(staff_test1.getIterations());
 //
 //        //Test staff addition API method
